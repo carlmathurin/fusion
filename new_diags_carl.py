@@ -36,7 +36,7 @@ dist_t = np.empty(shape)
 
 for i in range(len(kz)):
     for j in range(len(hermiteNumbers)):
-	dist_t[i,j] = (1j*np.sign(kz))**hermiteNumbers[j] * dist[i,j]
+	dist_t[i,j] = (1j*np.sign(kz[i]))**hermiteNumbers[j] * dist[i,j]
 
 dist_tp = np.empty(shape)
 dist_tm = np.empty(shape)
