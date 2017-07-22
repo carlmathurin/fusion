@@ -19,49 +19,51 @@ par['diagdir']="\'"+diagdir+"\'"
 
 time = get_time_from_gout()
 time
-kx,ky,kz,n = get_grids()
+kx,ky,kz,hermiteNumbers = get_grids()
 print "kx",kx
 print "ky",ky
 print "kz",kz
-print "n",n
+print "Hermite Numbers",hermiteNumbers
 g_in = read_time_step_g(len(time)-1)
 g_in=np.reshape(g_in,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
 print np.shape(g_in)
-gkx5ky5 = g_in[x,y,:,:]
-print np.shape(gkx5ky5)
+dist = g_in[x,y,:,:] #distribution function: 2d slice of 4d g_in
 
-ra=(np.shape(gkx5ky5)[0],np.shape(gkx5ky5)[1])
-print 'ra: ', ra
-gkx5ky5t = np.empty(ra)
+
+#make a new 2d array with the same dimensions as dist_
+shape = np.shape(dist)
+dist_t = np.empty(shape)
+
 for i in range(len(kz)):
-    for j in range(len(n)):
-	if kz[i] == 0:
-           	sgnkz = 0
-        else:
-            	sgnkz = kz[i]/abs(kz[i]) 
-        gkx5ky5t[i,j] = (1j*sgnkz)**n[j]*gkx5ky5[i,j]
-gkx5ky5tp = np.empty(ra)
-gkx5ky5tm = np.empty(ra)
+    for j in range(len(hermiteNumbers)):
+	dist_t[i,j] = (1j*np.sign(kz))**hermiteNumbers[j] * dist[i,j]
+
+dist_tp = np.empty(shape)
+dist_tm = np.empty(shape)
+
 for i in range(len(kz)):
-    for j in range(len(n)+1):
-	if j < (len(n)-1):
-		gkx5ky5tp[i,j]= (gkx5ky5t[i,j]+gkx5ky5t[i,j+1])/2
-		gkx5ky5tm[i,j]= (gkx5ky5t[i,j]-gkx5ky5t[i,j+1])/2
-print np.shape(gkx5ky5tm)
-print np.shape(gkx5ky5tp)
-c_p=np.empty(np.shape(gkx5ky5tp))
-c_m=np.empty(np.shape(gkx5ky5tm))
+    for j in range(len(hermiteNumbers)+1):
+	if j < (len(hermiteNumbers)-1):
+		dist_tp[i,j]= (dist_t[i,j]+dist_t[i,j+1])/2
+		dist_tm[i,j]= (dist_t[i,j]-dist_t[i,j+1])/2
+
+print np.shape(dist_tm)
+print np.shape(dist_tp)
+c_p=np.empty(np.shape(dist_tp))
+c_m=np.empty(np.shape(dist_tm))
+
 for i in range(len(kz)):
 	for j in range(len(kz)):
-        	c_p[i,j]= gkx5ky5tp[i,j] * np.conjugate(gkx5ky5tp[i,j])
-        	c_m[i,j]= gkx5ky5tm[i,j] * np.conjugate(gkx5ky5tm[i,j])
+        	c_p[i,j]= dist_tp[i,j] * np.conjugate(dist_tp[i,j])
+        	c_m[i,j]= dist_tm[i,j] * np.conjugate(dist_tm[i,j])
+
 print np.shape(c_p)
 print np.shape(c_m)
 
 c_ps = np.sum(c_p,axis=0)
 c_ms = np.sum(c_m,axis=0)
-plt.loglog(n,c_ps)
-plt.loglog(n,c_ms)
+plt.loglog(hermiteNumbers,c_ps)
+plt.loglog(hermiteNumbers,c_ms)
 plt.show()
 
 #change to take specific inputs of kx ky
