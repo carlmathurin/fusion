@@ -1,4 +1,4 @@
-import diag2.py
+import new_diag2.py
 
 
 a, a1 = diags_cp_cm(6,6)
