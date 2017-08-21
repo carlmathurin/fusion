@@ -111,6 +111,6 @@ def diags_kz(x,y,z):
      z = z
      cps = c_p[z,:]
      cms = c_m[z,:]
-     cp, = plt.loglog(hermiteNumbers,c_ps,label = 'C+ ')
-     cm, = plt.loglog(hermiteNumbers,c_ms,)
+     cp, = plt.loglog(hermiteNumbers,cps,label = 'C+ ')
+     cm, = plt.loglog(hermiteNumbers,cms,)
      return hermiteNumbers
