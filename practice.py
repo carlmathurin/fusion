@@ -1,10 +1,10 @@
-import new_diag2.py
+import new_diag2 as d2
 
 
-a, a1 = diags_cp_cm(6,6)
-b, b1 = diags_cp_cm(10,10)
-c, c1 = diags_cp_cm(30,70)
-n = diags_kz(10,10,10)
+a, a1 = d2.diags_cp_cm(6,6)
+b, b1 = d2.diags_cp_cm(10,10)
+c, c1 = d2.diags_cp_cm(30,70)
+n = d2.diags_kz(10,10,10)
 
 cp1, = plt.loglog(n,a,label = 'C+ 5,5' )
 cp2, = plt.loglog(n,b,label = 'C+ 9,9' )
