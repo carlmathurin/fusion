@@ -16,7 +16,6 @@ def diags_cp_cm (x,y):
     par['diagdir']="\'"+diagdir+"\'"
 
     time = get_time_from_gout()
-    time
     kx,ky,kz,hermiteNumbers = get_grids()
 
     g_in = read_time_step_g(len(time)-1)
@@ -43,8 +42,6 @@ def diags_cp_cm (x,y):
     			dist_tp[i,j]= (dist_t[i,j]+dist_t[i,j+1])/2
     			dist_tm[i,j]= (dist_t[i,j]-dist_t[i,j+1])/2
 
-    print np.shape(dist_tm)
-    print np.shape(dist_tp)
     c_p=np.empty(np.shape(dist_tp))
     c_m=np.empty(np.shape(dist_tm))
 
@@ -53,13 +50,9 @@ def diags_cp_cm (x,y):
             	c_p[i,j]= dist_tp[i,j] * np.conjugate(dist_tp[i,j])
             	c_m[i,j]= dist_tm[i,j] * np.conjugate(dist_tm[i,j])
 
-    print np.shape(c_p)
-    print np.shape(c_m)
-
     c_ps = np.sum(c_p,axis=0)
     c_ms = np.sum(c_m,axis=0)
-    cp, = plt.loglog(hermiteNumbers,c_ps,label = 'C+ ')
-    cm, = plt.loglog(hermiteNumbers,c_ms,)
+
     return c_ps,c_ms
 
 def diags_kz(x,y,z):
@@ -68,7 +61,6 @@ def diags_kz(x,y,z):
      par['diagdir']="\'"+diagdir+"\'"
 
      time = get_time_from_gout()
-     time
      kx,ky,kz,hermiteNumbers = get_grids()
 
      g_in = read_time_step_g(len(time)-1)
@@ -95,8 +87,6 @@ def diags_kz(x,y,z):
                  dist_tp[i,j]= (dist_t[i,j]+dist_t[i,j+1])/2
                  dist_tm[i,j]= (dist_t[i,j]-dist_t[i,j+1])/2
 
-     print np.shape(dist_tm)
-     print np.shape(dist_tp)
      c_p=np.empty(np.shape(dist_tp))
      c_m=np.empty(np.shape(dist_tm))
 
@@ -105,12 +95,7 @@ def diags_kz(x,y,z):
              c_p[i,j]= dist_tp[i,j] * np.conjugate(dist_tp[i,j])
              c_m[i,j]= dist_tm[i,j] * np.conjugate(dist_tm[i,j])
 
-     print np.shape(c_p)
-     print np.shape(c_m)
-
      z = z
      cps = c_p[z,:]
      cms = c_m[z,:]
-     cp, = plt.loglog(hermiteNumbers,cps,label = 'C+ ')
-     cm, = plt.loglog(hermiteNumbers,cms,)
-     return hermiteNumbers
+     return cps,cms,hermiteNumbers
