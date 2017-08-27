@@ -52,8 +52,9 @@ def diags_cp_cm (x,y):
 
     c_ps = np.sum(c_p,axis=0)
     c_ms = np.sum(c_m,axis=0)
-
-    return c_ps,c_ms
+    xf = kx[x]
+    yf = ky[y]
+    return c_ps,c_ms, xf, yf
 
 def diags_kz(x,y,z):
      read_parameters()
@@ -98,4 +99,7 @@ def diags_kz(x,y,z):
      z = z
      cps = c_p[z,:]
      cms = c_m[z,:]
-     return cps,cms,hermiteNumbers
+     xf = kx[x]
+     yf = ky[y]
+     zf = kz[z]
+     return cps,cms,hermiteNumbers, xf,yf,zf
