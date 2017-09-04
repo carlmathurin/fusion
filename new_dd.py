@@ -156,7 +156,7 @@ def read_parameters():
     """Reads parameters from parameters.dat \n
     The parameters are in a dictionary call par \n
     and can be accessed via par['parameter_name']"""
-    parfile=open('./parameters.dat','r')
+    parfile=open('/scratch/01658/drhatch/dna_out/parameters.dat','r')
     parameters_in=parfile.read()
     lines=parameters_in.split('\n')
     #    parameters={}
