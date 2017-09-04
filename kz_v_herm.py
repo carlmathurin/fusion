@@ -32,11 +32,6 @@ istart=np.argmin(abs(time-start_time))
 iend=np.argmin(abs(time-end_time))
 ntime=iend-istart+1
 
-p0=np.empty(2)
-p0[0]=1.0
-p0[1]=-1.0
-p0[2]=-par['nu']/0.2
-p0[3]=1.5
 
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 for i in range(istart,iend+1):
