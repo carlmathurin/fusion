@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sc
 from config import *
-from new_dd import *
+import new_dd as dd
 from ev_diags import *
 from spectra import *
 from nlt_diags import *
@@ -10,12 +10,12 @@ from nlt_diags import *
 import os
 from sys import argv
 
-read_parameters()
+dd.read_parameters()
 diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 
-time = get_time_from_gout()
-kx,ky,kz,hermiteNumbers = get_grids()
+time = dd.get_time_from_gout()
+kx,ky,kz,hermiteNumbers = dd.get_grids()
 
 start_time=time[0]
 end_time=time[len(time)-1]
@@ -41,14 +41,14 @@ p0[3]=1.5
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 for i in range(istart,iend+1):
     print 'time=',time[i],' of ',time[iend]
-    gt0=read_time_step_g(i,swap_endian=swap_endian)
+    gt0=dd.read_time_step_g(i,swap_endian=swap_endian)
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
     #Entropy
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
     for k in range(10):
         kzindex=k*par['nkz0']/20
         #print 'kzindex',kzindex
-        entn_sum[:,k]=entn_sum[:,k]+get_entropy_hermite(gt0,kzind=kzindex)
+        entn_sum[:,k]=entn_sum[:,k]+dd.get_entropy_hermite(gt0,kzind=kzindex)
 
 entn_sum=entn_sum/float(ntime)
 
