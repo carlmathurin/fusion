@@ -73,7 +73,7 @@ for k in range(10):
     #########
     shape = np.shape(plot)
     plot_t = np.empty(shape)
-    print 'plot_t =' np.shape(plot_t)
+    print 'plot_t =', np.shape(plot_t)
 
     """for i in range(len(kzgrid)):
         for j in range(len(herm_grid)):
