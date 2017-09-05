@@ -83,8 +83,8 @@ for k in range(10):
     plot_tm = np.empty(shape)
 
     for i in range(len(kz)):
-    for j in range(len(herm_grid)+1):
-        if j < (len(herm_grid)-1):
+        for j in range(len(herm_grid)+1):
+            if j < (len(herm_grid)-1):
                 plot_tp[i,j]= (plot_t[i,j]+plot_t[i,j+1])/2
                 plot_tm[i,j]= (plot_t[i,j]-plot_t[i,j+1])/2
 

@@ -58,7 +58,7 @@ def diags_cp_cm (x,y):
 
 def diags_kz(x,y,z):
      dd.read_parameters()
-     diagdir = '/work/01658/drhatch/prod_nu05_omt7.5_zf0b'
+     diagdir = '/scratch/01658/drhatch/dna_out'
      par['diagdir']="\'"+diagdir+"\'"
 
      time = dd.get_time_from_gout()
