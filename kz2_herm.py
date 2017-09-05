@@ -62,7 +62,6 @@ plt.title(plabel+'(kz sum)')
 plt.legend(loc='lower left')
 plt.show()
 
-plot_list = np.empty(10)
 for k in range(10):
     #print prefactor
     #print prefactor*entn_sum[:,k]
@@ -74,8 +73,9 @@ for k in range(10):
     #########
     shape = np.shape(plot)
     plot_t = np.empty(shape)
+    print 'plot_t =' np.shape(plot_t)
 
-    for i in range(len(kzgrid)):
+    """for i in range(len(kzgrid)):
         for j in range(len(herm_grid)):
             plot_t[i,j] = (1j*np.sign(kzgrid[i]))**herm_grid[j] * plot[i,j]
 
@@ -112,4 +112,4 @@ for k in range(10):
 plt.xlabel('Hermite n')
 plt.ylabel(plabel)
 plt.legend(loc='lower left')
-plt.show()
+plt.show()"""
