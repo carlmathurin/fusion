@@ -36,7 +36,7 @@ ntime=iend-istart+1
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 for i in range(istart,iend+1):
     print 'time=',time[i],' of ',time[iend]
-    gt0=dd.read_time_step_g(i,swap_endian=swap_endian)
+    gt0=dd.read_time_step_g(i)
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
     #Entropy
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
