@@ -18,6 +18,11 @@ def diags_cp_cm (x,y):
     time = dd.get_time_from_gout()
     kx,ky,kz,hermiteNumbers = dd.get_grids()
 
+    print 'kx =', np.shape(kx)
+    print 'ky =', np.shape(ky)
+    print 'kz =', np.shape(kz)
+    print 'n =', np.shape(hermiteNumbers)
+
     g_in = dd.read_time_step_g(len(time)-1)
     g_in=np.reshape(g_in,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
 

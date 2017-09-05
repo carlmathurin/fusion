@@ -73,7 +73,7 @@ for k in range(10):
 
     #########
     shape = np.shape(plot)
-    plot_t = np.empty(plot)
+    plot_t = np.empty(shape)
 
     for i in range(len(kz)):
         for j in range(len(hermiteNumbers)):
