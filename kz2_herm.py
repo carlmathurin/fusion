@@ -75,9 +75,9 @@ for k in range(10):
     plot_t = np.empty(shape)
     print 'plot_t =', np.shape(plot_t)
 
-    """for i in range(len(kzgrid)):
+    for i in range(len(shape)):
         for j in range(len(herm_grid)):
-            plot_t[i,j] = (1j*np.sign(kzgrid[i]))**herm_grid[j] * plot[i,j]
+            plot_t[i] = (1j*np.sign(kzgrid[i]))**herm_grid[j] * plot[i]
 
     plot_tp = np.empty(shape)
     plot_tm = np.empty(shape)
@@ -112,4 +112,4 @@ for k in range(10):
 plt.xlabel('Hermite n')
 plt.ylabel(plabel)
 plt.legend(loc='lower left')
-plt.show()"""
+plt.show()
