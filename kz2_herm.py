@@ -76,7 +76,7 @@ for k in range(10):
     plot_t = np.empty(shape)
 
     for i in range(len(kzgrid)):
-        for j in range(len(hermiteNumbers)):
+        for j in range(len(herm_grid)):
             plot_t[i,j] = (1j*np.sign(kzgrid[i]))**herm_grid[j] * plot[i,j]
 
     plot_tp = np.empty(shape)
