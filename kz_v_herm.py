@@ -72,4 +72,4 @@ for k in range(10):
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
-plt.show
+plt.show()
