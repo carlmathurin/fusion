@@ -1,5 +1,6 @@
 import kz3_herm as d2
 import matplotlib.pyplot as plt
+import numpy as np
 
 ap = ''
 bp = ''
