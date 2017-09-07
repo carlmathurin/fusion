@@ -1,6 +1,5 @@
 import kz3_herm as d2
 import matplotlib.pyplot as plt
-import numpy as np
 
 ap = ''
 bp = ''
@@ -55,12 +54,11 @@ em = ss.join(em)
 gm = 'C- (',str(gx),',',str(gy),',',str(gz), ')'
 gm = ss.join(gm)
 
-print np.shape(a)
 
 #cp1, = plt.loglog(n,a,  )
-cp2, = plt.loglog(n,b,)
-"""cp3, = plt.loglog(n,c,)
-cp4, = plt.loglog(n,e,)
+#cp2, = plt.loglog(n,b,)
+cp3, = plt.loglog(n,c,)
+"""cp4, = plt.loglog(n,e,)
 cp5, = plt.loglog(n,a1,)
 cp6, = plt.loglog(n,b1,)
 cp7, = plt.loglog(n,c1,)
