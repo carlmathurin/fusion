@@ -55,16 +55,16 @@ gm = 'C- (',str(gx),',',str(gy),',',str(gz), ')'
 gm = ss.join(gm)
 
 
-#cp1, = plt.loglog(n,a,  )
-#cp2, = plt.loglog(n,b,)
-#cp3, = plt.loglog(n,c,)
-###cp4, = plt.loglog(n,e,)
+cp1, = plt.loglog(n,a,)
+cp2, = plt.loglog(n,b,)
+cp3, = plt.loglog(n,c,)
+cp4, = plt.loglog(n,e,) 
 cp5, = plt.loglog(n,a1,)
-"""cp6, = plt.loglog(n,b1,)
+cp6, = plt.loglog(n,b1,)
 cp7, = plt.loglog(n,c1,)
 cp8, = plt.loglog(n,e1,)
 cp11, = plt.loglog(n,g)
-cp12, = plt.loglog(n,g1)"""
-#plt.legend([cp1,cp2,cp3,cp5,cp6,cp7,cp4,cp8,cp11,cp12], [ap,bp,cp,am,bm,cm,ep,em,gp,gm], bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+cp12, = plt.loglog(n,g1)
+plt.legend([cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp11,cp12], [ap,bp,cp,ep,am,bm,cm,em,gp,gm], bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 plt.xlabel('Hermite Number')
 plt.show()
