@@ -54,8 +54,9 @@ em = ss.join(em)
 gm = 'C- (',str(gx),',',str(gy),',',str(gz), ')'
 gm = ss.join(gm)
 
+print np.shape(a)
 
-cp1, = plt.loglog(n[0:10],a,  )
+cp1, = plt.loglog(n,a,  )
 """cp2, = plt.loglog(n,b,)
 cp3, = plt.loglog(n,c,)
 cp4, = plt.loglog(n,e,)
