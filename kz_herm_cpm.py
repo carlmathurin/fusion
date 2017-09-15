@@ -20,6 +20,7 @@ time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
 
 start_time=time[0]
+
 end_time=time[len(time)-1]
 if start_time >= end_time:
     stop
@@ -109,6 +110,8 @@ for k in range(10):
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
 plt.show()
+print 'plus sum:', entnp_sum
+print 'minus sum', entnm_sum
 for k in range(10):
     #print prefactor
     #print prefactor*entn_sum[:,k]
@@ -133,8 +136,5 @@ for k in range(10):
     plt.title('Entropy-')
     plt.legend(loc='lower left')
 plt.show()
-print 'plus sum:', entnp_sum
-print 'minus sum', entnm_sum
-
 
  #split entropy into plus and minus, entropy is g^2
