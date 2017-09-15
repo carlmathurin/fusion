@@ -79,8 +79,8 @@ for i in range(istart,iend+1):
             entnm_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
 
 entn_sum=entn_sum/float(ntime)
-entnp_sum=entn_sum/float(ntime)
-entnm_sum=entn_sum/float(ntime)
+entnp_sum=entn_sum
+entnm_sum=entn_sum
 
 plt.loglog(herm_grid,prefactor*entn_sum[:,10],basex=10,basey=10)
 
