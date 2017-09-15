@@ -37,10 +37,10 @@ def diags_cp_cm (x,y):
     dist_tm = np.empty(shape)
 
     for i in range(len(kz)):
-	for j in range(len(hermiteNumbers)+1):
- 		if j < (len(hermiteNumbers)-1):
-    			dist_tp[i,j]= (dist_t[i,j]+dist_t[i,j+1])/2
-    			dist_tm[i,j]= (dist_t[i,j]-dist_t[i,j+1])/2
+        for j in range(len(hermiteNumbers)+1):
+            if j < (len(hermiteNumbers)-1):
+                dist_tp[i,j]= (dist_t[i,j]+dist_t[i,j+1])/2
+                dist_tm[i,j]= (dist_t[i,j]-dist_t[i,j+1])/2
 
     c_p=np.empty(np.shape(dist_tp))
     c_m=np.empty(np.shape(dist_tm))
