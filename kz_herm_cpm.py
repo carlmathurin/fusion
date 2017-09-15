@@ -133,6 +133,8 @@ for k in range(10):
     plt.title('Entropy-')
     plt.legend(loc='lower left')
 plt.show()
+print 'plus sum:', entnp_sum
+print 'minus sum', entnm_sum
 
 
  #split entropy into plus and minus, entropy is g^2
