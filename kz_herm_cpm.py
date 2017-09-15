@@ -50,23 +50,22 @@ for i in range(istart,iend+1):
     #make a new 2d array with the same dimensions as dist_
     shape = np.shape(dist)
     g_t = np.empty(shape)
-    if time[i] == time[iend]:
-        for i in range(len(kx)):
-            for k in range(len(ky)):
-                for b in range(len(kzgrid)):
-                    for j in range(len(herm_grid)):
-                        g_t[i,k,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[i,k,b,j]
+    for i in range(len(kx)):
+        for k in range(len(ky)):
+            for b in range(len(kzgrid)):
+                for j in range(len(herm_grid)):
+                    g_t[i,k,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[i,k,b,j]
 
-        g_tp = np.empty(shape)
-        g_tm = np.empty(shape)
+    g_tp = np.empty(shape)
+    g_tm = np.empty(shape)
 
-        for i in range(len(kx)):
-            for k in range(len(ky)):
-                for b in range(len(kzgrid)):
-                    for j in range(len(herm_grid)+1):
-                        if j < (len(herm_grid)-1):
-                            g_tp[i,k,b,j]= (g_t[i,k,b,j]+g_t[i,k,b,j+1])/2
-                            g_tm[i,k,b,j]= (g_t[i,k,b,j]-g_t[i,k,b,j+1])/2
+    for i in range(len(kx)):
+        for k in range(len(ky)):
+            for b in range(len(kzgrid)):
+                for j in range(len(herm_grid)+1):
+                    if j < (len(herm_grid)-1):
+                        g_tp[i,k,b,j]= (g_t[i,k,b,j]+g_t[i,k,b,j+1])/2
+                        g_tm[i,k,b,j]= (g_t[i,k,b,j]-g_t[i,k,b,j+1])/2
 
     ##################################
     #Entropy
@@ -75,9 +74,8 @@ for i in range(istart,iend+1):
         kzindex=k*par['nkz0']/20
         #print 'kzindex',kzindex
         entn_sum[:,k]=entn_sum[:,k]+dd.get_entropy_hermite(gt0,kzind=kzindex)
-        if time[i] == time[iend]:
-            entnp_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tp,kzind=kzindex)
-            entnm_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
+        entnp_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tp,kzind=kzindex)
+        entnm_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
 
 entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum
