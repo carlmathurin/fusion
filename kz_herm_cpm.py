@@ -43,12 +43,38 @@ for i in range(istart,iend+1):
     gt0=dd.read_time_step_g(i)
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
     gt1= gt0
+    ##################################
+    dist = gt1[:,:,:,:] #distribution function: 2d slice of 4d g_in
+
+    #make a new 2d array with the same dimensions as dist_
+    shape = np.shape(dist)
+    g_t = np.empty(shape)
+    for i in range(len(kx)):
+        for k in range(len(ky)):
+            for b in range(len(kzgrid)):
+                for j in range(len(herm_grid)):
+                    g_t[i,k,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[i,k,b,j]
+
+    g_tp = np.empty(shape)
+    g_tm = np.empty(shape)
+
+    for i in range(len(kx)):
+        for k in range(len(ky)):
+            for b in range(len(kzgrid)):
+                for j in range(len(herm_grid)+1):
+                    if j < (len(herm_grid)-1):
+                        g_tp[i,k,b,j]= (g_t[i,k,b,j]+g_t[i,k,b,j+1])/2
+                        g_tm[i,k,b,j]= (g_t[i,k,b,j]-g_t[i,k,b,j+1])/2
+
+    ##################################
     #Entropy
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
     for k in range(10):
         kzindex=k*par['nkz0']/20
         #print 'kzindex',kzindex
         entn_sum[:,k]=entn_sum[:,k]+dd.get_entropy_hermite(gt0,kzind=kzindex)
+        entnp_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tp,kzind=kzindex)
+        entnm_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
 
 entn_sum=entn_sum/float(ntime)
 
