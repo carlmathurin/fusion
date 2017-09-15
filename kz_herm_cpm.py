@@ -31,17 +31,15 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/10
+iend=np.argmin(abs(time-end_time))/25
 ntime=iend-istart+1
 
 
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 entnp_sum=np.zeros((par['nv0'],11),dtype='float')
 entnm_sum=np.zeros((par['nv0'],11),dtype='float')
-stamp = t2.time()
 for i in range(istart,iend+1):
     print 'time=',time[i],' of ',time[iend]
-    print 'time left:', (t2.time()-stamp)/(time[i])*(time[i]-time[iend])
     gt0=dd.read_time_step_g(i)
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
     gt1= gt0
