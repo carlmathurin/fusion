@@ -32,7 +32,7 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/50
+iend=np.argmin(abs(time-end_time))/25
 ntime=iend-istart+1
 
 
@@ -51,22 +51,22 @@ for i in range(istart,iend+1):
     #make a new 2d array with the same dimensions as dist_
     shape = np.shape(dist)
     g_t = np.empty(shape)
-    for i in range(len(kx)):
-        for k in range(len(ky)):
+    for v in range(len(kx)):
+        for w in range(len(ky)):
             for b in range(len(kzgrid)):
                 for j in range(len(herm_grid)):
-                    g_t[i,k,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[i,k,b,j]
+                    g_t[v,w,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[v,w,b,j]
 
     g_tp = np.empty(shape)
     g_tm = np.empty(shape)
 
-    for i in range(len(kx)):
-        for k in range(len(ky)):
+    for v in range(len(kx)):
+        for w in range(len(ky)):
             for b in range(len(kzgrid)):
                 for j in range(len(herm_grid)+1):
                     if j < (len(herm_grid)-1):
-                        g_tp[i,k,b,j]= (g_t[i,k,b,j]+g_t[i,k,b,j+1])/2
-                        g_tm[i,k,b,j]= (g_t[i,k,b,j]-g_t[i,k,b,j+1])/2
+                        g_tp[v,w,b,j]= (g_t[v,w,b,j]+g_t[v,w,b,j+1])/2
+                        g_tm[v,w,b,j]= (g_t[v,w,b,j]-g_t[v,w,b,j+1])/2
 
     ##################################
     #Entropy
