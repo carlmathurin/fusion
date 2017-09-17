@@ -32,7 +32,7 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/25
+iend=np.argmin(abs(time-end_time))/50
 ntime=iend-istart+1
 
 
@@ -45,7 +45,7 @@ for i in range(istart,iend+1):
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
     gt1= gt0
     ##################################
-    """
+
     dist = gt1[:,:,:,:] #distribution function: 2d slice of 4d g_in
 
     #make a new 2d array with the same dimensions as dist_
@@ -67,7 +67,7 @@ for i in range(istart,iend+1):
                     if j < (len(herm_grid)-1):
                         g_tp[i,k,b,j]= (g_t[i,k,b,j]+g_t[i,k,b,j+1])/2
                         g_tm[i,k,b,j]= (g_t[i,k,b,j]-g_t[i,k,b,j+1])/2
-"""
+
     ##################################
     #Entropy
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
@@ -75,12 +75,12 @@ for i in range(istart,iend+1):
         kzindex=k*par['nkz0']/20
         #print 'kzindex',kzindex
         entn_sum[:,k]=entn_sum[:,k]+dd.get_entropy_hermite(gt0,kzind=kzindex)
-        #entnp_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tp,kzind=kzindex)
-        #entnm_sum[:,k]= entn_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
+        entnp_sum[:,k]= entnp_sum[:,k]+dd.get_entropy_hermite(g_tp,kzind=kzindex)
+        entnm_sum[:,k]= entnm_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
 
 entn_sum=entn_sum/float(ntime)
-#entnp_sum=entnp_sum/float(ntime)
-#entnm_sum=entnm_sum/float(ntime)
+entnp_sum=entnp_sum/float(ntime)
+entnm_sum=entnm_sum/float(ntime)
 
 plt.loglog(herm_grid,prefactor*entn_sum[:,10],basex=10,basey=10)
 
@@ -110,7 +110,7 @@ for k in range(10):
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
 plt.show()
-"""print 'plus sum:', entnp_sum
+print 'plus sum:', entnp_sum
 print 'minus sum', entnm_sum
 for k in range(10):
     #print prefactor
@@ -136,5 +136,5 @@ for k in range(10):
     plt.title('Entropy-')
     plt.legend(loc='lower left')
 plt.show()
-"""
+
  #split entropy into plus and minus, entropy is g^2
