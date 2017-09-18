@@ -36,7 +36,7 @@ for i in range(len(kz)):
 	if kz[i] == 0:
            	sgnkz = 0
         else:
-            	sgnkz = kz[i]/abs(kz[i]) 
+            	sgnkz = kz[i]/abs(kz[i])
         gkx5ky5t[i,j] = (1j*sgnkz)**n[j]*gkx5ky5[i,j]
 gkx5ky5tp = np.empty(ra)
 gkx5ky5tm = np.empty(ra)
@@ -55,6 +55,7 @@ for i in range(len(kz)):
         	c_m[i,j]= gkx5ky5tm[i,j] * np.conjugate(gkx5ky5tm[i,j])
 print np.shape(c_p)
 print np.shape(c_m)
+print 'time#=', np.shape(time)
 
 c_ps = np.sum(c_p,axis=0)
 plt.loglog(n,c_ps)
@@ -68,4 +69,3 @@ plt.show()
 #np.sum(C+,axis=0)
 #plt.loglog(n,C+)
 #plt.show()
-
