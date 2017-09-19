@@ -32,7 +32,7 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/4
+iend=np.argmin(abs(time-end_time))/8
 ntime=iend-istart+1
 
 
