@@ -19,7 +19,7 @@ par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
 
-start_time=time[0]
+start_time=time[100]
 
 end_time=time[len(time)-1]
 if start_time >= end_time:
@@ -32,7 +32,7 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/25
+iend=np.argmin(abs(time-end_time))/4
 ntime=iend-istart+1
 
 
@@ -123,6 +123,12 @@ for k in range(10):
     plt.ylabel(plabel)
     plt.title('Entropy+')
     plt.legend(loc='lower left')
+temp=prefactor*entnp_sum[20,10]
+temp=temp/(herm_grid**(-1))[20]
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
+temp=prefactor*entn_sum[20,10]
+temp=temp/(herm_grid**(-1.5))[20]
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-1.5) - 10**4,'--',basex=10,basey=10,label=str(-3.5))
 plt.show()
 for k in range(10):
     #print prefactor
@@ -135,6 +141,12 @@ for k in range(10):
     plt.ylabel(plabel)
     plt.title('Entropy-')
     plt.legend(loc='lower left')
+temp=prefactor*entnm_sum[20,10]
+temp=temp/(herm_grid**(-1))[20]
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
+temp=prefactor*entn_sum[20,10]
+temp=temp/(herm_grid**(-1.5))[20]
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-1.5) - 10**4,'--',basex=10,basey=10,label=str(-3.5))
 plt.show()
 
  #split entropy into plus and minus, entropy is g^2
