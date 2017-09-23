@@ -99,7 +99,7 @@ plt.show()
 
 plots = np.shape(entn_sum)
 for i in range(entn_sum):
-    plots(i)=1;
+    plots[i]=1;
 print "entn:", entn_sum
 for k in range(10):
     #print prefactor
