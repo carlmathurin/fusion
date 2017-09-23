@@ -98,7 +98,7 @@ plt.legend(loc='lower left')
 plt.show()
 
 plots = np.shape(entn_sum)
-for i in range(herm_grid):
+for i in range(len(herm_grid)):
     plots[i]=1;
 print "entn:", entn_sum
 for k in range(10):
