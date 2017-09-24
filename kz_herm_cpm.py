@@ -97,13 +97,12 @@ plt.title(plabel+'(kz sum)')
 plt.legend(loc='lower left')
 plt.show()
 
-plots = np.shape(entn_sum)
+#plots = np.shape(entn_sum)
 print "entn:", entn_sum
 for k in range(10):
     #print prefactor
     #print prefactor*entn_sum[:,k]
     kz0=kzgrid[k*par['nkz0']/20]
-    plots.append(prefactor*entn_sum[:,k])
     plt.loglog(herm_grid,prefactor*entn_sum[:,k],basex=10,basey=10,label=\
               plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
     plt.xlabel('Hermite n')
