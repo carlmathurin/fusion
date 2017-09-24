@@ -98,8 +98,6 @@ plt.legend(loc='lower left')
 plt.show()
 
 plots = np.shape(entn_sum)
-for i in range(len(herm_grid)):
-    plots[i]=1;
 print "entn:", entn_sum
 for k in range(10):
     #print prefactor
@@ -125,12 +123,12 @@ for k in range(10):
     plt.ylabel(plabel)
     plt.title('Entropy+')
     plt.legend(loc='lower left')
-temp=prefactor*entnp_sum[20,10]
+temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1))[20]
-plt.loglog(herm_grid,-plots,'--',basex=10,basey=10,label=str(-1))
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
-plt.loglog(herm_grid,-plots - 10**4,'--',basex=10,basey=10,label=str(-3.5))
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.show()
 for k in range(10):
     #print prefactor
@@ -143,12 +141,12 @@ for k in range(10):
     plt.ylabel(plabel)
     plt.title('Entropy-')
     plt.legend(loc='lower left')
-temp=prefactor*entnm_sum[20,10]
+temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1))[20]
-plt.loglog(herm_grid,-plots,'--',basex=10,basey=10,label=str(-1))
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
-plt.loglog(herm_grid, -plots - 10**4,'--',basex=10,basey=10,label=str(-3.5))
+plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.show()
 
  #split entropy into plus and minus, entropy is g^2
