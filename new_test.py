@@ -32,9 +32,9 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/16
+iend=np.argmin(abs(time-end_time))/22
 ntime=iend-istart+1
-
+#iend => 1/16
 
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 entnp_sum=np.zeros((par['nv0'],11),dtype='float')
@@ -124,13 +124,17 @@ for k in range(10):
     plt.legend(loc='lower left')
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1))[20]
-plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
+#plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
-plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
+#plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.loglog(herm_grid, herm_grid**(-1/2) + 10,'--',basex=10,basey=10,label='n^(-.5)')
 plt.loglog(herm_grid, herm_grid**(-1/2) - 10**(-3),'--',basex=10,basey=10,label='n^(-.5)')
 plt.show()
+
+##################
+#try exponential for intercept
+#####################
 for k in range(10):
     #print prefactor
     #print prefactor*entn_sum[:,k]
@@ -148,8 +152,6 @@ plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
 plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.plot(herm_grid, herm_grid**(-3/2) + 10,'--',basex=10,basey=10,label='n^(-1.5)')
-plt.plot(herm_grid, herm_grid**(-3/2) - 10**(-3),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.show()
 
  #split entropy into plus and minus, entropy is g^2
