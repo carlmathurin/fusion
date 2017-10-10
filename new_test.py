@@ -128,8 +128,8 @@ temp=temp/(herm_grid**(-1))[20]
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, herm_grid**(-1/2) + np.exp(10),'--',basex=10,basey=10,label='n^(-.5)')
-plt.loglog(herm_grid, herm_grid**(-1/2) - np.exp(10**(-3)),'--',basex=10,basey=10,label='n^(-.5)')
+plt.loglog(herm_grid, herm_grid**(-1/2) + 10,'--',basex=10,basey=10,label='n^(-.5)')
+plt.loglog(herm_grid, herm_grid**(-1/2) - 10**(-6),'--',basex=10,basey=10,label='n^(-.5)')
 plt.show()
 
 ##################
@@ -152,8 +152,8 @@ temp=temp/(herm_grid**(-1))[20]
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, herm_grid**(-3/2) + np.exp(10),'--',basex=10,basey=10,label='n^(-.5)')
-plt.loglog(herm_grid, herm_grid**(-3/2) - np.exp(10**(-3)),'--',basex=10,basey=10,label='n^(-.5)')
+plt.loglog(herm_grid, herm_grid**(-3/2) + 10,'--',basex=10,basey=10,label='n^(-.5)')
+plt.loglog(herm_grid, herm_grid**(-3/2) - 10**(-6),'--',basex=10,basey=10,label='n^(-.5)')
 plt.show()
 
  #split entropy into plus and minus, entropy is g^2
