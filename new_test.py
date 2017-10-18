@@ -128,8 +128,8 @@ temp=temp/(herm_grid**(-1))[20]
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-3)*herm_grid**(-.5),'--',basex=10,basey=10,label='n^(-.5)')
-plt.loglog(herm_grid, (10**-3)*herm_grid**(-1),'--',basex=10,basey=10,label='n^(-3)')
+plt.loglog(herm_grid, (10*)*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, (10**-2.5)*herm_grid**(-1),'--',basex=10,basey=10,label='n^(-3)')
 plt.legend(loc='lower left')
 plt.show()
 
