@@ -61,8 +61,8 @@ for i in range(istart,iend+1):
 ## (- 1j*np.sign(kzgrid[b]))**herm_grid * np.exp((herm_grid[j]**(.5)*D/(np.absolute(nu)))* (Npl)**(-np.sign(kzgrid[b]*(herm_grid[j]+2*nu**(-2)-.5))/(herm_grid**(.25)*D**(.5))
     g_tp = np.empty(shape)
     g_tm = np.empty(shape)
-    for b in range(len(kzgrid)):
-        for j in range(len(herm_grid)):
+    #for b in range(len(kzgrid)):
+        #for j in range(len(herm_grid)):
             #D = (herm_grid[j]*nu**2/4 + 1)**(.5) , nu =.001/kz_grid[b] , npl = D + herm_grid[j]**(.5)*nu/2
             #CapG = (- 1j*np.sign(kzgrid[b]))**herm_grid[j] * np.exp((herm_grid[j]**(.5)*D/(np.absolute(nu)))* (Npl)**(-np.sign(kzgrid[b]*(herm_grid[j]+2*nu**(-2)-.5))/(herm_grid[j]**(.25)*D**(.5))
     for v in range(len(kx)):
@@ -72,7 +72,6 @@ for i in range(istart,iend+1):
                     if j < (len(herm_grid)-1):
                         g_tp[v,w,b,j]= (g_t[v,w,b,j]+g_t[v,w,b,j+1])/2
                         g_tm[v,w,b,j]= (g_t[v,w,b,j]-g_t[v,w,b,j+1])/2
-
     ##################################
     #Entropy
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
