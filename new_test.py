@@ -32,9 +32,10 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/16
+iend=np.argmin(abs(time-end_time))/27
 ntime=iend-istart+1
 #iend => 1/16
+#testing time =>1/27
 
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 entnp_sum=np.zeros((par['nv0'],11),dtype='float')
@@ -56,7 +57,7 @@ for i in range(istart,iend+1):
             for b in range(len(kzgrid)):
                 for j in range(len(herm_grid)):
                     g_t[v,w,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[v,w,b,j]
-
+print g_t
 ## hazeltines equation
 ## (- 1j*np.sign(kzgrid[b]))**herm_grid * np.exp((herm_grid[j]**(.5)*D/(np.absolute(nu)))* (Npl)**(-np.sign(kzgrid[b]*(herm_grid[j]+2*nu**(-2)-.5))/(herm_grid**(.25)*D**(.5))
     g_tp = np.empty(shape)
@@ -137,9 +138,6 @@ plt.loglog(herm_grid, (10**-2.5)*herm_grid**(-.5),'--',basex=10,basey=10,label='
 plt.legend(loc='lower left')
 plt.show()
 
-##################
-#try log(value * herm_grid for intercept)
-#####################
 for k in range(10):
     #print prefactor
     #print prefactor*entn_sum[:,k]
@@ -161,5 +159,3 @@ plt.loglog(herm_grid, 10*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-.5)
 plt.loglog(herm_grid, 10**(-2.7)*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-.5)')
 plt.legend(loc='lower left')
 plt.show()
-
- #split entropy into plus and minus, entropy is g^2
