@@ -57,7 +57,7 @@ for i in range(istart,iend+1):
             for b in range(len(kzgrid)):
                 for j in range(len(herm_grid)):
                     g_t[v,w,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[v,w,b,j]
-print g_t
+    print g_t
 ## hazeltines equation
 ## (- 1j*np.sign(kzgrid[b]))**herm_grid * np.exp((herm_grid[j]**(.5)*D/(np.absolute(nu)))* (Npl)**(-np.sign(kzgrid[b]*(herm_grid[j]+2*nu**(-2)-.5))/(herm_grid**(.25)*D**(.5))
     g_tp = np.empty(shape)
