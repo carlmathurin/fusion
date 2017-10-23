@@ -48,7 +48,6 @@ for i in range(istart,iend+1):
     ##################################
 
     dist = gt1[:,:,:,:] #distribution function: 2d slice of 4d g_in
-    print dist
 
     #make a new 2d array with the same dimensions as dist_
     shape = np.shape(dist)
@@ -109,7 +108,7 @@ for k in range(10):
     #print prefactor*entn_sum[:,k]
     kz0=kzgrid[k*par['nkz0']/20]
     plt.loglog(herm_grid,prefactor*entn_sum[:,k],basex=10,basey=10,label=\
-              plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+              plabel+'+ (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
@@ -122,7 +121,7 @@ for k in range(10):
     kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
     plt.loglog(herm_grid,prefactor*entnp_sum[:,k],basex=10,basey=10,label=\
-              plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+              plabel+'- (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title('Energy comparison')
