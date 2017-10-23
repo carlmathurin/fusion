@@ -48,6 +48,7 @@ for i in range(istart,iend+1):
     ##################################
 
     dist = gt1[:,:,:,:] #distribution function: 2d slice of 4d g_in
+    print dist
 
     #make a new 2d array with the same dimensions as dist_
     shape = np.shape(dist)
@@ -57,7 +58,6 @@ for i in range(istart,iend+1):
             for b in range(len(kzgrid)):
                 for j in range(len(herm_grid)):
                     g_t[v,w,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[v,w,b,j]
-    print g_t
 ## hazeltines equation
 ## (- 1j*np.sign(kzgrid[b]))**herm_grid * np.exp((herm_grid[j]**(.5)*D/(np.absolute(nu)))* (Npl)**(-np.sign(kzgrid[b]*(herm_grid[j]+2*nu**(-2)-.5))/(herm_grid**(.25)*D**(.5))
     g_tp = np.empty(shape)
@@ -133,7 +133,7 @@ temp=temp/(herm_grid**(-1))[20]
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10)*herm_grid**(-2),'--',basex=10,basey=10,label='n^(-2)')
+plt.loglog(herm_grid, (10)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-2)')
 plt.loglog(herm_grid, (10**-2.5)*herm_grid**(-.5),'--',basex=10,basey=10,label='n^(-.5)')
 plt.legend(loc='lower left')
 plt.show()
@@ -155,7 +155,7 @@ temp=temp/(herm_grid**(-1))[20]
 temp=prefactor*entn_sum[20,10]
 temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, 10*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-.5)')
-plt.loglog(herm_grid, 10**(-2.7)*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-.5)')
+plt.loglog(herm_grid, 10*herm_grid**(-1/2),'--',basex=10,basey=10,label='n^(-.5)')
+plt.loglog(herm_grid, 10**(-2.7)*herm_grid**(-1/2),'--',basex=10,basey=10,label='n^(-.5)')
 plt.legend(loc='lower left')
 plt.show()
