@@ -153,4 +153,8 @@ for k in range(10):
                 /(npr[i]**(.25)*Dpr**(.5)))\
                 #*(-1j*np.sign(kz[j]))**n[i]
             Cap2G[j,i] = CapG[j,i]* np.conjugate(CapG[j,i])
+        plt.loglog(npr,Cap2G[j,:],label= 'G' + 'kz ('+ str(kzpr[j])+')')
+        plt.title('G ')
+        plt.xlabel('Hermite n')
+        plt.ylabel('CapG')
     plt.show()
