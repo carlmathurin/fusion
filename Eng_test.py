@@ -138,21 +138,21 @@ for k in range(10):
     nuupr =.002
 
     sizepr = np.shape(npr)
-    CapG = np.empty([1000,1000])
-    Cap2G = np.empty([1000,1000])
+    CapG = np.empty([range(kzgrid)+1,range(herm_grid)+1])
+    Cap2G = np.empty([range(kzgrid)+1,range(herm_grid)+1])
 
-    for j in range(1000):
-        for i in range(1000):
+    for j in range(kzgrid)+1:
+        for i in range(herm_grid)+1:
             nupr = .01 #nuupr/kzpr[j]
-            Dpr = ((npr[i]*nupr**2)/4 + 1)**(.5)
-            npl = Dpr + npr[i]**(.5)*nupr/2
-            CapG[j,i] = (np.exp((npr[i]**(.5))*\
+            Dpr = ((herm_grid[i]*nupr**2)/4 + 1)**(.5)
+            npl = Dpr + herm_grid[i]**(.5)*nupr/2
+            CapG[j,i] = (np.exp((herm_grid[i]**(.5))*\
                 Dpr/(np.absolute(nupr))) \
-                * (npl)**(-np.sign(kzpr[j])*(npr[i]+2*nupr**(-2)-.5))\
-                /(npr[i]**(.25)*Dpr**(.5)))\
+                * (npl)**(-np.sign(kzgrid[j])*(herm_grid[i]+2*nupr**(-2)-.5))\
+                /(herm_grid[i]**(.25)*Dpr**(.5)))\
                 #*(-1j*np.sign(kz[j]))**n[i]
             Cap2G[j,i] = CapG[j,i]* np.conjugate(CapG[j,i])
-        plt.loglog(npr,Cap2G[j,:],label= 'G' + 'kz ('+ str(kzpr[j])+')')
+        plt.loglog(herm_grid,Cap2G[j,:],label= 'G' + 'kz ('+ str(kzgrid[j])+')')
         plt.title('G ')
         plt.xlabel('Hermite n')
         plt.ylabel('CapG')
