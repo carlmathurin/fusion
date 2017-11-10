@@ -32,7 +32,7 @@ prefactor[:]=1.0
 plabel='Entropy'
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/16
+iend=np.argmin(abs(time-end_time))/27
 ntime=iend-istart+1
 #iend => 1/16
 #testing time =>1/27
@@ -132,4 +132,25 @@ for k in range(10):
     plt.loglog(herm_grid,prefactor*entnm_sum[:,k],basex=10,basey=10,label=\
               plabel+'- (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
     plt.legend(loc='lower left')
+    npr =[1+i for i in range(100)]
+    kzpr = [.2 + i*.2 for i in range(100)]
+    nuupr =.002
+
+    sizepr = np.shape(npr)
+    CapG = np.empty([100,100])
+    Cap2G = np.empty([100,100])
+
+    for j in range(100):
+        print 'Kz =', kzpr[j]
+        for i in range(100):
+            print 'N =', npr[i]
+            nupr = nuupr/kzpr[j]
+            Dpr = ((npr[i]*nupr**2)/4 + 1)**(.5)
+            npl = Dpr + npr[i]**(.5)*nupr/2
+            CapG[j,i] = (np.exp((npr[i]**(.5))*\
+                Dpr/(np.absolute(nupr))) \
+                * (npl)**(-np.sign(kzpr[j])*(npr[i]+2*nupr**(-2)-.5))\
+                /(npr[i]**(.25)*Dpr**(.5)))\
+                #*(-1j*np.sign(kz[j]))**n[i]
+            Cap2G[j,i] = CapG[j,i]* np.conjugate(CapG[j,i])
     plt.show()
