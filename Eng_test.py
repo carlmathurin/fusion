@@ -138,11 +138,11 @@ for k in range(10):
     nuupr =.002
 
     sizepr = np.shape(npr)
-    CapG = np.empty([len(kzgrid)+1,len(herm_grid)+1])
-    Cap2G = np.empty([len(kzgrid)+1,len(herm_grid)+1])
+    CapG = np.empty([len(kzgrid),len(herm_grid)])
+    Cap2G = np.empty([len(kzgrid),len(herm_grid)])
 
-    for j in range(len(kzgrid)+1):
-        for i in range(len(herm_grid)+1):
+    for j in range(len(kzgrid)):
+        for i in range(len(herm_grid)):
             nupr = .01 #nuupr/kzpr[j]
             Dpr = ((herm_grid[i]*nupr**2)/4 + 1)**(.5)
             npl = Dpr + herm_grid[i]**(.5)*nupr/2
