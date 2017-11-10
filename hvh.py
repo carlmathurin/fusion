@@ -136,6 +136,10 @@ plt.loglog(herm_grid, (10)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-2
 plt.loglog(herm_grid, (10**-2.5)*herm_grid**(-.5),'--',basex=10,basey=10,label='n^(-.5)')
 plt.legend(loc='lower left')
 
+npr =[1+i for i in range(100)]
+kzpr = [.2 + i*.2 for i in range(100)]
+nuupr =.002
+
 sizepr = np.shape(npr)
 CapG = np.empty([100,100])
 Cap2G = np.empty([100,100])
