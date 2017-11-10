@@ -132,19 +132,18 @@ for k in range(10):
     plt.loglog(herm_grid,prefactor*entnm_sum[:,k],basex=10,basey=10,label=\
               plabel+'- (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
     plt.legend(loc='lower left')
-    npr =[1+i for i in range(100)]
-    kzpr = [.2 + i*.2 for i in range(100)]
+
+    npr =[1+i for i in range(1000)]
+    kzpr = [.2 + i*.2 for i in range(1000)]
     nuupr =.002
 
     sizepr = np.shape(npr)
-    CapG = np.empty([100,100])
-    Cap2G = np.empty([100,100])
+    CapG = np.empty([1000,1000])
+    Cap2G = np.empty([1000,1000])
 
-    for j in range(100):
-        print 'Kz =', kzpr[j]
-        for i in range(100):
-            print 'N =', npr[i]
-            nupr = nuupr/kzpr[j]
+    for j in range(1000):
+        for i in range(1000):
+            nupr = .01 #nuupr/kzpr[j]
             Dpr = ((npr[i]*nupr**2)/4 + 1)**(.5)
             npl = Dpr + npr[i]**(.5)*nupr/2
             CapG[j,i] = (np.exp((npr[i]**(.5))*\
