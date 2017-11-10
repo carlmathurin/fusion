@@ -19,6 +19,8 @@ par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
 
+print 'n: ', herm_grid
+
 start_time=time[100]
 
 end_time=time[len(time)-1]
@@ -102,6 +104,7 @@ plt.legend(loc='lower left')
 plt.show()
 
 #plots = np.shape(entn_sum)
+
 print "entn:", entn_sum
 for k in range(10):
     #print prefactor
