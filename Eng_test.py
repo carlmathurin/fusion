@@ -19,7 +19,7 @@ par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
 
-print 'n: ', herm_grid
+print 'n: ', kzgrid
 
 start_time=time[100]
 
