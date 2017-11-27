@@ -40,6 +40,7 @@ ntime=iend-istart+1
 entn_sum=np.zeros((par['nv0'],11),dtype='float')
 entnp_sum=np.zeros((par['nv0'],11),dtype='float')
 entnm_sum=np.zeros((par['nv0'],11),dtype='float')
+print np.shape(entn_sum)
 for i in range(istart,iend+1):
     print 'time=',time[i],' of ',time[iend]
     gt0=dd.read_time_step_g(i)
@@ -200,18 +201,19 @@ CapG = np.empty([100,100])
 Cap2G = np.empty([100,100])
 
 for j in range(100):
-    print 'Kz =', kzpr[j]
+    #print 'Kz =', kzpr[j]
     for i in range(100):
-        print 'N =', npr[i]
-        nupr = nuupr/kzpr[j]
-        Dpr = ((npr[i]*nupr**2)/4 + 1)**(.5)
-        npl = Dpr + npr[i]**(.5)*nupr/2
-        CapG[j,i] = (np.exp((npr[i]**(.5))*\
+        #print 'N =', npr[i]
+        nupr = .01#nuu/kz[j]
+        Dpr = ((n[i]*nu**2)/4 + 1)**(.5)
+        npl = D + n[i]**(.5)*nu/2
+        result = (np.exp((npr[i]**(.5))*\
             Dpr/(np.absolute(nupr))) \
             * (npl)**(-np.sign(kzpr[j])*(npr[i]+2*nupr**(-2)-.5))\
             /(npr[i]**(.25)*Dpr**(.5)))\
-            #*(-1j*np.sign(kz[j]))**n[i]
-        Cap2G[j,i] = CapG[j,i]* np.conjugate(CapG[j,i])
+            *(-1j*np.sign(kz[j]))**n[i]
+        Cap2G[j,i] = result * np.conjugate(result)
+
 
 
     plt.loglog(npr,Cap2G[j,:],label= 'G' + 'kz ('+ str(kzpr[j])+')')
