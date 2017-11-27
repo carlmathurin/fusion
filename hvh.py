@@ -78,7 +78,7 @@ for i in range(istart,iend+1):
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
     for k in range(10):
         kzindex=k*par['nkz0']/20
-        #print 'kzindex',kzindex
+        print 'kzindex',kzindex
         entn_sum[:,k]=entn_sum[:,k]+dd.get_entropy_hermite(gt0,kzind=kzindex)
         entnp_sum[:,k]= entnp_sum[:,k]+dd.get_entropy_hermite(g_tp,kzind=kzindex)
         entnm_sum[:,k]= entnm_sum[:,k]+dd.get_entropy_hermite(g_tm,kzind=kzindex)
