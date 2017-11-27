@@ -15,7 +15,7 @@ import kz3_herm as d2
 dd.read_parameters()
 diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
-
+print par
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
 
