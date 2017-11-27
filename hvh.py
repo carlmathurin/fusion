@@ -17,7 +17,7 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
-print kzgrid
+print par
 start_time=time[100]
 
 end_time=time[len(time)-1]
