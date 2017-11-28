@@ -36,7 +36,7 @@ for i in range(xmax):
     for j in range(xmax):
         t = 12
         k_perp = sqrt(kx[i]**2 + ky[j]**2)
-        if k_bin[0] < k_perp < k_bin[1]:
+        if  k_perp < k_bin[1]:
             t = 0
         elif k_bin[1] <= k_perp < k_bin[2]:
             t= 1
