@@ -22,6 +22,7 @@ kx,ky,kzgrid,herm_grid = dd.get_grids()
 start_time=time[100]
 
 k_bin=np.empty(15)
+counter = np.zeros(15)
 
 xmax = par['nkx0']
 kzind = 2*par['nkz0']/20
@@ -60,36 +61,51 @@ for i in range(xmax):
         k_perp = sqrt(kx[i]**2 + ky[j]**2)
         if  k_perp < k_bin[1]:
             t = 0
+            counter[t] = counter[t] + 1
         elif k_bin[1] <= k_perp < k_bin[2]:
             t= 1
+            counter[t] = counter[t] + 1
         elif k_bin[2] <= k_perp < k_bin[3]:
             t= 2
+            counter[t] = counter[t] + 1
         elif k_bin[3] <= k_perp < k_bin[4]:
             t= 3
+            counter[t] = counter[t] + 1
         elif k_bin[4] <= k_perp < k_bin[5]:
             t= 4
+            counter[t] = counter[t] + 1
         elif k_bin[5] <= k_perp < k_bin[6]:
             t= 5
+            counter[t] = counter[t] + 1
         elif k_bin[6] <= k_perp < k_bin[7]:
             t= 6
+            counter[t] = counter[t] + 1
         elif k_bin[7] <= k_perp < k_bin[8]:
             t= 7
+            counter[t] = counter[t] + 1
         elif k_bin[8] <= k_perp < k_bin[9]:
             t= 8
+            counter[t] = counter[t] + 1
         elif k_bin[9] <= k_perp  < k_bin[10]:
             t= 9
+            counter[t] = counter[t] + 1
         elif k_bin[10] <= k_perp  < k_bin[11]:
             t= 10
+            counter[t] = counter[t] + 1
         elif k_bin[11] <= k_perp  < k_bin[12]:
             t= 11
+            counter[t] = counter[t] + 1
         elif k_bin[12] <= k_perp  < k_bin[13]:
             t= 12
+            counter[t] = counter[t] + 1
         elif k_bin[13] <= k_perp  < k_bin[14]:
             t= 13
+            counter[t] = counter[t] + 1
         elif k_bin[14] <= k_perp  :
             t= 14
+            counter[t] = counter[t] + 1
 
-        print 't = ', t
+        print 'counter:' , counter
 
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
 
