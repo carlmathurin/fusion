@@ -21,7 +21,7 @@ kx,ky,kzgrid,herm_grid = dd.get_grids()
 
 start_time=time[100]
 
-k_bin=np.empty(10)
+k_bin=np.empty(15)
 
 xmax = par['nkx0']
 kzind = 2*par['nkz0']/20
@@ -88,6 +88,7 @@ for i in range(xmax):
             t= 13
         elif k_bin[14] <= k_perp  :
             t= 14
+
         print 't = ', t
 
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
