@@ -37,7 +37,7 @@ ntime=iend-istart+1
 #iend => 1/16
 #testing time =>1/27
 
-entn_sum=np.zeros((par['nv0'],11,11),dtype='float')
+entn_sum=np.zeros((par['nv0'],11,16),dtype='float')
 entnp_sum=np.zeros((par['nv0'],11,11),dtype='float')
 entnm_sum=np.zeros((par['nv0'],11,11),dtype='float')
 
