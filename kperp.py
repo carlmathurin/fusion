@@ -74,6 +74,7 @@ for i in range(xmax):
             t= 8
         elif k_bin[9] <= k_perp :
             t= 9
+        print 't = ', t
 
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
 
