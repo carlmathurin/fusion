@@ -17,7 +17,8 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
-print par
+for i in range(10):
+    kx[i]=i*par['nkz0']/20
 start_time=time[100]
 
 end_time=time[len(time)-1]
@@ -145,9 +146,9 @@ CapG = np.empty([100,100])
 Cap2G = np.empty([100,100])
 
 for j in range(100):
-    print 'Kz =', kzpr[j]
+    #print 'Kz =', kzpr[j]
     for i in range(100):
-        print 'N =', npr[i]
+        #print 'N =', npr[i]
         nupr = nuupr/kzpr[j]
         Dpr = ((npr[i]*nupr**2)/4 + 1)**(.5)
         npl = Dpr + npr[i]**(.5)*nupr/2
@@ -199,19 +200,19 @@ sizepr = np.shape(npr)
 CapG = np.empty([100,100])
 Cap2G = np.empty([100,100])
 
-for j in range(100):
+#for j in range(100):
     #print 'Kz =', kzpr[j]
-    for i in range(100):
+#    for i in range(100):
         #print 'N =', npr[i]
-        nupr = .01#nuu/kz[j]
-        Dpr = ((n[i]*nu**2)/4 + 1)**(.5)
-        npl = D + n[i]**(.5)*nu/2
-        result = (np.exp((npr[i]**(.5))*\
-            Dpr/(np.absolute(nupr))) \
-            * (npl)**(-np.sign(kzpr[j])*(npr[i]+2*nupr**(-2)-.5))\
-            /(npr[i]**(.25)*Dpr**(.5)))\
-            *(-1j*np.sign(kz[j]))**n[i]
-        Cap2G[j,i] = result * np.conjugate(result)
+#        nupr = .01#nuu/kz[j]
+#        Dpr = ((n[i]*nu**2)/4 + 1)**(.5)
+#        npl = D + n[i]**(.5)*nu/2
+#        result = (np.exp((npr[i]**(.5))*\
+#            Dpr/(np.absolute(nupr))) \
+#            * (npl)**(-np.sign(kzpr[j])*(npr[i]+2*nupr**(-2)-.5))\
+#            /(npr[i]**(.25)*Dpr**(.5)))\
+#            *(-1j*np.sign(kz[j]))**n[i]
+#        Cap2G[j,i] = result * np.conjugate(result)
 
 
 
