@@ -76,7 +76,10 @@ for i in range(istart,iend+1):
                         g_tm[v,w,b,j]= (g_t[v,w,b,j]-g_t[v,w,b,j+1])/2
     ##################################
     #Entropy
+
+    #********************************
     entn_sum[:,10]=entn_sum[:,10]+get_entropy_hermite(gt0,kzind=-1,include_kz0=include_kz0)
+    #******************************
     for k in range(10):
         kzindex=k*par['nkz0']/20
         #print 'kzindex',kzindex

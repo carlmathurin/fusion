@@ -26,9 +26,27 @@ k_bin=np.empty(10)
 xmax = par['nkx0']
 kzind = 2*par['nkz0']/20
 
+
+end_time=time[len(time)-1]
+if start_time >= end_time:
+    stop
+
+istart=np.argmin(abs(time-start_time))
+iend=np.argmin(abs(time-end_time))/16
+ntime=iend-istart+1
+#iend => 1/16
+#testing time =>1/27
+
 entn_sum=np.zeros((par['nv0'],11,11),dtype='float')
 entnp_sum=np.zeros((par['nv0'],11,11),dtype='float')
 entnm_sum=np.zeros((par['nv0'],11,11),dtype='float')
+
+
+for i in range(istart,iend+1):
+    print 'time=',time[i],' of ',time[iend]
+    gt0=dd.read_time_step_g(i)
+    gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
+
 
 for i in range(10):
     k_bin[i]= .15*i

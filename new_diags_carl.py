@@ -27,8 +27,11 @@ print "Hermite Numbers",hermiteNumbers
 g_in = read_time_step_g(len(time)-1)
 g_in=np.reshape(g_in,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
 print np.shape(g_in)
-dist = g_in[x,y,:,:] #distribution function: 2d slice of 4d g_in
 
+
+
+
+dist = g_in[x,y,:,:] #distribution function: 2d slice of 4d g_in
 
 #make a new 2d array with the same dimensions as dist_
 shape = np.shape(dist)
@@ -62,13 +65,6 @@ print np.shape(c_m)
 
 c_ps = np.sum(c_p,axis=0)
 c_ms = np.sum(c_m,axis=0)
-plt.loglog(hermiteNumbers,c_ps)
-plt.loglog(hermiteNumbers,c_ms)
+cp, = plt.loglog(hermiteNumbers,c_ps,label = 'C+ 'x','y'' )
+cm, = plt.loglog(hermiteNumbers,c_ms,)
 plt.show()
-
-#change to take specific inputs of kx ky
-#--Construct Eq 4.27 from Kanekar paper
-#Construct C+ and C- by calculating g+*cc(g+) and sum over kz
-#np.sum(C+,axis=0)
-#plt.loglog(n,C+)
-#plt.show()
