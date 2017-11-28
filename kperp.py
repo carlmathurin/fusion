@@ -20,7 +20,7 @@ time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
 
 start_time=time[100]
-k_perp = [.15 + i*.15 for i in range(10)]
+k_bin = [.15 + i*.15 for i in range(10)]
 kxind=np.empty(10)
 kyind=np.empty(10)
 for i in range(10):
@@ -28,3 +28,4 @@ for i in range(10):
     kyind[i]=i*par['nky0']/20
 print 'kxindex' , kxind
 print 'kyindex' , kyind
+print 'k perp bins', k_bin
