@@ -17,8 +17,8 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
-for i in range(10):
-    kx[i]=i*par['nkz0']/20
+#for i in range(10):
+#    kx[i]=i*par['nkz0']/20
 start_time=time[100]
 
 end_time=time[len(time)-1]
@@ -216,8 +216,8 @@ Cap2G = np.empty([100,100])
 
 
 
-    plt.loglog(npr,Cap2G[j,:],label= 'G' + 'kz ('+ str(kzpr[j])+')')
-    plt.title('G ')
-    plt.xlabel('Hermite n')
-    plt.ylabel('CapG')
+#    plt.loglog(npr,Cap2G[j,:],label= 'G' + 'kz ('+ str(kzpr[j])+')')
+#    plt.title('G ')
+#    plt.xlabel('Hermite n')
+#    plt.ylabel('CapG')
 plt.show()
