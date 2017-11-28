@@ -48,8 +48,12 @@ for i in range(istart,iend+1):
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
 
 
-for i in range(10):
+for i in range(15):
     k_bin[i]= .15*i
+
+
+
+
 for i in range(xmax):
     for j in range(xmax):
         t = 12
@@ -72,8 +76,18 @@ for i in range(xmax):
             t= 7
         elif k_bin[8] <= k_perp < k_bin[9]:
             t= 8
-        elif k_bin[9] <= k_perp :
+        elif k_bin[9] <= k_perp  < k_bin[10]:
             t= 9
+        elif k_bin[10] <= k_perp  < k_bin[11]:
+            t= 10
+        elif k_bin[11] <= k_perp  < k_bin[12]:
+            t= 11
+        elif k_bin[12] <= k_perp  < k_bin[13]:
+            t= 12
+        elif k_bin[13] <= k_perp  < k_bin[14]:
+            t= 13
+        elif k_bin[14] <= k_perp  :
+            t= 14
         print 't = ', t
 
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
