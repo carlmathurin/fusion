@@ -75,7 +75,7 @@ for i in range(xmax):
         elif k_bin[9] <= k_perp :
             t= 9
 
-        entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(g_t0,i,j)
+        entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
 
 print np.shape(entn_sum)
 print 'entn sum:' , entn_sum
