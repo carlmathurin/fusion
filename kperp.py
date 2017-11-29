@@ -105,9 +105,35 @@ for i in range(xmax):
             t= 14
             counter[t] = counter[t] + 1
 
-        print 'counter:' , counter
 
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
 
+print 'counter: ',counter
 print np.shape(entn_sum)
 print 'entn sum:' , entn_sum
+
+prefactor=np.empty(par['nv0'])
+prefactor[:]=1.0
+plabel='Entropy'
+
+entn_sum=entn_sum/float(ntime)
+
+plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
+
+plt.xlabel('Hermite n')
+plt.ylabel(plabel)
+plt.title(plabel+'(k_perp sum)')
+plt.legend(loc='lower left')
+plt.show()
+
+#print "entn:", entn_sum
+#for k in range(10):
+    #print prefactor
+    #print prefactor*entn_sum[:,k]
+#    kz0=kzgrid[k*par['nkz0']/20]
+#    plt.loglog(herm_grid,prefactor*entn_sum[:,k],basex=10,basey=10,label=\
+#              plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+#    plt.xlabel('Hermite n')
+#    plt.ylabel(plabel)
+#    plt.legend(loc='lower left')
+#plt.show()
