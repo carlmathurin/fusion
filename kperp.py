@@ -127,7 +127,7 @@ plt.legend(loc='lower left')
 plt.show()
 
 
-#for j in range(15):
+for j in range(15):
     #print prefactor
     #print prefactor*entn_sum[:,kzind,]
 #    kz0=kzgrid[k*par['nkz0']/20]
