@@ -131,7 +131,7 @@ for j in range(15):
 #print prefactor
 #print prefactor*entn_sum[:,kzind,]
 #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,k],basex=10,basey=10)
+    plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,j],basex=10,basey=10)
   # ,label=\ #plabel+' (k_perp='+str(k[j*par['nkz0']/20])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
