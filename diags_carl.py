@@ -95,7 +95,7 @@ for j in range(len(kz)):
         #print (-1j*np.sign(kz[j]))**n[i]
         #print (-1*np.sign(kz[j]))**n[i]
 
-    plt.loglog(n,np.real(Cap2G[j,:]),label= 'G' + 'kz ('+ str(kz[j])+')')
+    plt.loglog(n,np.real(Cap2G[j,:]))
     plt.title('G ')
     plt.xlabel('Hermite n')
     plt.ylabel('CapG')
