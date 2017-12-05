@@ -75,8 +75,8 @@ nuu =.002
 #npl = D + n[j]**(.5)*nu/2
 
 size = np.shape(n)
-CapG = np.empty([100,100])
-Cap2G = np.empty([100,100])
+CapG = np.empty([size,size])
+Cap2G = np.empty([size,size])
 
 #for j in range(len(kz)):
     #print 'Kz =', kz[j]
