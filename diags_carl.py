@@ -89,7 +89,7 @@ for i in range(len(kz)):
     npl = D + n[i]**(.5)*nu/2
     result = (np.exp((n[i]**(.5))*\
         D/(np.absolute(nu))) \
-        * (npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))
+        * (npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))\
          #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
         #/(n[i]**(.25)*D**(.5)))\
         *(1j*np.sign(kz[j]))**n[i]
