@@ -78,27 +78,26 @@ size = np.shape(n)
 CapG = np.empty([100,100])
 Cap2G = np.empty([100,100])
 
-for j in range(len(kz)):
+#for j in range(len(kz)):
     #print 'Kz =', kz[j]
-    for i in range(len(kz)):
+for i in range(len(kz)):
         #print 'N =', n[i]
-        nu = nuu/kz[j] #.01
-        D = ((n[i]*nu**2)/4 + 1)**(.5)
-        npl = D + n[i]**(.5)*nu/2
-        result = (np.exp((n[i]**(.5))*\
-            D/(np.absolute(nu))) \
-            * (npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))\
-             #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
-            /(n[i]**(.25)*D**(.5)))\
-            *(1j*np.sign(kz[j]))**n[i]
-        Cap2G[j,i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
-        #print (-1j*np.sign(kz[j]))**n[i]
-        #print (-1*np.sign(kz[j]))**n[i]
-
-    plt.loglog(n,np.real(Cap2G[j,:]))
-    plt.title('G ')
-    plt.xlabel('Hermite n')
-    plt.ylabel('CapG')
+    nu = nuu/kz[j] #.01
+    D = ((n[i]*nu**2)/4 + 1)**(.5)
+    npl = D + n[i]**(.5)*nu/2
+    result = (np.exp((n[i]**(.5))*\
+        D/(np.absolute(nu))) \
+        * (npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))\
+         #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
+        /(n[i]**(.25)*D**(.5)))\
+        *(1j*np.sign(kz[j]))**n[i]
+    Cap2G[j,i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
+    #print (-1j*np.sign(kz[j]))**n[i]
+    #print (-1*np.sign(kz[j]))**n[i]
+plt.loglog(n,np.real(Cap2G[10,:]))
+plt.title('G ')
+plt.xlabel('Hermite n')
+plt.ylabel('CapG')
 
 plt.show()
 
