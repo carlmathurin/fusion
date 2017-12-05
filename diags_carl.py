@@ -80,7 +80,7 @@ Cap2G = np.empty([100,100])
 
 for j in range(len(kz)):
     #print 'Kz =', kz[j]
-    for i in range(len(n)):
+    for i in range(len(kz)):
         #print 'N =', n[i]
         nu = nuu/kz[j] #.01
         D = ((n[i]*nu**2)/4 + 1)**(.5)
