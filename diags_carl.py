@@ -85,8 +85,8 @@ for i in range(len(kz)):
         #print 'N =', n[i]
     nu = nuu/kz[j] #.01
     D = ((n[i]*nu**2)/4 + 1)**(.5)
-    print 'D = ', D
     npl = D + n[i]**(.5)*nu/2
+    print 'npl = ', npl
     result = (np.exp((n[i]**(.5))*\
         D/(np.absolute(nu))) \
         *(npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))\
