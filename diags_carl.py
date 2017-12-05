@@ -95,7 +95,7 @@ for i in range(len(kz)):
     Cap2G[i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
-print 'n:', np.shape(n),' C: ', np.shape(Cap2G[10,:])
+print 'n:', np.shape(n),' C: ', np.shape(Cap2G[:])
 Cap2G = np.array(Cap2G)
 plt.loglog(n,np.real(Cap2G[:]))
 plt.title('G ')
