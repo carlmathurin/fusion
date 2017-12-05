@@ -75,11 +75,12 @@ nuu =.002
 #npl = D + n[j]**(.5)*nu/2
 
 size = np.shape(n)
-CapG = np.empty([size(1),size(1)])
-Cap2G = np.empty([size(1),size(1)])
+CapG = np.empty([64])
+Cap2G = np.empty([64])
 
 #for j in range(len(kz)):
     #print 'Kz =', kz[j]
+j=10
 for i in range(len(kz)):
         #print 'N =', n[i]
     nu = nuu/kz[j] #.01
@@ -91,12 +92,12 @@ for i in range(len(kz)):
          #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
         /(n[i]**(.25)*D**(.5)))\
         *(1j*np.sign(kz[j]))**n[i]
-    Cap2G[j,i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
+    Cap2G[i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
 print 'n:', np.shape(n),' C: ', np.shape(Cap2G[10,:])
 Cap2G = np.array(Cap2G)
-plt.loglog(n,np.real(Cap2G[10,:]))
+plt.loglog(n,np.real(Cap2G[:]))
 plt.title('G ')
 plt.xlabel('Hermite n')
 plt.ylabel('CapG')
