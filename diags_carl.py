@@ -92,7 +92,7 @@ for i in range(len(kz)):
         *(npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))\
          #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
         #/(n[i]**(.25)*D**(.5)))\
-        *(1j*np.sign(kz[j]))**n[i]
+        *(1j*np.sign(kz[j]))**n[i])
     Cap2G[i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
