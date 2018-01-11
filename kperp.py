@@ -106,7 +106,7 @@ for i in range(xmax):
             counter[t] = counter[t] + 1
 
 
-        entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j)
+        entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j,kzind)
 
 print 'counter: ',counter
 print np.shape(entn_sum)
