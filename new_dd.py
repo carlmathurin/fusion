@@ -4858,10 +4858,10 @@ def get_entropy_hermite(g_in,kzind=-1,include_kz0=True):
    return entropy
 
 def get_entropy_hermite2(g_in,i,j,k):
-    g_perp = g_in[i,j,kzind,:]
+    g_perp = g_in[i,j,k,:]
 
     entropy=2.0*np.real(
-        0.5 * np.pi * (np.conj(g_perp[:,:])*g_perp[:,:])
+        0.5 * np.pi * (np.conj(g_perp[:])*g_perp[:])
                 )
     # entropy=entropy+np.real(0.5*np.pi*np.sum(np.conj(g_perp[0,:])*g_perp[0,:],axis=0))
     return entropy
