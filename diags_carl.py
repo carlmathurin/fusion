@@ -99,6 +99,8 @@ for i in range(60):
     Cap2G[i] = result * np.conjugate(result)
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
+Gsize = np.size(Cap2G)
+n1 = np.empty(Gsize)
 print 'Cap2G = ', Cap2G
 for i in range(64):
     n1[i] = i
