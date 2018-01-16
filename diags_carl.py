@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sc
 from config import *
-from dna_diags import *
+from new_dd import *
 from ev_diags import *
 from spectra import *
 from nlt_diags import *
