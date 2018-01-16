@@ -7,7 +7,7 @@ from sys import argv
 
 
 
-n =[1/i for i in range(100)]
+n =[(1/100) + i/100 for i in range(100)]
 #for i in range(50):
 #    kz[i] =.2 + i*.2
 #    kz[i+50] = -.2 +- i*.2
