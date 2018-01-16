@@ -101,7 +101,7 @@ for i in range(60):
     #print (-1*np.sign(kz[j]))**n[i]
 print 'Cap2G = ', Cap2G
 for i in range(64):
-    n[i] = i
+    n1[i] = i
 print 'size of G = ', np.size(Cap2G)
 print 'size of n1 =', np.size(n1)
 plt.loglog(n1,np.real(Cap2G[:]))
