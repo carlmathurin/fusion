@@ -95,7 +95,7 @@ for i in range(len(n)):
          /(n[i]**(.25)*D**(.5)))\
         *((-(1j*np.sign(kz[j])))**n[i])
     print 'result  =', result
-    Cap2G[i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
+    Cap2G[i] = np.conjugate(result)**2
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
 print 'Cap2G = ', Cap2G
