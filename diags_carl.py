@@ -12,7 +12,8 @@ import os
 
 print "Hello world"
 read_parameters()
-diagdir = '/work/01658/drhatch/prod_nu05_omt7.5_zf0b'
+#diagdir = '/work/01658/drhatch/prod_nu05_omt7.5_zf0b'
+diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 
 time = get_time_from_gout()
@@ -81,18 +82,18 @@ Cap2G = np.empty([64])
 #for j in range(len(kz)):
     #print 'Kz =', kz[j]
 j=10
-for i in range(len(kz)):
+for i in range(len(n)):
         #print 'N =', n[i]
-    nu = nuu/kz[j] #.01
+    nu = .05 #nuu/kz[j]
     D = ((n[i]*nu**2)/4 + 1)**(.5)
     npl = D + n[i]**(.5)*nu/2
     print 'nu = ', nu
     result = (np.exp((n[i]**(.5))*\
         D/(np.absolute(nu))) \
-        *(npl)**((-np.sign(kz[j]))*(n[i]+2*nu**(-2)-.5))\
+        *(npl)**((-(np.sign(kz[j])))*(n[i]+2*nu**(-2)-.5))\
          #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
-        #/(n[i]**(.25)*D**(.5)))\
-        *(1j*np.sign(kz[j]))**n[i])
+         /(n[i]**(.25)*D**(.5)))\
+        *(-(1j*np.sign(kz[j])))**n[i])
     print 'result  =', result
     Cap2G[i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
     #print (-1j*np.sign(kz[j]))**n[i]
