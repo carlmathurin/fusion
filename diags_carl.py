@@ -62,6 +62,7 @@ c_ps = np.sum(c_p,axis=0)
 plt.loglog(n,c_ps)
 c_ms = np.sum(c_m,axis=0)
 plt.loglog(n,c_ms)
+plt.title("WRONG GRAPH")
 plt.show()
 
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##*#*#*#*#
@@ -99,7 +100,8 @@ for i in range(60):
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
 print 'Cap2G = ', Cap2G
-plt.loglog(n[1:60],np.real(Cap2G[:]))
+n1 = i in range(60)
+plt.loglog(n1,np.real(Cap2G[:]))
 plt.title('Cap G ')
 plt.xlabel('Hermite n')
 plt.ylabel('CapG')
