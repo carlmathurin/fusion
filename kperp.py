@@ -58,7 +58,7 @@ for i in range(15):
 for i in range(xmax):
     for j in range(xmax):
         t = 12
-        k_perp = sqrt(kx[i]**2 + ky[j]**2)
+        k_perp= sqrt(kx[i]**2 + ky[j]**2)
         if  k_perp < k_bin[1]:
             t = 0
             counter[t] = counter[t] + 1
@@ -122,7 +122,7 @@ plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
 plt.xlabel('Hermite n')
 plt.ylabel(plabel)
-plt.title(plabel+'(k_perp sum)')
+plt.title(plabel+'(k_perp sum (kz = ' + str(kzgrid(kzind))'))')
 plt.legend(loc='lower left')
 plt.show()
 
@@ -132,8 +132,9 @@ for j in range(15):
 #print prefactor*entn_sum[:,kzind,]
 #kz0=kzgrid[k*par['nkz0']/20]
     plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,j],basex=10,basey=10,label=\
-        plabel+' (k_perp=' + str(k_perp[j])+')')
+        plabel+' (k_perp=' + str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
+plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid(kzind))'])')
 plt.show()
