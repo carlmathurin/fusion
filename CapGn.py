@@ -27,9 +27,9 @@ Cap2G = np.empty([100,100])
 
 for j in range(100):
     #print 'Kz =', kz[j]
+    nu = nuu/kz[j] #.01
     for i in range(100):
         #print 'N =', n[i]
-        nu = nuu/kz[j] #.01
         D = ((n[i]*nu**2)/4 + 1)**(.5)
         npl = D + n[i]**(.5)*nu/2
         result = (np.exp((n[i]**(.5))*\
@@ -50,9 +50,9 @@ o = 0
 
 print 'kz :', kz
 print 'n :', n
-print 'G :',Cap2G[10,:]
+print 'G :',Cap2G[:,10]
 for i in range(100):
-    if Cap2G[10,i] > 0:
+    if Cap2G[i,10] > 0:
         o = o+1
 print 'iter =', o
 plt.show()
