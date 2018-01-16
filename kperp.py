@@ -122,7 +122,7 @@ plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
 plt.xlabel('Hermite n')
 plt.ylabel(plabel)
-plt.title(plabel+ '(k_perp sum (kz =' + str(kzgrid(kzind)) + '))')
+plt.title(plabel+ '(k_perp sum (kz =' + str(kzgrid[kzind]) + '))')
 plt.legend(loc='lower left')
 plt.show()
 
@@ -136,5 +136,5 @@ for j in range(15):
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
-plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid(kzind))+'])')
+plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
 plt.show()
