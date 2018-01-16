@@ -13,7 +13,6 @@ n =[1+i for i in range(100)]
 #    kz[i+50] = -.2 +- i*.2
 kz = [.2 + i*.2 for i in range(100)]
 nuu =.002
-print kz
 
 
 
@@ -30,10 +29,7 @@ for j in range(100):
     #print 'Kz =', kz[j]
     for i in range(100):
         #print 'N =', n[i]
-        if kz == 0:
-            nu = nuu/kz[j] #.01
-        else:
-            nu = .01
+        nu = nuu/kz[j] #.01
         D = ((n[i]*nu**2)/4 + 1)**(.5)
         npl = D + n[i]**(.5)*nu/2
         result = (np.exp((n[i]**(.5))*\
@@ -46,11 +42,19 @@ for j in range(100):
         #print (-1j*np.sign(kz[j]))**n[i]
         #print (-1*np.sign(kz[j]))**n[i]
 
-    plt.plot(n,np.real(Cap2G[j,:]),label= 'G' + 'kz ('+ str(kz[j])+')')
+    plt.loglog(n,np.real(Cap2G[j,:]),label= 'G' + 'kz ('+ str(kz[j])+')')
     plt.title('G ')
     plt.xlabel('Hermite n')
     plt.ylabel('CapG')
+o = 0
 
+print 'kz :', kz
+print 'n :', n
+print 'G :',Cap2G[10,:]
+for i in range(100):
+    if Cap2G[10,i] > 0:
+        o = o+1
+print 'iter =', o
 plt.show()
 #plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 #plt.plot(n,CapG[20,:])
