@@ -98,8 +98,9 @@ for i in range(len(n)):
     Cap2G[i] = result * np.conjugate(result) #CapG[j,i]* np.conjugate(CapG[j,i])
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
+print 'Cap2G = ', Cap2G
 plt.loglog(n,np.real(Cap2G[:]))
-plt.title('G ')
+plt.title('Cap G ')
 plt.xlabel('Hermite n')
 plt.ylabel('CapG')
 
