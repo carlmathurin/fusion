@@ -101,8 +101,8 @@ for i in range(60):
     #print (-1*np.sign(kz[j]))**n[i]
 print 'Cap2G = ', Cap2G
 n1 = i in range(60)
-print 'size of G = ', size(Cap2G)
-print 'size of n1 =', size(n1)
+print 'size of G = ', np.size(Cap2G)
+print 'size of n1 =', np.size(n1)
 plt.loglog(n1,np.real(Cap2G[:]))
 plt.title('Cap G ')
 plt.xlabel('Hermite n')
