@@ -11,7 +11,7 @@ n =[1+i for i in range(100)]
 #for i in range(50):
 #    kz[i] =.2 + i*.2
 #    kz[i+50] = -.2 +- i*.2
-kz = [.2 + i*.2 for i in range(100)]
+kz = [.2 + i*2 for i in range(100)]
 nuu =.002
 
 
@@ -52,7 +52,7 @@ print 'kz :', kz
 print 'n :', n
 print 'G :',Cap2G[:,4]
 for i in range(100):
-    if Cap2G[i,1] > 0:
+    if Cap2G[i,4] > 0:
         o = o+1
 print 'iter =', o
 plt.show()
