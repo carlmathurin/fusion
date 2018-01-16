@@ -38,7 +38,7 @@ def get_new_files():
         os.system('rm shell_info.dat')
     if os.path.isfile('g_out.dat'):
         os.system('rm g_out.dat')
-    
+
     if os.path.isfile('nlt_shells_n0.dat'):
         os.system('rm nlt_shells_n0.dat')
     if os.path.isfile('nlt_shells_n1.dat'):
@@ -61,15 +61,15 @@ def get_new_files():
         os.system('rm nlt_shells_n6o8.dat')
     if os.path.isfile('nlt_shells_n7o8.dat'):
         os.system('rm nlt_shells_n7o8.dat')
-    
+
     print "diagdir:",par['diagdir']
     #os.system('ls '+par['diagdir'])
     #if os.path.isfile(par['diagdir'][1:-1]+'/energy.dat'):
     #    print "We have a file!"
     #else:
-    #    print "We don't have a file." 
+    #    print "We don't have a file."
     #    print par['diagdir'][1:-1]+'/energy.dat'
-    
+
     if os.path.isfile(par['diagdir'][1:-1]+'/energy.dat'):
         os.system('ln -s '+par['diagdir'][1:-1]+'/energy.dat')
     if os.path.isfile(par['diagdir'][1:-1]+'/energy3d.dat'):
@@ -90,8 +90,8 @@ def get_new_files():
         os.system('ln -s '+par['diagdir'][1:-1]+'/g_out.dat')
     if os.path.isfile(par['diagdir'][1:-1]+'/nlt_shells.dat'):
         os.system('ln -s '+par['diagdir'][1:-1]+'/nlt_shells.dat')
-    
-    
+
+
     if os.path.isfile(par['diagdir'][1:-1]+'/nlt_shells_n0.dat'):
         os.system('ln -s '+par['diagdir'][1:-1]+'/nlt_shells_n0.dat')
     if os.path.isfile(par['diagdir'][1:-1]+'/nlt_shells_n1.dat'):
@@ -152,7 +152,7 @@ def change_diagdir(diagdir='none'):
             print "Directory:",diagdir
             par['diagdir']="\'"+diagdir+"\'"
 
-def read_parameters():
+def read_parameters2():
     """Reads parameters from parameters.dat \n
     The parameters are in a dictionary call par \n
     and can be accessed via par['parameter_name']"""
@@ -165,7 +165,7 @@ def read_parameters():
     print "Number of lines", num_lines
     print lines[0]
     for i in range(num_lines):
-         temp=lines[i].split()    
+         temp=lines[i].split()
          if temp:
               str_check_namelist=re.match("&",temp[0])
          if str_check_namelist:
@@ -178,7 +178,7 @@ def read_parameters():
               str_check_int=re.match("\d*",temp[2])
               str_check_float=re.match("\d*\.\d*",temp[2])
               if (str_check_sn and str_check_sn.end()==len(temp[2])):
-                   par[temp[0]]=float(temp[2])  
+                   par[temp[0]]=float(temp[2])
                    namelists[current_namelist]=namelists[current_namelist]+" "+temp[0]
               elif (str_check_float and str_check_float.end()==len(temp[2])):
                    par[temp[0]]=float(temp[2])
@@ -211,7 +211,7 @@ def get_time_from_gout(swap_endian=False):
    time=np.empty(0)
    continue_read=1
    i=0
-   while (continue_read): 
+   while (continue_read):
      f.seek(i*(mem_tot+8))
      i=i+1
      input=np.fromfile(f,dtype='float64',count=1)
@@ -234,7 +234,7 @@ def get_time_from_energy():
    time=np.empty(0)
    continue_read=1
    i=0
-   while (continue_read): 
+   while (continue_read):
      f.seek(i*(mem_tot+8))
      i=i+1
      input=np.fromfile(f,dtype='float64',count=1)
@@ -255,7 +255,7 @@ def get_time_from_fmom3d():
    time=np.empty(0)
    continue_read=1
    i=0
-   while (continue_read): 
+   while (continue_read):
      f.seek(i*(mem_tot+8))
      i=i+1
      input=np.fromfile(f,dtype='float64',count=1)
@@ -368,8 +368,8 @@ def get_energy_single_k(g_1,g_2,kx_in,ky_in,kz_in,which_energy):
     """Computes the selected energy-related quantity (summed over Hermite) for the wavenumber \n
     defined by kx_in, ky_in, kz_in.  \n
     \'which_energy\' determines the energy quantity returned: \n
-    which_energy=-1:  Free energy 
-    which_energy=-2:  Electrostatic part 
+    which_energy=-1:  Free energy
+    which_energy=-2:  Electrostatic part
     which_energy=-3:  Entropy part
     which_energy=0:  Total RHS of energy equation
     which_energy=1:  Collisions
@@ -426,8 +426,8 @@ def get_henergy_single_k(g_1,g_2,kx_in,ky_in,kz_in,which_energy):
     """Computes the selected energy-related quantity for the wavenumber \n
     defined by kx_in, ky_in, kz_in.  \n
     \'which_energy\' determines the energy quantity returned: \n
-    which_energy=-1:  Free energy 
-    which_energy=-2:  Electrostatic part 
+    which_energy=-1:  Free energy
+    which_energy=-2:  Electrostatic part
     which_energy=-3:  Entropy part
     which_energy=0:  Total linear RHS of energy equation
     which_energy=1:  Collisions
@@ -559,7 +559,7 @@ def get_time_from_gkfile(ikx,iky,read_nl=False):
         print cikx
         print "Error in get_time_from_gk"
         stop
-    
+
     ciky=str(int(iky))
     if len(ciky)==1:
         ciky='0'+ciky
@@ -569,7 +569,7 @@ def get_time_from_gkfile(ikx,iky,read_nl=False):
 
     diagdir=par['diagdir'][1:-1]
     print diagdir
-        
+
     if read_nl:
         file_name='nl_kx'+cikx+'ky'+ciky+'.dat'
     else:
@@ -589,7 +589,7 @@ def get_time_from_gkfile(ikx,iky,read_nl=False):
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -610,14 +610,14 @@ def read_time_step_gkfile(ikx,iky,which_itime,read_nl=False):
     elif len(cikx) > 2:
         print "Error in get_time_from_gk"
         stop
-    
+
     ciky=str(int(iky))
     if len(ciky)==1:
         ciky='0'+ciky
     elif len(ciky) > 2:
         print "Error in get_time_from_gk"
         stop
-    
+
     #cikz=str(int(ikz))
     #if len(cikz)==1:
     #    cikz='0'+cikz
@@ -627,7 +627,7 @@ def read_time_step_gkfile(ikx,iky,which_itime,read_nl=False):
 
     diagdir=par['diagdir'][1:-1]
     #print diagdir
-        
+
     if read_nl:
         file_name='nl_kx'+cikx+'ky'+ciky+'.dat'
     else:
@@ -682,7 +682,7 @@ def read_time_step_gkfile(ikx,iky,which_itime,read_nl=False):
 #    return gk0
 
 #def test_read_time_step(kx,ky,kz,which_itime):
-#    
+#
 #    ikx=int(kx/par['kxmin'])
 #    iky=int(ky/par['kymin'])
 #    if(iky<0):
@@ -701,7 +701,7 @@ def read_time_step_gkfile(ikx,iky,which_itime,read_nl=False):
 #    plt.plot(abs(gk0),'-+',label='From read g')
 #    plt.legend()
 #    plt.show()
-#    
+#
 #    plt.plot(np.real(gk),'-x',label='Re From read gk')
 #    plt.plot(np.real(gk0),'-+',label='Re From read g')
 #    plt.plot(np.imag(gk),'-x',label='Im From read gk')
@@ -718,7 +718,7 @@ def ksum_3dF(obj_in):
     #ksum=np.sum(obj_in[1:par['nkx0']-1,0:par['nky0']-2,0:par['nkz0']-2])
     #ksum=ksum*2.0
     #ksum=ksum+np.sum(obj_in[0,0:par['nky0']-2,0:par['nkz0']-2])
-    return ksum 
+    return ksum
 
 def ksum_3d_n(obj_in):
     """This routine returns the sum over all kx,ky,kz for a 3D object. \n
@@ -729,7 +729,7 @@ def ksum_3d_n(obj_in):
     #ksum=np.sum(obj_in[1:par['nkx0']-1,0:par['nky0']-2,0:par['nkz0']-2])
     #ksum=ksum*2.0
     #ksum=ksum+np.sum(obj_in[0,0:par['nky0']-2,0:par['nkz0']-2])
-    return ksum 
+    return ksum
 
 
 def plot_kz_vs_hermite(start_time=-1.0,end_time=-1.0,data_out=False,fit_spectra=False,swap_endian=False,which_func='power',plot_diss=False,plot_test_exp=False,test_exp=-1.5):
@@ -918,7 +918,7 @@ def plot_kz_vs_hermite(start_time=-1.0,end_time=-1.0,data_out=False,fit_spectra=
 
         if data_out:
             file_name=par['diagdir'][1:-1]+'/entropy_hermite_kz'+str(kzgrid[k*par['nkz0']/20])+'.dat'
-            arr_out=np.empty((par['nv0'],2)) 
+            arr_out=np.empty((par['nv0'],2))
             arr_out[:,0]=herm_grid
             arr_out[:,1]=entn_sum[:,k]
             np.savetxt(file_name,arr_out)
@@ -1064,7 +1064,7 @@ def plot_kz_vs_hermite_lowmem(start_time=-1.0,end_time=-1.0,data_out=False,fit_s
 
         if data_out:
             file_name=par['diagdir'][1:-1]+'/entropy_hermite_kz'+str(kzgrid[k*par['nkz0']/20])+'.dat'
-            arr_out=np.empty((par['nv0'],2)) 
+            arr_out=np.empty((par['nv0'],2))
             arr_out[:,0]=herm_grid
             arr_out[:,1]=entn_sum[:,k]
             np.savetxt(file_name,arr_out)
@@ -1149,16 +1149,16 @@ def les_prep3d(arr3d,kx_red_l,kx_red_h,ky_red_ll,ky_red_hh,kz_red_ll,kz_red_hh):
     arr3d1 = arr3d0[kx_red_l:kx_red_h,ky_red_ll:ky_red_hh,kz_red_ll:kz_red_hh]
     return arr3d1
 
-def les_prep1d(arr3d,nkx0_red,nky0_red,nkz0_red):    
+def les_prep1d(arr3d,nkx0_red,nky0_red,nkz0_red):
    # arr3d_kx = np.sum(np.sum(arr3d,2),1)
    # arr3d_ky = np.sum(np.sum(arr3d,2),0)
    # arr3d_kz = np.sum(np.sum(arr3d,1),0)
- 
+
     arr3d_kx = np.sum(np.sum(arr3d,2),1)
     arr3d_ky = np.sum(np.sum(arr3d[0:par['nkx0'],:,:],2),0)
     arr3d_kz = np.sum(np.sum(arr3d[0:par['nkx0'],:,:],1),0)
-    
-    
+
+
     arr3d_kx_pos = np.zeros((nkx0_red))
     arr3d_ky_pos = np.zeros((nky0_red/2))
     arr3d_kz_pos = np.zeros((nkz0_red/2))
@@ -1207,7 +1207,7 @@ def test_energy_equation(ikx,iky,start_time=-1.0,end_time=-1.0,data_from_gk=True
             itime=np.append(itime,i)
         #else:
         #    time=np.delete(time,i)
-        
+
     time=time0
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
@@ -1218,7 +1218,7 @@ def test_energy_equation(ikx,iky,start_time=-1.0,end_time=-1.0,data_from_gk=True
         end_time=time[len(time)-1]
     if start_time >= end_time:
         stop
-        
+
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
 
@@ -1253,7 +1253,7 @@ def test_energy_equation(ikx,iky,start_time=-1.0,end_time=-1.0,data_from_gk=True
                     for k in range(1,par['nkz0']):
                         gkz[k,n,it]=(-1.0J*kzgrid[k]/np.abs(kzgrid[k]))**n*gkz[k,n,it]
             gn[:,it]=np.sum(gkz[:,:,it],axis=0)
-        
+
     PM=np.sum(PM,axis=2)/float(ntime)
     Ekz=np.sum(np.conj(gkz)*gkz,axis=2)/float(ntime)
     kzn=np.empty(par['nv0'],dtype='float')
@@ -1269,7 +1269,7 @@ def test_energy_equation(ikx,iky,start_time=-1.0,end_time=-1.0,data_from_gk=True
     plt.loglog(np.arange(par['nv0']),n0p5,'--',label='-0.5',basex=10,basey=10)
     plt.loglog(np.arange(par['nv0']),n1p0,':',label='-1.0',basex=10,basey=10)
     plt.loglog(np.arange(par['nv0']),n1p5,'-.',label='-1.5',basex=10,basey=10)
-    plt.legend() 
+    plt.legend()
     plt.title(r'$\varepsilon_n$')
     plt.show()
 
@@ -1396,7 +1396,7 @@ def test_energy_equation(ikx,iky,start_time=-1.0,end_time=-1.0,data_from_gk=True
     for n in range(par['nv0']):
         kzn[n]=np.sum(Ekz[:,n]*np.abs(kzgrid))/np.sum(Ekz[:,n])
         kzsigma_n[n]=np.sum(sigmam[:,n]*Ekz[:,n]*np.abs(kzgrid))/np.sum(Ekz[:,n])
-            
+
     plt.plot(herm_grid,kzn,label='kzn')
     plt.plot(herm_grid,np.abs(kzsigma_n),label='abs(kzsigma_n)')
     plt.plot(herm_grid,kzn/np.sqrt(herm_grid),label='kzn/sqrt(n)')
@@ -1424,7 +1424,7 @@ def time_scales_nl(ikx,iky,start_time=-1.0,end_time=-1.0,show_plots=False):
             tmax=time[i]
             time0=np.append(time0,time[i])
             itime=np.append(itime,i)
-        
+
     time=time0
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
@@ -1435,7 +1435,7 @@ def time_scales_nl(ikx,iky,start_time=-1.0,end_time=-1.0,show_plots=False):
         end_time=time[len(time)-1]
     if start_time > end_time:
         stop
-        
+
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
 
@@ -1457,7 +1457,7 @@ def time_scales_nl(ikx,iky,start_time=-1.0,end_time=-1.0,show_plots=False):
     for n in range(par['nv0']):
         print "n=",n
         phicorr,tau,corr_time[n]=my_corr_func_complex(gn[n,:],gn[n,:],ptime0,show_plot=False)
-   
+
     if show_plots:
         plt.plot(herm_grid,1/corr_time,label='1/corr time')
         plt.legend()
@@ -1466,7 +1466,7 @@ def time_scales_nl(ikx,iky,start_time=-1.0,end_time=-1.0,show_plots=False):
 
 
     for n in range(10):
-        omega,fs=get_frequency_spectrum(time[istart:iend+1],gn[n,:])        
+        omega,fs=get_frequency_spectrum(time[istart:iend+1],gn[n,:])
         if show_plots:
             plt.plot(omega,np.conj(fs)*fs,label='frequency n='+str(n))
     if show_plots:
@@ -1477,7 +1477,7 @@ def time_scales_nl(ikx,iky,start_time=-1.0,end_time=-1.0,show_plots=False):
 
 
     #for n in range(par['nv0']):
-    #    omega,fs=get_frequency_spectrum(time[istart:iend+1],gn[n,:])        
+    #    omega,fs=get_frequency_spectrum(time[istart:iend+1],gn[n,:])
     #    plt.plot(omega,np.conj(fs)*fs,label='frequency n='+str(n))
     #    plt.legend()
     #    plt.xlabel('omega')
@@ -1511,7 +1511,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
             itime=np.append(itime,i)
         #else:
         #    time=np.delete(time,i)
-        
+
     time=time0
     #print time
     #print itime
@@ -1535,7 +1535,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
         end_time=time[len(time)-1]
     if start_time > end_time:
         stop
-        
+
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
 
@@ -1567,7 +1567,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
                     for k in range(1,par['nkz0']):
                         gkz[k,n,it]=(-1.0J*kzgrid[k]/np.abs(kzgrid[k]))**n*gkz[k,n,it]
             gn[:,it]=np.sum(gkz[:,:,it],axis=0)
-        
+
     Ekz=np.real(np.sum(np.conj(gkz)*gkz,axis=2))
     ptime0=time[istart:iend+1]
     corr_time=np.empty(par['nv0'],dtype='float')
@@ -1591,7 +1591,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
         plt.loglog(np.arange(par['nv0']),n0p5,'--',label='-0.5',basex=10,basey=10)
         plt.loglog(np.arange(par['nv0']),n1p0,':',label='-1.0',basex=10,basey=10)
         plt.loglog(np.arange(par['nv0']),n1p5,'-.',label='-1.5',basex=10,basey=10)
-        plt.legend() 
+        plt.legend()
         plt.title(r'$\varepsilon_n$')
         plt.show()
     np.savetxt(par['diagdir'][1:-1]+'/ts_hspect_kx'+str(ikx)+'_ky'+str(iky)+'.dat',g_nspect)
@@ -1613,7 +1613,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
         if n==0:
             i_tau_max=np.argmin(abs(tau_max-tau))
             corr_out=np.empty((i_tau_max,par['nv0']))
-        corr_out[:,n]=phicorr[:i_tau_max] 
+        corr_out[:,n]=phicorr[:i_tau_max]
         kzn[n]=np.sum(Ekz[:,n]*np.abs(kzgrid))/np.sum(Ekz[:,n])
         kzsqrtn[n]=herm_grid[n]**(-0.5)*np.sum(Ekz[:,n]*np.abs(kzgrid))/np.sum(Ekz[:,n])
         kzon[n]=herm_grid[n]**(-1)*np.sum(Ekz[:,n]*np.abs(kzgrid))/np.sum(Ekz[:,n])
@@ -1633,7 +1633,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
         plt.contourf(corr_out,50)
         plt.plot(1.0/kzn)
         plt.show()
-    
+
     Ekz0=np.zeros((par['nkz0']/2,par['nv0']),dtype='float')
     Ekz0[0,:]=Ekz[0,:]
     for k in range(1,par['nkz0']/2):
@@ -1757,7 +1757,7 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
             plt.title('evec')
             plt.show()
             for n in range(par['nv0']):
-                hev[n]=vec[n]/np.real(np.sqrt(np.conj(vec[n])*vec[n])) 
+                hev[n]=vec[n]/np.real(np.sqrt(np.conj(vec[n])*vec[n]))
             for n in range(1,par['nv0']-1):
                 sigmam_ev[n]=np.real(np.conj(hev[n])*hev[n-1])
                 sigmap_ev[n]=np.real(np.conj(hev[n])*hev[n+1])
@@ -1768,8 +1768,8 @@ def time_scales_n(ikx,iky,start_time=-1.0,end_time=-1.0,show_plot_alln=False,dat
             plt.plot(herm_grid,sigmap_ev-sigmam_ev,label='del_sigma')
             plt.legend()
             plt.show()
-                
-                
+
+
 
     if show_plots and plot_kz_n:
         plt.title(r'$k_x \rho_i = $'+str(ikx*par['kxmin'])+','+r'$k_y \rho_i = $'+str(iky*par['kymin']),size=18)
@@ -1840,7 +1840,7 @@ def get_hermite_dissipation_spectra(start_time=-1.0,end_time=-1.0,data_out=True,
         end_time=time[len(time)-1]
     if start_time >= end_time:
         stop
-        
+
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
 
@@ -1921,7 +1921,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
     if which_n > 0 and which_fe != 'ent':
         print "Warning! Calculating only entropy part!!"
         which_fe='ent'
-        
+
 
     time=get_time_from_gout()
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
@@ -1939,7 +1939,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
         end_time=time[len(time)-1]
     if start_time >= end_time:
         stop
-        
+
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
 
@@ -1982,7 +1982,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
                 entk_sum=entk_sum+get_entropy(gt0)
             if which_fe=='all' or which_fe=='es':
                 entk_sum=entk_sum+get_fe_es(gt0)
-    
+
         else:
             temp=get_entropy(gt0,sum_n=False)
             entk_sum=entk_sum+temp[:,:,:,which_n]
@@ -2029,7 +2029,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
     if data_out and which_n==-1:
         file_name=par['diagdir'][1:-1]+'/entropy_hermite.dat'
-        arr_out=np.empty((par['nv0'],2)) 
+        arr_out=np.empty((par['nv0'],2))
         arr_out[:,0]=herm_out
         arr_out[:,1]=entn_sum
         np.savetxt(file_name,arr_out)
@@ -2234,17 +2234,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
       if data_out:
           file_name=par['diagdir'][1:-1]+'/diss0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=diss_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/diss0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=diss_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/diss0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=diss_kz
           np.savetxt(file_name,arr_out)
@@ -2295,17 +2295,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
       if data_out:
           file_name=par['diagdir'][1:-1]+'/drive0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=drive_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/drive0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=drive_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/drive0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=drive_kz
           np.savetxt(file_name,arr_out)
@@ -2413,7 +2413,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
           if fit_spectra:
               startx=float(raw_input("Enter start value for fit:"))
               endx=float(raw_input("Enter end value for fit:"))
-    
+
               fit=fit_function(kx_out,phisq_kx,(1.0,-1.0),startx=startx,endx=endx,which_func='power')
               plt.figure(figsize=(4.5,3.0))
               fig=plt.gcf()
@@ -2437,7 +2437,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
               plt.xlabel(r'$k_x\rho_i$',size=13)
               plt.figtext(0.02,0.02,time_string)
               plt.show()
-               
+
           plt.figure(figsize=(4.5,3.0))
           fig=plt.gcf()
           fig.subplots_adjust(left=0.2)
@@ -2523,17 +2523,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
               plt.show()
           if data_out:
               file_name=par['diagdir'][1:-1]+'/phisq_kx.dat'
-              arr_out=np.empty((par['nkx0'],2)) 
+              arr_out=np.empty((par['nkx0'],2))
               arr_out[:,0]=kx_out
               arr_out[:,1]=phisq_kx
               np.savetxt(file_name,arr_out)
               file_name=par['diagdir'][1:-1]+'/phisq_ky.dat'
-              arr_out=np.empty((par['nky0'],2)) 
+              arr_out=np.empty((par['nky0'],2))
               arr_out[:,0]=ky_out
               arr_out[:,1]=phisq_ky
               np.savetxt(file_name,arr_out)
               file_name=par['diagdir'][1:-1]+'/phisq_kz.dat'
-              arr_out=np.empty((par['nkz0'],2)) 
+              arr_out=np.empty((par['nkz0'],2))
               arr_out[:,0]=kz_out
               arr_out[:,1]=phisq_kz
               np.savetxt(file_name,arr_out)
@@ -2558,17 +2558,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
       if data_out:
           file_name=par['diagdir'][1:-1]+'/entk0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=entk_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/entk0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=entk_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/entk0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=entk_kz
           np.savetxt(file_name,arr_out)
@@ -2657,7 +2657,7 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
           plt.xlabel(r'$k_x\rho_i$',size=13)
           plt.figtext(0.02,0.02,time_string)
           plt.show()
-           
+
       plt.figure(figsize=(4.5,3.0))
       fig=plt.gcf()
       fig.subplots_adjust(left=0.2)
@@ -2761,20 +2761,20 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
           hyp_kz[i]=hyp_kz[i]+hyp_kz[par['nkz0']-i]
           hyp_kz[par['nkz0']-i]=hyp_kz[i]
       hyp_kz=np.roll(hyp_kz,par['nkz0']/2-1,axis=0)
-  
+
       if data_out:
           file_name=par['diagdir'][1:-1]+'/hyp0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=hyp_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/hyp0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=hyp_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/hyp0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=hyp_kz
           np.savetxt(file_name,arr_out)
@@ -2947,17 +2947,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
     #if data_out:
     #    file_name=par['diagdir'][1:-1]+'/diss_kx.dat'
-    #    arr_out=np.empty((par['nkx0'],2)) 
+    #    arr_out=np.empty((par['nkx0'],2))
     #    arr_out[:,0]=kx_out
     #    arr_out[:,1]=diss_kx
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/diss_ky.dat'
-    #    arr_out=np.empty((par['nky0'],2)) 
+    #    arr_out=np.empty((par['nky0'],2))
     #    arr_out[:,0]=ky_out
     #    arr_out[:,1]=diss_ky
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/diss_kz.dat'
-    #    arr_out=np.empty((par['nkz0'],2)) 
+    #    arr_out=np.empty((par['nkz0'],2))
     #    arr_out[:,0]=kz_out
     #    arr_out[:,1]=diss_kz
     #    np.savetxt(file_name,arr_out)
@@ -2995,17 +2995,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
     #if data_out:
     #    file_name=par['diagdir'][1:-1]+'/drive_kx.dat'
-    #    arr_out=np.empty((par['nkx0'],2)) 
+    #    arr_out=np.empty((par['nkx0'],2))
     #    arr_out[:,0]=kx_out
     #    arr_out[:,1]=drive_kx
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/drive_ky.dat'
-    #    arr_out=np.empty((par['nky0'],2)) 
+    #    arr_out=np.empty((par['nky0'],2))
     #    arr_out[:,0]=ky_out
     #    arr_out[:,1]=drive_ky
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/drive_kz.dat'
-    #    arr_out=np.empty((par['nkz0'],2)) 
+    #    arr_out=np.empty((par['nkz0'],2))
     #    arr_out[:,0]=kz_out
     #    arr_out[:,1]=drive_kz
     #    np.savetxt(file_name,arr_out)
@@ -3063,17 +3063,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
     #if data_out:
     #    file_name=par['diagdir'][1:-1]+'/entk_kx.dat'
-    #    arr_out=np.empty((par['nkx0'],2)) 
+    #    arr_out=np.empty((par['nkx0'],2))
     #    arr_out[:,0]=kx_out
     #    arr_out[:,1]=entk_kx
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/entk_ky.dat'
-    #    arr_out=np.empty((par['nky0'],2)) 
+    #    arr_out=np.empty((par['nky0'],2))
     #    arr_out[:,0]=ky_out
     #    arr_out[:,1]=entk_ky
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/entk_kz.dat'
-    #    arr_out=np.empty((par['nkz0'],2)) 
+    #    arr_out=np.empty((par['nkz0'],2))
     #    arr_out[:,0]=kz_out
     #    arr_out[:,1]=entk_kz
     #    np.savetxt(file_name,arr_out)
@@ -3131,17 +3131,17 @@ def get_energy_spectraF(start_time=-1.0,end_time=-1.0,data_out=False,which_n=-1,
 
     #if data_out:
     #    file_name=par['diagdir'][1:-1]+'/hyp_kx.dat'
-    #    arr_out=np.empty((par['nkx0'],2)) 
+    #    arr_out=np.empty((par['nkx0'],2))
     #    arr_out[:,0]=kx_out
     #    arr_out[:,1]=hyp_kx
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/hyp_ky.dat'
-    #    arr_out=np.empty((par['nky0'],2)) 
+    #    arr_out=np.empty((par['nky0'],2))
     #    arr_out[:,0]=ky_out
     #    arr_out[:,1]=hyp_ky
     #    np.savetxt(file_name,arr_out)
     #    file_name=par['diagdir'][1:-1]+'/hyp_kz.dat'
-    #    arr_out=np.empty((par['nkz0'],2)) 
+    #    arr_out=np.empty((par['nkz0'],2))
     #    arr_out[:,0]=kz_out
     #    arr_out[:,1]=hyp_kz
     #    np.savetxt(file_name,arr_out)
@@ -3208,7 +3208,7 @@ def get_energy_spectra_nk(start_time=-1.0,end_time=-1.0,data_out=False,delta_kpe
         end_time=time[len(time)-1]
     if start_time >= end_time:
         stop
-        
+
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
 
@@ -3241,7 +3241,7 @@ def get_energy_spectra_nk(start_time=-1.0,end_time=-1.0,data_out=False,delta_kpe
     kpgrid=np.arange(nkp)/float(nkp-1)*(kpmax_top-delta_kperp)+delta_kperp
     print "kpgrid",kpgrid
     print "kzgrid",kzgrid
-    
+
 
     for i in range(istart,iend+1):
         print 'time=',time[i],' of ',time[iend]
@@ -3295,7 +3295,7 @@ def get_energy_spectra_nk(start_time=-1.0,end_time=-1.0,data_out=False,delta_kpe
     for i in range(par['nkx0']):
         for j in range(par['nky0']):
           if j != par['nky0']/2:
-            kperp=np.sqrt(kxgrid[i]**2+kygrid[j]**2)    
+            kperp=np.sqrt(kxgrid[i]**2+kygrid[j]**2)
             kpind=np.argmin(np.abs(kpgrid-kperp))
             if kpgrid[kpind] < kperp:
                 kpind+=1
@@ -3325,8 +3325,8 @@ def get_energy_spectra_nk(start_time=-1.0,end_time=-1.0,data_out=False,delta_kpe
     eterm_kzn_out=np.zeros((par['nkz0']/2-1,par['nv0']),dtype='float')
     eterm_kzn_out[0,:]=eterm_kzn[0,:]
     for i in range(1,par['nkz0']/2-1):
-        eterm_kzn_out[i,:]=eterm_kzn[i,:]+eterm_kzn[par['nkz0']-i,:] 
-    
+        eterm_kzn_out[i,:]=eterm_kzn[i,:]+eterm_kzn[par['nkz0']-i,:]
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
     fig.subplots_adjust(left=0.2)
@@ -3380,7 +3380,7 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
     which_term=-1 (default) ==> all
     which_term=1  ==> Free energy
     which_term=2  ==> Drive
-    which_term=3  ==> Dissipation 
+    which_term=3  ==> Dissipation
     which_term=4  ==> hyper-diffusion """
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
@@ -3465,7 +3465,7 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
         #print "ky_out",ky_out
 
     e2d_plot=np.empty((par['nkx0']*2-1,par['nky0']))
-    
+
     if which_term== 3 or which_term==-1:
       diss=diss_sum/float(ntime)
       diss_kza=np.sum(diss,2)
@@ -3663,17 +3663,17 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
 
       if data_out:
           file_name=par['diagdir'][1:-1]+'/es_diss0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=diss_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_diss0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=diss_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_diss0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=diss_kz
           np.savetxt(file_name,arr_out)
@@ -3724,17 +3724,17 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
 
       if data_out:
           file_name=par['diagdir'][1:-1]+'/es_drive0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=drive_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_drive0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=drive_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_drive0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=drive_kz
           np.savetxt(file_name,arr_out)
@@ -3826,17 +3826,17 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
 
       if data_out:
           file_name=par['diagdir'][1:-1]+'/es_fenergy_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=entk_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_fenergy_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=entk_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_fenergy_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=entk_kz
           np.savetxt(file_name,arr_out)
@@ -3925,7 +3925,7 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
           plt.xlabel(r'$k_x\rho_i$',size=13)
           plt.figtext(0.02,0.02,time_string)
           plt.show()
-           
+
       plt.figure(figsize=(4.5,3.0))
       fig=plt.gcf()
       fig.subplots_adjust(left=0.2)
@@ -4029,20 +4029,20 @@ def get_energy_spectra0(start_time=-1.0,end_time=-1.0,data_out=False,which_term=
           hyp_kz[i]=hyp_kz[i]+hyp_kz[par['nkz0']-i]
           hyp_kz[par['nkz0']-i]=hyp_kz[i]
       hyp_kz=np.roll(hyp_kz,par['nkz0']/2-1,axis=0)
-  
+
       if data_out:
           file_name=par['diagdir'][1:-1]+'/es_hyp0_kx.dat'
-          arr_out=np.empty((par['nkx0'],2)) 
+          arr_out=np.empty((par['nkx0'],2))
           arr_out[:,0]=kx_out
           arr_out[:,1]=hyp_kx
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_hyp0_ky.dat'
-          arr_out=np.empty((par['nky0'],2)) 
+          arr_out=np.empty((par['nky0'],2))
           arr_out[:,0]=ky_out
           arr_out[:,1]=hyp_ky
           np.savetxt(file_name,arr_out)
           file_name=par['diagdir'][1:-1]+'/es_hyp0_kz.dat'
-          arr_out=np.empty((par['nkz0'],2)) 
+          arr_out=np.empty((par['nkz0'],2))
           arr_out[:,0]=kz_out
           arr_out[:,1]=hyp_kz
           np.savetxt(file_name,arr_out)
@@ -4122,7 +4122,7 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
     if nkz0_red==-1.0:
        nkz0_red=par['nkz0']
 
-    kx_red_l = par['nkx0']    -nkx0_red 
+    kx_red_l = par['nkx0']    -nkx0_red
     kx_red_h = par['nkx0']    + nkx0_red - 1
     ky_red_l = par['nky0']/2  - nky0_red/2
     ky_red_h = par['nky0']/2  + nky0_red/2 -1
@@ -4131,7 +4131,7 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
 
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
-    
+
     kxgrid_full=np.empty(par['nkx0']*2-1)
     for i in range(par['nkx0']):
         kxgrid_full[i+par['nkx0']-1]=kxgrid[i]
@@ -4191,12 +4191,12 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
         f.close()
 
     time_string='Time=['+str(time[istart])[:5]+','+str(time[iend])[:5]+']'
-    
+
     kx_out,ky_out,kz_out,herm_out=get_grids_shifted()
     print "ky_out",ky_out
     print "kz_out",kz_out
     print "kx_out",kx_out
-    
+
     #Take only the positive part (for plotting purposes)
     kx_out_pos = kxgrid_full[par['nkx0']-1:kx_red_h]
     ky_out_pos = ky_out[par['nky0']/2-1:ky_red_h]
@@ -4250,17 +4250,17 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
 
     if data_out:
         file_name=par['diagdir'][1:-1]+'/diss0_kx_red.dat'
-        arr_out=np.empty((nkx0_red,2)) 
+        arr_out=np.empty((nkx0_red,2))
         arr_out[:,0]=kx_out_pos
         arr_out[:,1]=diss_kx_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/diss0_ky_red.dat'
-        arr_out=np.empty((nky0_red/2,2)) 
+        arr_out=np.empty((nky0_red/2,2))
         arr_out[:,0]=ky_out_pos
         arr_out[:,1]=diss_ky_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/diss0_kz_red.dat'
-        arr_out=np.empty((nkz0_red/2,2)) 
+        arr_out=np.empty((nkz0_red/2,2))
         arr_out[:,0]=kz_out_pos
         arr_out[:,1]=diss_kz_pos
         np.savetxt(file_name,arr_out)
@@ -4337,23 +4337,23 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
 
     if data_out:
         file_name=par['diagdir'][1:-1]+'/drive0_kx_red.dat'
-        arr_out=np.empty((nkx0_red,2)) 
+        arr_out=np.empty((nkx0_red,2))
         arr_out[:,0]=kx_out_pos
         arr_out[:,1]=drive_kx_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/drive0_ky_red.dat'
-        arr_out=np.empty((nky0_red/2,2)) 
+        arr_out=np.empty((nky0_red/2,2))
         arr_out[:,0]=ky_out_pos
         arr_out[:,1]=drive_ky_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/drive0_kz_red.dat'
-        arr_out=np.empty((nkz0_red/2,2)) 
+        arr_out=np.empty((nkz0_red/2,2))
         arr_out[:,0]=kz_out_pos
         arr_out[:,1]=drive_kz_pos
         np.savetxt(file_name,arr_out)
 
 
-   
+
 #    #log-log plot
 #    plt.figure(figsize=(4.5,3.0))
 #    fig=plt.gcf()
@@ -4425,17 +4425,17 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
 
     if data_out:
         file_name=par['diagdir'][1:-1]+'/entk0_kx_red.dat'
-        arr_out=np.empty((nkx0_red,2)) 
+        arr_out=np.empty((nkx0_red,2))
         arr_out[:,0]=kx_out_pos
         arr_out[:,1]=entk_kx_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/entk0_ky_red.dat'
-        arr_out=np.empty((nky0_red/2,2)) 
+        arr_out=np.empty((nky0_red/2,2))
         arr_out[:,0]=ky_out_pos
         arr_out[:,1]=entk_ky_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/entk0_kz_red.dat'
-        arr_out=np.empty((nkz0_red/2,2)) 
+        arr_out=np.empty((nkz0_red/2,2))
         arr_out[:,0]=kz_out_pos
         arr_out[:,1]=entk_kz_pos
         np.savetxt(file_name,arr_out)
@@ -4511,17 +4511,17 @@ def get_energy_spectra0_red(start_time=-1.0,end_time=-1.0,nkx0_red = -1, \
 
     if data_out:
         file_name=par['diagdir'][1:-1]+'/hyp0_kx_red.dat'
-        arr_out=np.empty((nkx0_red,2)) 
+        arr_out=np.empty((nkx0_red,2))
         arr_out[:,0]=kx_out_pos
         arr_out[:,1]=hyp_kx_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/hyp0_ky_red.dat'
-        arr_out=np.empty((nky0_red/2,2)) 
+        arr_out=np.empty((nky0_red/2,2))
         arr_out[:,0]=ky_out_pos
         arr_out[:,1]=hyp_ky_pos
         np.savetxt(file_name,arr_out)
         file_name=par['diagdir'][1:-1]+'/hyp0_kz_red.dat'
-        arr_out=np.empty((nkz0_red/2,2)) 
+        arr_out=np.empty((nkz0_red/2,2))
         arr_out[:,0]=kz_out_pos
         arr_out[:,1]=hyp_kz_pos
         np.savetxt(file_name,arr_out)
@@ -4839,8 +4839,8 @@ def get_fe_es(g_in):
    return fe_es
 
 def get_entropy_hermite(g_in,kzind=-1,include_kz0=True):
-   """Gets entropy summed over kx,ky,kz but resolved in Hermite n. 
-   kzind=-1 (default): sum over kz 
+   """Gets entropy summed over kx,ky,kz but resolved in Hermite n.
+   kzind=-1 (default): sum over kz
    kzind=kzind (default): selects kz index."""
    if include_kz0:
        ikz_start=0
@@ -4857,8 +4857,8 @@ def get_entropy_hermite(g_in,kzind=-1,include_kz0=True):
    return entropy
 
 def get_entropy_hermiten(g_in,kzind=-1,include_kz0=True):
-   """Gets entropy summed over kx,ky,kz but resolved in Hermite n. 
-   kzind=-1 (default): sum over kz 
+   """Gets entropy summed over kx,ky,kz but resolved in Hermite n.
+   kzind=-1 (default): sum over kz
    kzind=kzind (default): selects kz index."""
    if include_kz0:
        ikz_start=0
@@ -4887,7 +4887,7 @@ def get_rhs_lin(g_in,which_term):
     5:kz phi term
     6:omt term
     7:omt FLR term
-    8:hyp_xyz 
+    8:hyp_xyz
     9:hyp_conv """
 
     #0==all
@@ -4999,7 +4999,7 @@ def get_rhs_lin(g_in,which_term):
     return rhs
 
 def get_rhs_lin_single_k(g_in,which_term,kx_in,ky_in,kz_in,test_extra=False,zamp=1.0):
-    """For the wavenumber defined by kx_in,ky_in,kz_in, this routine 
+    """For the wavenumber defined by kx_in,ky_in,kz_in, this routine
     gets the part of the linear RHS operator determined by \'which_term\'.
     This should be benchmarked against the code occasionally.
     which_term:
@@ -5082,7 +5082,7 @@ def get_rhs_lin_single_k(g_in,which_term,kx_in,ky_in,kz_in,test_extra=False,zamp
                 1.0J*ky_in*np.pi**(-0.25)*0.5*(kx_in**2+ky_in**2)\
                 *gyro_avg_k(kx_in,ky_in)*phi*par['omt']
     if which_term==8 or which_term==0:
-        if par['hyp_conv'] != 0.0: 
+        if par['hyp_conv'] != 0.0:
                      #np.abs(kz_in-0.0) < 1.0e-8 or \
                      #np.abs(np.abs(kz_in)-par['kzmin']) < 1.0e-8 or \
                      #np.abs(np.abs(ky_in)-par['kymin']) < 1.0e-8):
@@ -5189,7 +5189,7 @@ def gamma0_k(kx_in,ky_in):
     return Gam0
 
 def get_kindex(k,kmin,nk0):
-    """Given a k, this returns the appropriate index for accessing 
+    """Given a k, this returns the appropriate index for accessing
     this k in the FFT k-format (see get_grids())"""
     ik=np.rint(k/kmin)
     if k < 0.0:
@@ -5197,12 +5197,12 @@ def get_kindex(k,kmin,nk0):
     return ik
 
 def get_kxindex(k,kmin,nk0):
-    """Given a kx, this returns the appropriate index for accessing 
+    """Given a kx, this returns the appropriate index for accessing
     this kx in the FFT k-format (see get_grids())"""
     ik=np.rint(k/kmin)
     if k < 0.0:
         ik=nk0+ik
-       
+
     return ik
 
 def get_grids_shifted():
@@ -5214,13 +5214,13 @@ def get_grids_shifted():
     kygrid=kygrid*par['kymin']
     kygrid=kygrid-(par['ky_nyq']-par['kymin'])
     if np.min(abs(kygrid)) != 0.0:
-        kygrid=kygrid-np.min(abs(kygrid))   
+        kygrid=kygrid-np.min(abs(kygrid))
 
     kzgrid=np.arange(par['nkz0'])
     kzgrid=kzgrid*par['kzmin']
     kzgrid=kzgrid-(par['kz_nyq']-par['kzmin'])
     if np.min(abs(kzgrid)) != 0.0:
-        kzgrid=kzgrid-np.min(abs(kzgrid))   
+        kzgrid=kzgrid-np.min(abs(kzgrid))
 
     herm_grid=np.arange(par['nv0'])
     herm_grid=1.0*herm_grid
@@ -5231,7 +5231,7 @@ def get_shells(min_width=1.0):
     """Can't remember . . . \n
     but I think this returns the boundaries of the k-shells"""
     wid=min_width
-    kx,ky,kz,herm=get_grids()  
+    kx,ky,kz,herm=get_grids()
     kmax=min(par['kxmax0'],par['kymax0'])
     dk0=kx[1]-kx[0]
     dky0=ky[1]-ky[0]
@@ -5314,7 +5314,7 @@ def get_time_from_eshells():
    time=np.empty(0)
    continue_read=1
    i=0
-   while (continue_read): 
+   while (continue_read):
      f.seek(i*(mem_tot+8))
      i=i+1
      input=np.fromfile(f,dtype='float64',count=1)
@@ -5333,14 +5333,14 @@ def eshells_test(start_time=-1,end_time=-1,nlt_comparison=False):
     num_shells=len(s_lines)-1#int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -5348,7 +5348,7 @@ def eshells_test(start_time=-1,end_time=-1,nlt_comparison=False):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -5361,7 +5361,7 @@ def eshells_test(start_time=-1,end_time=-1,nlt_comparison=False):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     energy=np.genfromtxt('energy.dat')
     eshells=np.zeros((ntime,8))
@@ -5378,7 +5378,7 @@ def eshells_test(start_time=-1,end_time=-1,nlt_comparison=False):
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -5419,7 +5419,7 @@ def eshells_test(start_time=-1,end_time=-1,nlt_comparison=False):
         for j in range(num_shells):
             ebal[i-istart,2,j]=np.sum(fs_in[:,j])
         f.close()
- 
+
     plt.plot(time[istart:iend+1],eshells[:,0],'-x',label='Energy (from shells)')
     plt.plot(energy[:,0],energy[:,1]+energy[:,2],label='Energy')
     plt.legend()
@@ -5485,14 +5485,14 @@ def eshells_test_n(start_time=-1,end_time=-1,herm_n=0,nlt_comparison=False):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -5500,7 +5500,7 @@ def eshells_test_n(start_time=-1,end_time=-1,herm_n=0,nlt_comparison=False):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -5513,7 +5513,7 @@ def eshells_test_n(start_time=-1,end_time=-1,herm_n=0,nlt_comparison=False):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     #Order from eshells file
     #0:Energy
@@ -5538,7 +5538,7 @@ def eshells_test_n(start_time=-1,end_time=-1,herm_n=0,nlt_comparison=False):
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -5647,14 +5647,14 @@ def eshells_test_n_kz(start_time=-1,end_time=-1,herm_n=0,kz=0.1,nlt_comparison=F
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -5662,7 +5662,7 @@ def eshells_test_n_kz(start_time=-1,end_time=-1,herm_n=0,kz=0.1,nlt_comparison=F
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -5675,7 +5675,7 @@ def eshells_test_n_kz(start_time=-1,end_time=-1,herm_n=0,kz=0.1,nlt_comparison=F
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
     kzind=np.argmin(abs(kzgrid-kz))
@@ -5717,7 +5717,7 @@ def eshells_test_n_kz(start_time=-1,end_time=-1,herm_n=0,kz=0.1,nlt_comparison=F
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -5865,14 +5865,14 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
     f.close()
     if end_shell==-1:
         end_shell=num_shells
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -5880,7 +5880,7 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -5893,7 +5893,7 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     #Order from eshells file
     #0:Energy
@@ -5918,7 +5918,7 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -5979,8 +5979,8 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
     ebal=ebal/float(ntime)
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
-    ebal_kzsum=np.sum(ebal,axis=1)    
-    ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)    
+    ebal_kzsum=np.sum(ebal,axis=1)
+    ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)
 
     #0:RHS
     #1:coll and hyps
@@ -6014,7 +6014,7 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
             plt.loglog(herm_grid,np.abs(ebal_akz_kpsum[:,k,0]),label='RHS')
             plt.legend()
             plt.show()
-            
+
 
     for k in range(par['nkz0']/2-1):
         plt.title('Free Energy'+str(k))
@@ -6051,7 +6051,7 @@ def eshells_cb_kzn(start_time=-1,end_time=-1,which_shell=-1,eshells_test=False,s
         plt.loglog(herm_grid,n1p5,'--',label='-1.5',basex=10,basey=10)
         plt.legend()
         plt.show()
-    
+
     if which_shell != -1:
         for k in range(par['nkz0']/2-1):
             plt.title('|kz|='+str(par['kzmin']*k))
@@ -6076,14 +6076,14 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -6091,7 +6091,7 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -6104,7 +6104,7 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     #Order from eshells file
     #0:Energy
@@ -6119,7 +6119,7 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
     ebal=np.zeros((par['nv0'],par['nkz0'],num_shells,8))
     #order in ebal
     #0:RHS
-    #1:coll 
+    #1:coll
     #2:Drive
     #3:NL
     #4:PH1
@@ -6130,7 +6130,7 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -6191,8 +6191,8 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
     ebal=ebal/float(ntime)
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
-    ebal_kzsum=np.sum(ebal,axis=1)    
-    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,:,:],axis=1),axis=1)    
+    ebal_kzsum=np.sum(ebal,axis=1)
+    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,:,:],axis=1),axis=1)
     ebal_kpsum=np.sum(ebal[:,:,:,:],axis=2)
 
     print "Enter the shell where hyp_x,y becomes large (identify from plot):\n"
@@ -6201,17 +6201,17 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
     plt.show()
     hyp_shell=int(float(raw_input('Enter shell:')))
 
-    ebal_kpkzsum_subhyp=np.sum(np.sum(ebal[:,:,0:hyp_shell,:],axis=1),axis=1)    
+    ebal_kpkzsum_subhyp=np.sum(np.sum(ebal[:,:,0:hyp_shell,:],axis=1),axis=1)
     ebal_kpsum_subhyp=np.sum(ebal[:,:,0:hyp_shell,:],axis=2)
 
     #Jptest=np.empty((par['nv0'],par['nkz0'],num_shells))
     #for k in range(par['nkz0']):
     #    for n in range(par['nv0']):
     #        Jptest[n,k,:]=2.0*np.sqrt(n)*kzgrid[k]*ebal[n,k,:,6]
-    #ebal_kzsum=np.sum(ebal,axis=1)    
-    #Jptest_kzsum=np.sum(Jptest,axis=1)    
-    #ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)    
-    #Jptest_kpkzsum=np.sum(np.sum(Jptest,axis=1),axis=1)    
+    #ebal_kzsum=np.sum(ebal,axis=1)
+    #Jptest_kzsum=np.sum(Jptest,axis=1)
+    #ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)
+    #Jptest_kpkzsum=np.sum(np.sum(Jptest,axis=1),axis=1)
 
     #print np.info(ebal_kpkzsum)
     #print ebal_kpkzsum[:,6]
@@ -6278,18 +6278,18 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
             plt.show()
     plt.plot(np.arange(par['nv0']),kzn[:])
     np.savetxt(par['diagdir'][1:-1]+'/ese_kzn.dat',kzn)
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n$')
     plt.show()
     plt.plot(np.arange(par['nv0']),kzn[:])
     np.savetxt(par['diagdir'][1:-1]+'/ese_kzn_subhyp.dat',kzn_subhyp)
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n$')
     plt.show()
 
     plt.plot(np.arange(par['nv0']),kzn[:])
     plt.plot(np.arange(par['nv0']),kzn[:]/np.sqrt(herm_grid))
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n/\sqrt{n}$')
     plt.show()
 
@@ -6309,13 +6309,13 @@ def eshells_energy(start_time=-1,end_time=-1,show_plots=False):
                 plt.show()
         plt.plot(np.arange(par['nv0']),kzn_shell[:,i],label=str(i))
         np.savetxt(par['diagdir'][1:-1]+'/ese_kzn_shell'+str(i)+'.dat',kzn_shell[:,i])
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n$')
     plt.show()
 
     for i in range(num_shells):
         plt.plot(np.arange(par['nv0']),kzn_shell[:,i]/np.sqrt(herm_grid),label=str(i))
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n/\sqrt{n}$')
     plt.show()
 
@@ -6327,14 +6327,14 @@ def eshells_nlflux(start_time=-1,end_time=-1):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -6342,7 +6342,7 @@ def eshells_nlflux(start_time=-1,end_time=-1):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -6355,7 +6355,7 @@ def eshells_nlflux(start_time=-1,end_time=-1):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     #Order from eshells file
     #0:Energy
@@ -6370,7 +6370,7 @@ def eshells_nlflux(start_time=-1,end_time=-1):
     ebal=np.zeros((par['nv0'],par['nkz0'],num_shells,8))
     #order in ebal
     #0:RHS
-    #1:coll 
+    #1:coll
     #2:Drive
     #3:NL
     #4:PH1
@@ -6379,7 +6379,7 @@ def eshells_nlflux(start_time=-1,end_time=-1):
     #7:hyps
 
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -6440,8 +6440,8 @@ def eshells_nlflux(start_time=-1,end_time=-1):
     ebal=ebal/float(ntime)
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
-    ebal_kzsum=np.sum(ebal,axis=1)    
-    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,:,:],axis=1),axis=1)    
+    ebal_kzsum=np.sum(ebal,axis=1)
+    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,:,:],axis=1),axis=1)
     ebal_kpsum=np.sum(ebal[:,:,:,:],axis=2)
 
     print "Shell 0: 0.0", s_lines[1]
@@ -6456,7 +6456,7 @@ def eshells_nlflux(start_time=-1,end_time=-1):
     plt.show()
     flux_shell=int(float(raw_input('Enter shell:')))
 
-    nlflux_shell0=np.sum(np.sum(ebal[:,:,(flux_shell+1):,3],axis=1),axis=1)    
+    nlflux_shell0=np.sum(np.sum(ebal[:,:,(flux_shell+1):,3],axis=1),axis=1)
     energy_shell0=np.sum(ebal[:,:,flux_shell,6],axis=1)
     #ebal_kpsum_subhyp=np.sum(ebal[:,:,0:hyp_shell,:],axis=2)
     cdiss_ratio=np.sum(ebal[:,:,(flux_shell+1):,1])/np.sum(ebal[:,:,:,1])
@@ -6490,14 +6490,14 @@ def eshells_nlflux(start_time=-1,end_time=-1):
 #    f.close()
 #    if end_shell==-1:
 #        end_shell=num_shells
-# 
+#
 #    f = open('eshells.dat','rb')
 #    ntot=num_shells*par['nkz0']*par['nv0']
 #    mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 #    time=np.empty(0)
 #    continue_read=1
 #    i=0
-#    while (continue_read): 
+#    while (continue_read):
 #      f.seek(i*(mem_tot+8))
 #      i=i+1
 #      input=np.fromfile(f,dtype='float64',count=1)
@@ -6505,7 +6505,7 @@ def eshells_nlflux(start_time=-1,end_time=-1):
 #          time = np.append(time,input)
 #      else:
 #          continue_read=0
- 
+
 
 
 
@@ -6521,14 +6521,14 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     f.close()
     if end_shell==-1:
         end_shell=num_shells
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -6536,7 +6536,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -6549,7 +6549,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     #Order from eshells file
     #0:Energy
@@ -6574,7 +6574,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -6635,17 +6635,17 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     ebal=ebal/float(ntime)
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
-    ebal_kzsum=np.sum(ebal,axis=1)    
-    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,0:end_shell],axis=1),axis=1)    
+    ebal_kzsum=np.sum(ebal,axis=1)
+    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,0:end_shell],axis=1),axis=1)
 
     #Jptest=np.empty((par['nv0'],par['nkz0'],num_shells))
     #for k in range(par['nkz0']):
     #    for n in range(par['nv0']):
     #        Jptest[n,k,:]=2.0*np.sqrt(n)*kzgrid[k]*ebal[n,k,:,6]
-    #ebal_kzsum=np.sum(ebal,axis=1)    
-    #Jptest_kzsum=np.sum(Jptest,axis=1)    
-    #ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)    
-    #Jptest_kpkzsum=np.sum(np.sum(Jptest,axis=1),axis=1)    
+    #ebal_kzsum=np.sum(ebal,axis=1)
+    #Jptest_kzsum=np.sum(Jptest,axis=1)
+    #ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)
+    #Jptest_kpkzsum=np.sum(np.sum(Jptest,axis=1),axis=1)
 
     if end_shell != -1:
         plt.title('end shell = '+str(end_shell)+' of '+str(num_shells))
@@ -6677,7 +6677,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     n1p5=10.0*np.abs(ebal_kpkzsum[20,6])/n1p5[20]*n1p5
     plt.loglog(herm_grid[10:100],n1p5[10:100],'-',color='black',basex=10,basey=10)
     plt.annotate(r'$\propto n^{-1.85}$',(25,12))
-    plt.legend(loc='lower left',prop={'size':10}) 
+    plt.legend(loc='lower left',prop={'size':10})
     plt.xlabel('Hermite n')
     #plt.ylabel(r'$k_z L_n$')
     plt.title(r'$k_\perp \rho_i < 1$')
@@ -6764,7 +6764,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     for n in range(par['nv0']):
         kzn_tot[n]=np.sum(np.abs(kzgrid)*ebal_lsum[n,:,6])/np.sum(ebal_lsum[n,:,6])
     plt.plot(herm_grid,kzn_tot,label='kzn tot.')
-    plt.legend() 
+    plt.legend()
     plt.xlabel(r'$k_z L$',size=18)
     plt.title(r'$<k_z>_n$')
     plt.show()
@@ -6786,11 +6786,11 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
                 plt.xlabel(r'$k_z L$',size=18)
                 plt.show()
         plt.plot(np.arange(par['nv0']),kzn[:,i],label=str(i))
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n$')
     plt.show()
 
-    
+
 
     color_list=['b','g','r','c','m','y','k','purple','maroon','teal']
     one=np.zeros(par['nv0'])+1.0
@@ -6798,14 +6798,14 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
         kzeff=np.sum(kzn[20:60,i]/np.sqrt(herm_grid[20:60]))/40.0
         plt.plot(np.arange(par['nv0']),kzeff*one,label=str(i),color=color_list[i])
         plt.plot(np.arange(par['nv0']),kzn[0,i]*one,'--',label=str(i),color=color_list[i])
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n/\sqrt{n}$')
     plt.show()
 
     for i in range(num_shells):
         kzeff=np.sum(kzn[20:60,i]/np.sqrt(herm_grid[20:60]))/40.0
         plt.plot(np.arange(par['nv0']),kzn[0,i]/kzeff*one,label=str(i),color=color_list[i])
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>^{\phi}/<k_z>^{eff}$')
     plt.axis([0.0,100.0,0.0,6.0])
     plt.show()
@@ -6824,7 +6824,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
           plt.plot(0,kzn[0,i],'x',markersize=8,markeredgewidth=2.0,color=color_array[i-1],label=r'$k_z^{(\phi)}$')
         else:
           plt.plot(0,kzn[0,i],'x',markersize=8,markeredgewidth=2.0,color=color_array[i-1])
-    plt.legend(prop={'size':8}) 
+    plt.legend(prop={'size':8})
     plt.xlabel('Hermite n')
     plt.ylabel(r'$k_z L_n$')
     plt.title(r'$<k_z>_n/\sqrt{n}$')
@@ -6833,14 +6833,14 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     for i in range(num_shells):
         plt.plot(np.arange(par['nv0']),kzn[:,i]/np.sqrt(herm_grid)/kzn[0,i],label=str(i))
     plt.title('TEST!')
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n/\sqrt{n}$')
     plt.show()
 
 
     for i in range(num_shells):
         plt.plot(np.arange(par['nv0']),kzn[:,i]/herm_grid,label=str(i))
-    plt.legend() 
+    plt.legend()
     plt.title(r'$<k_z>_n/n$')
     plt.show()
 
@@ -6867,9 +6867,9 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
             kzsigma_n[n,i]=np.sum(np.abs(kzgrid)*ebal[n,:,i,6]*sigmam[n,:,i])/np.sum(ebal[n,:,i,6])
             #for k in range(par['nkz0']):
             #    print k,sigmam[n,k,i]
-            #print "numer1",np.sum(sigmam[n,:,i]) 
-            #print "numer2",np.sum(np.abs(kzgrid)*sigmam[n,:,i]) 
-            #print "numer",np.sum(np.abs(kzgrid)*ebal[n,:,i,6]*sigmam[n,:,i]) 
+            #print "numer1",np.sum(sigmam[n,:,i])
+            #print "numer2",np.sum(np.abs(kzgrid)*sigmam[n,:,i])
+            #print "numer",np.sum(np.abs(kzgrid)*ebal[n,:,i,6]*sigmam[n,:,i])
             #print "denom",np.sum(ebal[n,:,i,6])
             #plt.plot(herm_grid,sigmam[:,k,i],label=str(k*par['kzmin']))
             #plt.title('sigmam')
@@ -6963,21 +6963,21 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
         plt.legend()
         plt.show()
 
-   
+
     #for i in range(num_shells):
     #    plt.plot(np.arange(par['nv0']),kznJm[:,i],label=str(i))
-    #plt.legend() 
+    #plt.legend()
     #plt.title(r'$<k_z>_n(J_{n-1/2})$')
     #plt.show()
     #for i in range(num_shells):
     #    plt.plot(np.arange(par['nv0']),kznJm[:,i]/np.sqrt(herm_grid),label=str(i))
-    #plt.legend() 
+    #plt.legend()
     #plt.title(r'$<k_z>_n/\sqrt{n}(J_{n-1/2})$')
     #plt.show()
 
     #for i in range(num_shells):
     #    plt.plot(np.arange(par['nv0']),kznJm[:,i]/herm_grid,label=str(i))
-    #plt.legend() 
+    #plt.legend()
     #plt.title(r'$<k_z>_n/n(J_{n-1/2})$')
     #plt.show()
 
@@ -6995,7 +6995,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
             plt.loglog(herm_grid,herm_grid**(-0.5),'--',label='n^-0.5')
             plt.loglog(herm_grid,herm_grid**(-1.0),'--',label='n^-1.0')
             plt.loglog(herm_grid,herm_grid**(-1.5),'--',label='n^-1.5')
-            plt.legend() 
+            plt.legend()
             plt.show()
             plt.plot(herm_grid,kzphi,label='kzphi')
             plt.plot(herm_grid,np.abs(ebal_kzsum[:,i,3]/ebal_kzsum[:,i,6]),label='N/E')
@@ -7008,32 +7008,32 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
         #    plt.plot(herm_grid,ebal_kzsum[:,i,1],label='Diss')
         #    plt.plot(np.arange(par['nv0']),PM1+PM2+ebal_kzsum[:,i,3]+ebal_kzsum[:,i,1],'x',label='SUM')
         #    plt.plot(np.arange(par['nv0']),ebal_kzsum[:,i,0],label='RHS')
-        #    plt.legend() 
+        #    plt.legend()
         #    plt.show()
 
         #for i in range(num_shells):
         #    plt.plot(np.arange(par['nv0']),2.0*kzn[:,i]*np.sqrt(herm_grid)*ebal_kzsum[:,i,6],label=str(i)+' '+r'$<k_z>_n \varepsilon_n$')
         #    plt.plot(np.arange(par['nv0']),np.abs(ebal_kzsum[:,i,4]),label=str(i)+' '+r'$J_{n-1/2}$')
         #    plt.plot(np.arange(par['nv0']),np.abs(ebal_kzsum[:,i,4])/(2.0*kzn[:,i]*np.sqrt(herm_grid)*ebal_kzsum[:,i,6]),label=str(i)+' '+r'$2/1')
-        #    plt.legend() 
+        #    plt.legend()
         #    plt.show()
         #    plt.plot(np.arange(par['nv0']),2.0*kzn[:,i]*np.sqrt(herm_grid+1)*np.roll(ebal_kzsum[:,i,6],-1),label=str(i)+' '+r'$<k_z>_n \sqrt{n} \varepsilon_n$')
         #    plt.plot(np.arange(par['nv0']),np.abs(ebal_kzsum[:,i,5]),label=str(i)+' '+r'$J_{n+1/2}$')
         #    plt.plot(np.arange(par['nv0']),np.abs(ebal_kzsum[:,i,5])/(2.0*kzn[:,i]*np.sqrt(herm_grid+1)*np.roll(ebal_kzsum[:,i,6],-1)),label=str(i)+' '+r'$2/1$')
-        #    plt.legend() 
+        #    plt.legend()
         #    plt.show()
 
 
     #for i in range(num_shells):
     #    plt.plot(np.arange(par['nv0']),kzn[:,i]/np.sqrt(herm_grid),label=str(i))
-    #plt.legend() 
+    #plt.legend()
     #plt.title(r'$<k_z>_n/\sqrt{n}$')
     #plt.show()
 
     for i in range(num_shells):
         temp=np.sum(ebal[:,:,i,5],axis=1)
         plt.plot(np.arange(par['nv0']),temp,label=str(i))
-    plt.legend() 
+    plt.legend()
     plt.title(r'$J_{n+1/2}$')
     plt.show()
 
@@ -7104,7 +7104,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
         plt.loglog(np.arange(par['nv0']),n0p5,'--',label='-0.5',basex=10,basey=10)
         plt.loglog(np.arange(par['nv0']),n1p0,':',label='-1.0',basex=10,basey=10)
         plt.loglog(np.arange(par['nv0']),n1p5,'-.',label='-1.5',basex=10,basey=10)
-        plt.legend() 
+        plt.legend()
         plt.title(r'$\varepsilon_n$')
         plt.show()
 
@@ -7119,7 +7119,7 @@ def eshells_cb_test(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     #    plt.plot(np.arange(par['nv0']),temp3,label='C')
     #    #plt.plot(np.arange(par['nv0']),temp3+temp+temp2+temp4,'x',label='Sum')
     #    plt.title('shell '+str(i))
-    #    plt.legend() 
+    #    plt.legend()
     #    plt.show()
 
 def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=False,end_shell=-1,plot_hs_shells=True):
@@ -7131,14 +7131,14 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     f.close()
     if end_shell==-1:
         end_shell=num_shells
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -7146,7 +7146,7 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -7159,7 +7159,7 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     #Order from eshells file
     #0:Energy
@@ -7184,7 +7184,7 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -7245,17 +7245,17 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     ebal=ebal/float(ntime)
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
-    ebal_kzsum=np.sum(ebal,axis=1)    
-    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,0:end_shell],axis=1),axis=1)    
+    ebal_kzsum=np.sum(ebal,axis=1)
+    ebal_kpkzsum=np.sum(np.sum(ebal[:,:,0:end_shell],axis=1),axis=1)
 
     #Jptest=np.empty((par['nv0'],par['nkz0'],num_shells))
     #for k in range(par['nkz0']):
     #    for n in range(par['nv0']):
     #        Jptest[n,k,:]=2.0*np.sqrt(n)*kzgrid[k]*ebal[n,k,:,6]
-    #ebal_kzsum=np.sum(ebal,axis=1)    
-    #Jptest_kzsum=np.sum(Jptest,axis=1)    
-    #ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)    
-    #Jptest_kpkzsum=np.sum(np.sum(Jptest,axis=1),axis=1)    
+    #ebal_kzsum=np.sum(ebal,axis=1)
+    #Jptest_kzsum=np.sum(Jptest,axis=1)
+    #ebal_kpkzsum=np.sum(np.sum(ebal,axis=1),axis=1)
+    #Jptest_kpkzsum=np.sum(np.sum(Jptest,axis=1),axis=1)
 
     #0:RHS
     #1:coll and hyps
@@ -7291,7 +7291,7 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
     for n in range(par['nv0']):
         kzn_tot[n]=np.sum(np.abs(kzgrid)*ebal_lsum[n,:,6])/np.sum(ebal_lsum[n,:,6])
 #    plt.plot(herm_grid,kzn_tot,label='kzn tot.')
-#    plt.legend() 
+#    plt.legend()
 #    plt.xlabel(r'$k_z L$',size=18)
 #    plt.title(r'$<k_z>_n$')
 #    plt.show()
@@ -7313,11 +7313,11 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
 #                plt.xlabel(r'$k_z L$',size=18)
 #                plt.show()
 #        plt.plot(np.arange(par['nv0']),kzn[:,i],label=str(i))
-#    plt.legend() 
+#    plt.legend()
 #    plt.title(r'$<k_z>_n$')
 #    plt.show()
 
-    
+
 
     color_list=['b','g','r','c','m','y','k','purple','maroon','teal']
     one=np.zeros(par['nv0'])+1.0
@@ -7325,14 +7325,14 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
 #        kzeff=np.sum(kzn[20:60,i]/np.sqrt(herm_grid[20:60]))/40.0
 #        plt.plot(np.arange(par['nv0']),kzeff*one,label=str(i),color=color_list[i])
 #        plt.plot(np.arange(par['nv0']),kzn[0,i]*one,'--',label=str(i),color=color_list[i])
-#    plt.legend() 
+#    plt.legend()
 #    plt.title(r'$<k_z>_n/\sqrt{n}$')
 #    plt.show()
 
     for i in range(num_shells):
         kzeff=np.sum(kzn[20:60,i]/np.sqrt(herm_grid[20:60]))/40.0
 #        plt.plot(np.arange(par['nv0']),kzn[0,i]/kzeff*one,label=str(i),color=color_list[i])
-#    plt.legend() 
+#    plt.legend()
 #    plt.title(r'$<k_z>^{\phi}/<k_z>^{eff}$')
 #    plt.axis([0.0,100.0,0.0,6.0])
 #    plt.show()
@@ -7348,7 +7348,7 @@ def eshells_cb_plot(start_time=-1,end_time=-1,show_plots=False,test_eshells=Fals
         plt.plot(np.arange(par['nv0']),kzn[:,i]/np.sqrt(herm_grid),color=color_list[i-1],label=shell_labels[i])
         plt.plot(0,kzn[0,i],'x',markersize=8,markeredgewidth=2.0,color=color_list[i-1])
     plt.plot(0,-1,'x',markersize=8,markeredgewidth=2.0,color='black',label=r'$k_z^{(\phi)}$')
-    plt.legend(prop={'size':10}) 
+    plt.legend(prop={'size':10})
     plt.xlabel('Hermite n')
     plt.axis([-10,120,0.0,0.7])
     #plt.ylabel(r'$k_z L_n$')
@@ -7364,14 +7364,14 @@ def eshells_cb_test_old(start_time=-1,end_time=-1,herm_n=0):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -7379,7 +7379,7 @@ def eshells_cb_test_old(start_time=-1,end_time=-1,herm_n=0):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -7392,8 +7392,8 @@ def eshells_cb_test_old(start_time=-1,end_time=-1,herm_n=0):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
-    print "num_shells",num_shells 
+    print "ntime",ntime
+    print "num_shells",num_shells
 
     #Order from eshells file
     #0:Energy
@@ -7419,7 +7419,7 @@ def eshells_cb_test_old(start_time=-1,end_time=-1,herm_n=0):
     es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
     print "np.shape(es_in)"
     print np.shape(es_in)
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -7495,14 +7495,14 @@ def energetics_kp_kz_n(start_time=-1,end_time=-1):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -7510,7 +7510,7 @@ def energetics_kp_kz_n(start_time=-1,end_time=-1):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -7523,7 +7523,7 @@ def energetics_kp_kz_n(start_time=-1,end_time=-1):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
@@ -7554,7 +7554,7 @@ def energetics_kp_kz_n(start_time=-1,end_time=-1):
     NL0=np.zeros((num_shells,par['nkz0']/2,11))
 
     #es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -7631,7 +7631,7 @@ def energetics_kp_kz_n(start_time=-1,end_time=-1):
     nlt_files.append('nlt_shells_n6o8.dat')
     nlt_files.append('nlt_shells_n7o8.dat')
     levels=[0.0,10.0]
-    
+
     for i in range(11):
         n=nlt_ns[i]
         file=nlt_files[i]
@@ -7740,14 +7740,14 @@ def energetics_3d_flow(start_time=-1,end_time=-1,which_norm='unit'):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -7755,7 +7755,7 @@ def energetics_3d_flow(start_time=-1,end_time=-1,which_norm='unit'):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -7768,7 +7768,7 @@ def energetics_3d_flow(start_time=-1,end_time=-1,which_norm='unit'):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     kxgrid,kygrid,kzgrid,herm_grid=get_grids()
 
@@ -7799,7 +7799,7 @@ def energetics_3d_flow(start_time=-1,end_time=-1,which_norm='unit'):
     NL0=np.zeros((num_shells,par['nkz0']/2,11))
 
     #es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -7834,7 +7834,7 @@ def energetics_3d_flow(start_time=-1,end_time=-1,which_norm='unit'):
         f.seek(8+i*(8+mem_tot)+7*ntot*8)
         fs_in=np.fromfile(f,dtype='float64',count=num_shells*par['nkz0'])
         DR=DR+np.reshape(fs_in,(num_shells,par['nkz0']),order='F')
-    
+
     FE=FE/float(ntime)
     CD=CD/float(ntime)
     HD=HD/float(ntime)
@@ -7884,7 +7884,7 @@ def energetics_3d_flow(start_time=-1,end_time=-1,which_norm='unit'):
     kz_comp=np.empty(0)
     n_comp=np.empty(0)
     sources_sinks=np.empty(0)
-    
+
     for i in range(11):
         print i," of ",10
         n=nlt_ns[i]
@@ -7942,14 +7942,14 @@ def energetics_kp_kz_n_old(start_time=-1,end_time=-1):
     num_shells=len(s_lines)-1 #int(float(s_lines[-2].split()[0]))
     print num_shells
     f.close()
- 
+
     f = open('eshells.dat','rb')
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -7957,7 +7957,7 @@ def energetics_kp_kz_n_old(start_time=-1,end_time=-1):
           time = np.append(time,input)
       else:
           continue_read=0
- 
+
     f.close()
 
     if start_time==-1.0:
@@ -7970,7 +7970,7 @@ def energetics_kp_kz_n_old(start_time=-1,end_time=-1):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
 
     #Order from eshells file
@@ -7991,7 +7991,7 @@ def energetics_kp_kz_n_old(start_time=-1,end_time=-1):
     HD=np.zeros((num_shells,par['nkz0'],par['nv0']))
 
     #es_in=np.zeros((par['nv0'],par['nkz0'],num_shells))
-    
+
     ntot=num_shells*par['nkz0']*par['nv0']
     mem_tot=7*ntot*8+num_shells*par['nkz0']*8
 
@@ -8035,7 +8035,7 @@ def energetics_kp_kz_n_old(start_time=-1,end_time=-1):
     DR=DR/float(ntime)
 
     shell_grid=np.arange(num_shells+1)+0.5
-    
+
     for n in range(par['nv0']):
         CDtemp=(CD[:,:,n]/FE[:,:,n])
         CDtemp[:,par['nkz0']/2]=0.0
@@ -8190,14 +8190,14 @@ def nlt_test(start_time=-1,end_time=-1,file_name='nlt_shells.dat'):
     if not os.path.isfile(file_name):
         print "File does not exist!:", file_name
         stop
-    
+
     f = open(file_name,'rb')
     ntot=num_shells**2*(par['nkz0']/2)**2
     mem_tot=ntot*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -8206,7 +8206,7 @@ def nlt_test(start_time=-1,end_time=-1,file_name='nlt_shells.dat'):
           print input
       else:
           continue_read=0
- 
+
     f.close()
 
     #print "time",time
@@ -8221,7 +8221,7 @@ def nlt_test(start_time=-1,end_time=-1,file_name='nlt_shells.dat'):
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    print "ntime",ntime 
+    print "ntime",ntime
 
     nlt_shells_t=np.zeros((num_shells,ntime))
 
@@ -8236,7 +8236,7 @@ def nlt_test(start_time=-1,end_time=-1,file_name='nlt_shells.dat'):
         nlt_shells_t[:,i-istart]=np.sum(np.sum(np.sum(nlt_temp,axis=3),axis=2),axis=1)
         f.close()
 
-    nlt_in=nlt_in/(float(ntime)) 
+    nlt_in=nlt_in/(float(ntime))
     nlt_in=np.reshape(nlt_in,(num_shells,num_shells,par['nkz0']/2,par['nkz0']/2),order='F')
 
     #nlt_kperp=np.sum(np.sum(nlt_in,axis=3),axis=2)
@@ -8280,14 +8280,14 @@ def nlt_test_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,s
     if not os.path.isfile(file_name):
         print "File does not exist!:", file_name
         stop
-    
+
     f = open(file_name,'rb')
     ntot=num_shells**2*(par['nkz0']/2)**2
     mem_tot=ntot*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -8296,7 +8296,7 @@ def nlt_test_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,s
           #print input
       else:
           continue_read=0
- 
+
     f.close()
 
     #print "time",time
@@ -8311,7 +8311,7 @@ def nlt_test_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,s
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    #print "ntime",ntime 
+    #print "ntime",ntime
 
     nlt_shells_t=np.zeros((num_shells,ntime))
 
@@ -8326,7 +8326,7 @@ def nlt_test_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,s
         nlt_shells_t[:,i-istart]=np.sum(np.sum(np.sum(nlt_temp,axis=3),axis=2),axis=1)
         f.close()
 
-    nlt_in=nlt_in/(float(ntime)) 
+    nlt_in=nlt_in/(float(ntime))
     nlt_in=np.reshape(nlt_in,(num_shells,num_shells,par['nkz0']/2,par['nkz0']/2),order='F')
 
     shell_grid=np.arange(num_shells+1)+0.5
@@ -8356,14 +8356,14 @@ def nlt_out_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,sh
     if not os.path.isfile(file_name):
         print "File does not exist!:", file_name
         stop
-    
+
     f = open(file_name,'rb')
     ntot=num_shells**2*(par['nkz0']/2)**2
     mem_tot=ntot*8
     time=np.empty(0)
     continue_read=1
     i=0
-    while (continue_read): 
+    while (continue_read):
       f.seek(i*(mem_tot+8))
       i=i+1
       input=np.fromfile(f,dtype='float64',count=1)
@@ -8372,7 +8372,7 @@ def nlt_out_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,sh
           #print input
       else:
           continue_read=0
- 
+
     f.close()
 
     #print "time",time
@@ -8387,7 +8387,7 @@ def nlt_out_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,sh
     istart=np.argmin(abs(time-start_time))
     iend=np.argmin(abs(time-end_time))
     ntime=iend-istart+1
-    #print "ntime",ntime 
+    #print "ntime",ntime
 
     nlt_shells_t=np.zeros((num_shells,ntime))
 
@@ -8402,7 +8402,7 @@ def nlt_out_l_kz(start_time=-1,end_time=-1,file_name='nlt_shells.dat',kz_in=1,sh
         nlt_shells_t[:,i-istart]=np.sum(np.sum(np.sum(nlt_temp,axis=3),axis=2),axis=1)
         f.close()
 
-    nlt_in=nlt_in/(float(ntime)) 
+    nlt_in=nlt_in/(float(ntime))
     nlt_in=np.reshape(nlt_in,(num_shells,num_shells,par['nkz0']/2,par['nkz0']/2),order='F')
 
     shell_grid=np.arange(num_shells+1)+0.5
@@ -8533,10 +8533,10 @@ def my_color_map2():
 
 def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
     nb = int(raw_input('Introduce number of comparisons: '))
- 
+
     diss0_kx = np.zeros((nkx0_red,2,nb))
     diss0_ky = np.zeros((nky0_red/2,2,nb))
-    diss0_kz = np.zeros((nkz0_red/2,2,nb)) 
+    diss0_kz = np.zeros((nkz0_red/2,2,nb))
     drive0_kx = np.zeros((nkx0_red,2,nb))
     drive0_ky = np.zeros((nky0_red/2,2,nb))
     drive0_kz = np.zeros((nkz0_red/2,2,nb))
@@ -8546,9 +8546,9 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
     hyp0_kx = np.zeros((nkx0_red,2,nb))
     hyp0_ky = np.zeros((nky0_red/2,2,nb))
     hyp0_kz = np.zeros((nkz0_red/2,2,nb))
-    d_arr = ['r','b','g','y','m','c','k','r+','b+','g+','y+','m+','c+','k+'] 
-    for i in range(nb):     
-        diagdir = raw_input('Introduce the directories in order: ') 
+    d_arr = ['r','b','g','y','m','c','k','r+','b+','g+','y+','m+','c+','k+']
+    for i in range(nb):
+        diagdir = raw_input('Introduce the directories in order: ')
         diss0_kx_name = '/gpfs/ipp/abanonna/dna/' + diagdir + '/diss0_kx_red.dat'
         diss0_kx[:,:,i] = np.loadtxt(diss0_kx_name)
         diss0_ky_name = '/gpfs/ipp/abanonna/dna/' + diagdir + '/diss0_ky_red.dat'
@@ -8573,10 +8573,10 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
         hyp0_ky[:,:,i] = np.loadtxt(hyp0_ky_name)
         hyp0_kz_name = '/gpfs/ipp/abanonna/dna/' + diagdir + '/hyp0_kz_red.dat'
         hyp0_kz[:,:,i] = np.loadtxt(hyp0_kz_name)
-  
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         #log-log plot
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
@@ -8587,7 +8587,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(drive0_kx[:,0,i],drive0_kx[:,1,i],d_arr[i])
@@ -8597,7 +8597,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         #log-log plot
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
@@ -8608,7 +8608,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(diss0_kx[:,0,i],diss0_kx[:,1,i],d_arr[i])
@@ -8616,10 +8616,10 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
         plt.title('Dissipation')
     plt.show()
 
-    
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         #log-log plot
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
@@ -8627,10 +8627,10 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
         plt.title('Free energy')
         plt.xlabel(r'$k_x\rho_i$',size=13)
     plt.show()
- 
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(entk0_kx[:,0,i],entk0_kx[:,1,i],d_arr[i])
@@ -8641,7 +8641,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         #log-log plot
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
@@ -8649,10 +8649,10 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
         plt.title('Hyperdiffusion')
         plt.xlabel(r'$k_x\rho_i$',size=13)
     plt.show()
- 
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(hyp0_kx[:,0,i],hyp0_kx[:,1,i],d_arr[i])
@@ -8660,21 +8660,21 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
         plt.title('Hyperdiffusion')
     plt.show()
 
-   
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):  
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(drive0_ky[:,0,i],drive0_ky[:,1,i],d_arr[i],basex=10,basey=10)
         plt.title('Drive')
         plt.xlabel(r'$k_y\rho_i$',size=13)
     plt.show()
- 
+
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(drive0_ky[:,0,i],drive0_ky[:,1,i],d_arr[i])
@@ -8685,17 +8685,17 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):  
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(diss0_ky[:,0,i],-1*diss0_ky[:,1,i],d_arr[i],basex=10,basey=10)
         plt.title('Dissipation')
         plt.xlabel(r'$k_y\rho_i$',size=13)
     plt.show()
- 
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(diss0_ky[:,0,i],diss0_ky[:,1,i],d_arr[i])
@@ -8706,17 +8706,17 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):  
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(entk0_ky[:,0,i],entk0_ky[:,1,i],d_arr[i],basex=10,basey=10)
         plt.title('Free energy')
         plt.xlabel(r'$k_y\rho_i$',size=13)
     plt.show()
- 
+
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(entk0_ky[:,0,i],entk0_ky[:,1,i],d_arr[i])
@@ -8727,18 +8727,18 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):  
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(hyp0_ky[:,0,i],-1*hyp0_ky[:,1,i],d_arr[i],basex=10,basey=10)
         plt.title('Hyperdiffusion')
         plt.xlabel(r'$k_y\rho_i$',size=13)
     plt.show()
- 
+
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(hyp0_ky[:,0,i],hyp0_ky[:,1,i],d_arr[i])
@@ -8749,7 +8749,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):     
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(drive0_kz[:,0,i],drive0_kz[:,1,i],d_arr[i],basex=10,basey=10)
@@ -8759,7 +8759,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(drive0_kz[:,0,i],drive0_kz[:,1,i],d_arr[i])
@@ -8768,7 +8768,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
     plt.show()
 
     fig=plt.gcf()
-    for i in range(nb):     
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(diss0_kz[:,0,i],-1*diss0_kz[:,1,i],d_arr[i],basex=10,basey=10)
@@ -8778,7 +8778,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(diss0_kz[:,0,i],diss0_kz[:,1,i],d_arr[i])
@@ -8789,7 +8789,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):     
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(entk0_kz[:,0,i],entk0_kz[:,1,i],d_arr[i],basex=10,basey=10)
@@ -8799,7 +8799,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(entk0_kz[:,0,i],entk0_kz[:,1,i],d_arr[i])
@@ -8809,7 +8809,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb):     
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.22)
         plt.loglog(hyp0_kz[:,0,i],-1*hyp0_kz[:,1,i],d_arr[i],basex=10,basey=10)
@@ -8819,7 +8819,7 @@ def les_comp(nkx0_red=32,nky0_red=64,nkz0_red=32):
 
     plt.figure(figsize=(4.5,3.0))
     fig=plt.gcf()
-    for i in range(nb): 
+    for i in range(nb):
         fig.subplots_adjust(left=0.2)
         fig.subplots_adjust(bottom=0.2)
         plt.plot(hyp0_kz[:,0,i],hyp0_kz[:,1,i],d_arr[i])
@@ -8902,7 +8902,7 @@ def test_landau_vs_nl(ikx0=0,start_time=-1.0,end_time=-1.0,num_ky=-1,num_kz=-1,s
         istart=np.argmin(abs(time-start_time))
         iend=np.argmin(abs(time-end_time))
         ntime=iend-istart+1
-        
+
         ipstart=np.argmin(abs(ptime-start_time))
         ipend=np.argmin(abs(ptime-end_time))
         nptime=ipend-ipstart+1
@@ -9051,9 +9051,9 @@ def test_landau_vs_nl(ikx0=0,start_time=-1.0,end_time=-1.0,num_ky=-1,num_kz=-1,s
             plt.legend()
             plt.show()
 
-                
 
-                
+
+
                 #np.savetxt(par['diagdir'][1:-1]+'/landau_test'+'/phasemix_kx'+str(kx)+'ky'+str(ky)+'kz'+str(kz),phasemix)
                 #np.savetxt(par['diagdir'][1:-1]+'/landau_test'+'/omnterm_kx'+str(kx)+'ky'+str(ky)+'kz'+str(kz),omnterm)
                 #np.savetxt(par['diagdir'][1:-1]+'/landau_test'+'/omtflr_kx'+str(kx)+'ky'+str(ky)+'kz'+str(kz),omtflr)
@@ -9061,7 +9061,7 @@ def test_landau_vs_nl(ikx0=0,start_time=-1.0,end_time=-1.0,num_ky=-1,num_kz=-1,s
                 #np.savetxt(par['diagdir'][1:-1]+'/landau_test'+'/nlterm_kx'+str(kx)+'ky'+str(ky)+'kz'+str(kz),nlterm)
 
 def test_mode_growth():
-    
+
     time=get_time_from_fmom3d()
     phi2kznot0=np.zeros(len(time))
     phi2kx0=np.zeros(len(time))
@@ -9266,7 +9266,7 @@ def test_all_rhs_terms(kx,ky,kz,herm_n,start_time=-1.0,end_time=-1.0,calc_nl=Tru
     fenergy2=np.zeros(ntime2)
     diss2=np.zeros(ntime2)
     time02=np.zeros(ntime2)
-    
+
     ntot=par['nkx0']*par['nky0']*par['nkz0']
     mem_tot=ntot*8
 
@@ -9520,10 +9520,10 @@ def get_lin_matrix(kx,ky,kz,verbose=False,test_extra=False,zamp=1.0):
     for i in range(par['nv0']):
         if verbose:
             print i
-        g_1[:]=0.0        
+        g_1[:]=0.0
         g_1[i]=1.0+0J
         mat[:,i]=get_rhs_lin_single_k(g_1,0,kx,ky,kz,test_extra=test_extra,zamp=zamp)
-    return mat 
+    return mat
 
 def get_ev_spectrum(mat,show_plots=False,solver=1,plot_evecs=False,num_evecs_plot=8):
     evecs=np.empty((par['nv0'],par['nv0']),dtype='complex64')
@@ -9788,11 +9788,11 @@ def show_hyps():
     #nu_kzcomparison=np.empty((par['nkz0']-2)/2+1)
     nu_kzcomparison=np.empty((par['nkz0']))
     nu_kxcomparison=np.empty(par['nkx0'])
-    
+
     nu_kxcomparison[:]=par['nu']
     nu_kycomparison[:]=par['nu']
     nu_kzcomparison[:]=par['nu']
-    
+
     coll=par['nu']*herm_grid
     #print coll
     hyp_coll=par['hyp_v']*(herm_grid/np.float(par['nv0']-1))**par['hypv_order']
@@ -9802,16 +9802,16 @@ def show_hyps():
     print (par['nu']/par['hyp_v'])**(1.0/float(par['hypv_order']))*par['nv0']
 
 
-    
+
     plt.plot(herm_grid,coll,'x-',label='Collisions')
     plt.plot(herm_grid,hyp_coll,'+-',label='Hyper Collisions')
     plt.legend(loc='upper left')
     plt.xlabel('Hermite n')
     plt.title('Collisions and Hyper Collisions')
     plt.show()
-    
+
     print par['hypx_order']
-    
+
     #print "test"
     #print np.size(nu_kxcomparison)
     #print nu_kxcomparison
@@ -9832,8 +9832,8 @@ def show_hyps():
     #plt.legend(loc='upper left')
     #plt.xlabel(r'$k_x \rho_i$',size=18)
     #plt.show()
-    
-    
+
+
     hypy_out=par['hyp_y']*(kygrid/kymax)**par['hypy_order']
     plt.plot(kygrid,hypy_out,label='Hyp_y')
     plt.plot(kygrid,nu_kycomparison,label='Minimum Coll')
@@ -9846,7 +9846,7 @@ def show_hyps():
     #plt.legend(loc='upper left')
     #plt.xlabel(r'$k_y \rho_i$',size=18)
     #plt.show()
-    
+
     hypz_out=par['hyp_z']*(kzgrid/kzmax)**par['hypz_order']
     plt.plot(kzgrid,hypz_out,label='Hyp_z')
     plt.plot(kzgrid,nu_kzcomparison,label='Minimum Coll')
@@ -9896,16 +9896,16 @@ def plot_D_kperp():
     plt.plot(ky[0:par['nky0']/2],D0,label='D0')
     plt.legend(loc='upper right')
     plt.show()
-    plt.plot(ky[0:par['nky0']/2],J0p*D0,label='J0D0') 
+    plt.plot(ky[0:par['nky0']/2],J0p*D0,label='J0D0')
     plt.legend(loc='upper right')
     plt.show()
     plt.plot(ky[0:par['nky0']/2],J0p,label='J0')
     plt.plot(ky[0:par['nky0']/2],Gam0,label='Gam0')
     plt.plot(ky[0:par['nky0']/2],D0,label='D0')
-    plt.plot(ky[0:par['nky0']/2],J0p*D0,label='J0D0') 
+    plt.plot(ky[0:par['nky0']/2],J0p*D0,label='J0D0')
     plt.legend(loc='upper right')
     plt.show()
-                
+
 def plot_Gam0():
     kx,ky,kz,herm=get_grids()
     Gam0=np.arange(par['nky0']/2,dtype='float64')
@@ -9929,7 +9929,7 @@ def plot_Gam0():
     plt.plot(ky[0:par['nky0']/2],term0+term1+term2+term3,label='4 terms')
     plt.legend(loc='upper right')
     plt.show()
- 
+
 def plot_model_spect():
     kx,ky,kz,herm=get_grids()
     Gam0=np.arange(par['nky0']/2,dtype='float64')
@@ -9988,7 +9988,7 @@ def test_nuno_closure(g_in,kz):
     #plt.loglog(np.abs(np.real(g_test)),'x',label='abs real g_test')
     #plt.legend()
     #plt.show()
- 
+
 def test_closure(kx,ky,kz):
     #kx,ky,kz,hg=get_grids()
     if_closure=par['nuno_closure']
@@ -10021,5 +10021,3 @@ def test_closure(kx,ky,kz):
     plt.scatter(a2,b2,marker='+',label='evs wc')
     plt.legend()
     plt.show()
-
-
