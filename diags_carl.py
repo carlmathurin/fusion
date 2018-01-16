@@ -95,11 +95,11 @@ for i in range(60):
          /(n[i]**(.25)*D**(.5)))\
         *((-(1j*np.sign(kz[j])))**n[i])
     print 'result  =', result
-    Cap2G[i] = np.conjugate(result)**2
+    Cap2G[i] = result * np.conjugate(result)
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
 print 'Cap2G = ', Cap2G
-plt.loglog(n,np.real(Cap2G[:]))
+plt.loglog(n[1:60],np.real(Cap2G[:]))
 plt.title('Cap G ')
 plt.xlabel('Hermite n')
 plt.ylabel('CapG')
