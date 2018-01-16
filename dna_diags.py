@@ -203,7 +203,7 @@ def read_parameters2():
         print "!!!!!!!!!!!!!!!!!!!!!!!!!!"
         print "!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-def get_time_from_gout(swap_endian=False):
+def get_time_from_gout2(swap_endian=False):
    """Returns time array taken from g_out.dat"""
    f = open('g_out.dat','rb')
    ntot=par['nkx0']*par['nky0']*par['nkz0']*par['nv0']
@@ -503,7 +503,7 @@ def energy_operator_single_k(g_in,kx_in,ky_in,which_part=0):
 
     return E_op
 
-def get_grids():
+def get_grids2():
     """Returns kx,ky,kz,Hermite grids in the same form as used in the code \n
     kxgrid = 0, kxmin, . . . kxmax \n
     kygrid = 0, kymin, . . . kymax, kymax+kymin, -kymax, . . . -kymin"""
@@ -523,7 +523,7 @@ def get_grids():
     kzgrid[par['nkz0']/2]=par['nkz0']/2*par['kzmin']
     return kxgrid,kygrid,kzgrid,herm_grid
 
-def read_time_step_g(which_itime,swap_endian=False):
+def read_time_step_g2(which_itime,swap_endian=False):
    """Reads a time step from g_out.dat.  Time step determined by \'which_itime\'"""
    f = open('g_out.dat','rb')
    ntot=par['nkx0']*par['nky0']*par['nkz0']*par['nv0']
