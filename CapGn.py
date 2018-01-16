@@ -50,9 +50,9 @@ o = 0
 
 print 'kz :', kz
 print 'n :', n
-print 'G :',Cap2G[:,10]
+print 'G :',Cap2G[:,4]
 for i in range(100):
-    if Cap2G[i,10] > 0:
+    if Cap2G[i,4] > 0:
         o = o+1
 print 'iter =', o
 plt.show()
