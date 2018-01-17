@@ -39,8 +39,8 @@ ntime=iend-istart+1
 #testing time =>1/27
 
 entn_sum=np.zeros((par['nv0'],11,16),dtype='float')
-entnp_sum=np.zeros((par['nv0'],11,11),dtype='float')
-entnm_sum=np.zeros((par['nv0'],11,11),dtype='float')
+entnp_sum=np.zeros((par['nv0'],11,16),dtype='float')
+entnm_sum=np.zeros((par['nv0'],11,16),dtype='float')
 
 
 for i in range(istart,iend+1):
@@ -136,5 +136,8 @@ for j in range(15):
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
+plt.loglog(herm_grid, 10*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, 10**(-2.7)*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.legend(loc='lower left')
 plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
 plt.show()
