@@ -25,7 +25,8 @@ k_bin=np.empty(15)
 counter = np.zeros(15)
 
 xmax = par['nkx0']
-kzind = 2*par['nkz0']/20
+kzind = (2*par['nkz0']/20)
+print kzgrid
 
 
 end_time=time[len(time)-1]
@@ -136,8 +137,8 @@ for j in range(15):
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
-plt.loglog(herm_grid, 10*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
-plt.loglog(herm_grid, 10**(-2.7)*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, 10*herm_grid**(-1),'--',basex=10,basey=10,label='n^(-1)')
+plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1),'--',basex=10,basey=10,label='n^(-1)')
 plt.legend(loc='lower left')
 plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
 plt.show()
