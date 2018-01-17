@@ -85,7 +85,7 @@ Cap2G = np.empty([64])
 j=10
 for i in range(60):
         #print 'N =', n[i]
-    nu = .05 #nuu/kz[j]
+    nu = .00 #.05
     D = ((n[i]*nu**2)/4 + 1)**(.5)
     npl = D + n[i]**(.5)*nu/2
     print 'nu = ', nu
