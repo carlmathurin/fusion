@@ -79,13 +79,14 @@ nuu =.002
 size = np.shape(n)
 CapG = np.empty([64])
 Cap2G = np.empty([64])
+Cap2G2 = np.empty([64])
 
 #for j in range(len(kz)):
     #print 'Kz =', kz[j]
 j=10
 for i in range(60):
         #print 'N =', n[i]
-    nu = .00 #.05
+    nu = .05 #.05
     D = ((n[i]*nu**2)/4 + 1)**(.5)
     npl = D + n[i]**(.5)*nu/2
     print 'nu = ', nu
@@ -99,6 +100,22 @@ for i in range(60):
     Cap2G[i] = result * np.conjugate(result)
     #print (-1j*np.sign(kz[j]))**n[i]
     #print (-1*np.sign(kz[j]))**n[i]
+for i in range(60):
+            #print 'N =', n[i]
+        nu = .00 #.05
+        D = ((n[i]*nu**2)/4 + 1)**(.5)
+        npl = D + n[i]**(.5)*nu/2
+        print 'nu = ', nu
+        result = (np.exp((n[i]**(.5))*\
+            D/(np.absolute(nu))) \
+            *(npl)**((-(np.sign(kz[j])))*(n[i]+2*nu**(-2)-.5))\
+             #(npl)**((1)*(n[i]+2*nu**(-2)-.5))\
+             /(n[i]**(.25)*D**(.5)))\
+            *((-(1j*np.sign(kz[j])))**n[i])
+        print 'result  =', result
+        Cap2G2[i] = result * np.conjugate(result)
+        #print (-1j*np.sign(kz[j]))**n[i]
+        #print (-1*np.sign(kz[j]))**n[i]
 Gsize = np.size(Cap2G)
 n1 = np.empty(Gsize)
 print 'Cap2G = ', Cap2G
@@ -106,10 +123,11 @@ for i in range(64):
     n1[i] = i
 print 'size of G = ', np.size(Cap2G)
 print 'size of n1 =', np.size(n1)
-plt.loglog(n1,np.real(Cap2G[:]))
+plt.loglog(n1,np.real(Cap2G2[:]))
 plt.title('Cap G ')
 plt.xlabel('Hermite n')
 plt.ylabel('CapG')
+plt.legend()
 
 plt.show()
 
