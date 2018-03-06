@@ -76,8 +76,8 @@ for k in range(10):
     print 'plot_t =', np.shape(plot_t)
 
     for i in range(len(shape)):
-        for j in range(len(herm_grid)):
-            plot_t[i] = (1j*np.sign(kzgrid[i]))**herm_grid[j] * plot[i]
+       # for j in range(len(herm_grid)):
+       plot_t[i] = (1j*np.sign(kzgrid[i]))**herm_grid[i] * plot[i]
 
     plot_tp = np.empty(shape)
     plot_tm = np.empty(shape)
