@@ -176,6 +176,10 @@ plt.title(plabel+ '(k_perp sum (kz =' + str(kzgrid[kzind]) + '))')
 plt.legend(loc='lower left')
 plt.show()
 
+fig1 = plt.figure()
+ax1 = plt.subplot(111)
+box = ax1.get_position()
+ax.set_position([box.x0, box.y0 + box.height * .01, box.width, box.height * .9])
 
 for j in range(15):
 #kz0=kzgrid[k*par['nkz0']/20]
@@ -186,8 +190,8 @@ for j in range(15):
     plt.legend(loc='lower left')
 plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
-plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
-plt.legend(loc='lower left')
+plt.loglog(herm_grid, (10**-2)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.legend(loc='upper center', bbox_to_anchor=(.5,-.05))
 plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
 plt.show()
 
