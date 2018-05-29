@@ -183,17 +183,31 @@ plt.show()
 
 hermy = []
 enm = []
+m = np.zeros(15)
+b = np.zeros(15)
+counter = 0
 
-for i in range(60):
-     if herm_grid[i] > 0:
-          if entnp_sum[i,67,4] > 0:
-               lomein = np.log(entnp_sum[i,67,4])
-               friedrice = np.log(herm_grid[i])
-               hermy.append(friedrice)
-               enm.append(lomein)
+for j in range(15):
+    for i in range(60):
+        if herm_grid[i] > 0:
+            if entnp_sum[i,67,j] > 0:
+                lomein = np.log(entnp_sum[i,67,j])
+                friedrice = np.log(herm_grid[i])
+                hermy.append(friedrice)
+                enm.append(lomein)
+            if entnp_sum[i,67,j] == 0:
+                counter = counter + 1
 
-m,b = polyfit(hermy,enm,1)
+    m[j],b[j] = polyfit(hermy,enm,1)
 
+m1 = 0
+b1 = 0
+for j in range(15):
+    m1 = m1 + m[j]
+    b1 = b1 + b[j]
+
+m1 = m1/ (15 - counter)
+b1 = b1/(15 - counter)
 for j in range(15):
     #print prefactor
     #print prefactor*entn_sum[:,k]
@@ -211,13 +225,13 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, (10**-2.25)*herm_grid**(m),'--',basex=10,basey=10,label=('n^(%.4f)'% m))
+plt.loglog(herm_grid, (10**-b1)*herm_grid**(m1),'--',basex=10,basey=10,label='n^(-1.75)')
+plt.loglog(herm_grid, (10**-b[4])*herm_grid**(m[4]),'--',basex=10,basey=10,label=('n^(%.4f)'% m))
 plt.legend(loc='lower left')
 plt.show()
 ## slope for E+ ~1.75
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-""" 
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~poly fit~~~~~~~~~~~~~~~~~~~~~~~
 print np.shape(entnm_sum)
 print "entnm_sum:" ,entnm_sum[:,kzind,10]
