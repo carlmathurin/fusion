@@ -162,12 +162,15 @@ for j in range(20):
 
     m[j],b[j] = polyfit(hermy,enm,1)
 
-print 'slopes:', m
+print np.size(m) ,'slopes:', m
+print 'counter:', counter
 m1 = 0
 for j in range(20):
     m1 = m1 + m[j]
 
 m1 = m1/ (20 - counter)
+print 'm1 =', m1
+
 """
 plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
