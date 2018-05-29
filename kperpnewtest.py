@@ -147,10 +147,6 @@ enm = []
 m = np.zeros(20)
 b = np.zeros(20)
 counter = 0
-kzs = np.zeros(20)
-
-
-    kzs[j] = j*par['nkz0']/20
 
 for j in range(20):
     for i in range(60):
