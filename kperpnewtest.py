@@ -162,6 +162,7 @@ for j in range(20):
 
     m[j],b[j] = polyfit(hermy,enm,1)
 
+print 'slopes:', m
 m1 = 0
 for j in range(20):
     m1 = m1 + m[j]
