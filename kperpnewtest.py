@@ -144,28 +144,33 @@ entnm_sum=entnm_sum/float(ntime)
 #polyfit
 hermy = []
 enm = []
-m = np.zeros(15)
-b = np.zeros(15)
+m = np.zeros(20)
+b = np.zeros(20)
 counter = 0
+kzs = np.zeros(20)
 
-for j in range(15):
+
+    kzs[j] = j*par['nkz0']/20
+
+for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
-            if entn_sum[i,kzind,j] > 0:
-                lomein = np.log(entn_sum[i,kzind,j])
+            kzs = j*par['nkz0']/20
+            if entn_sum[i,kzs,6] > 0:
+                lomein = np.log(entn_sum[i,kzs,6])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
-            if entn_sum[i,kzind,j] == 0:
+            if entn_sum[i,kzs,6] == 0:
                 counter = counter + 1
 
     m[j],b[j] = polyfit(hermy,enm,1)
 
 m1 = 0
-for j in range(15):
+for j in range(20):
     m1 = m1 + m[j]
 
-m1 = m1/ (15 - counter)
+m1 = m1/ (20 - counter)
 """
 plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
@@ -180,10 +185,11 @@ ax1 = plt.subplot(111)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
-for j in range(len(kzgrid)):
+for j in range(20):
 #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entn_sum[:,j,6],basex=10,basey=10,label=\
-        ' (kz=' + str(kzgrid[j])+')')
+    k=j*par['nkz0']/20
+    plt.loglog(herm_grid,prefactor*entn_sum[:,k,6],basex=10,basey=10,label=\
+        '(k_z='+str(kzgrid[j*par['nkz0']/20]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
