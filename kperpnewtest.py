@@ -141,6 +141,7 @@ entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
 #polyfit
 hermy = []
 enm = []
@@ -168,15 +169,6 @@ for j in range(20):
 m1 = m1/ (20)
 print 'm1 =', m1
 
-"""
-plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
-
-plt.xlabel('Hermite n')
-plt.ylabel(plabel)
-plt.title(plabel+ '(k_perp sum (kz =' + str(kzgrid[kzind]) + '))')
-plt.legend(loc='lower left')
-plt.show()
-"""
 fig1 = plt.figure()
 ax1 = plt.subplot(111)
 box = ax1.get_position()
@@ -196,7 +188,7 @@ plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz sum [k_perp = ' + str(k_bin[6])+'])')
 plt.show()
-
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -307,7 +299,7 @@ hermy = []
 enm = []
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
+
 entp_sm = 0
 entm_sm = 0
 dummyx = [0,1]
@@ -337,4 +329,3 @@ ax.set_position([box.x0, box.y0 + box.height*.1, box.width, box.height*.9])
 ax.legend(loc='upper center', bbox_to_anchor=(.5,-.05))
 plt.title('Total + and - Entropy')
 plt.show()
-"""
