@@ -157,18 +157,15 @@ for j in range(20):
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
-            if entn_sum[i,kzs,6] == 0:
-                counter = counter + 1
 
     m[j],b[j] = polyfit(hermy,enm,1)
 
 print np.size(m) ,'slopes:', m
-print 'counter:', counter
 m1 = 0
 for j in range(20):
     m1 = m1 + m[j]
 
-m1 = m1/ (20 - counter)
+m1 = m1/ (20)
 print 'm1 =', m1
 
 """
