@@ -208,6 +208,9 @@ for j in range(15):
 
 m1 = m1/ (15 - counter)
 b1 = b1/(15 - counter)
+m2 = m[4]
+b2 = b[4]
+
 for j in range(15):
     #print prefactor
     #print prefactor*entn_sum[:,k]
@@ -226,7 +229,7 @@ for j in range(15):
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.loglog(herm_grid, (10**-b1)*herm_grid**(m1),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, (10**-b[4])*herm_grid**(m[4]),'--',basex=10,basey=10,label=('n^(%.4f)'% m))
+plt.loglog(herm_grid, (10**-b2)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m))
 plt.legend(loc='lower left')
 plt.show()
 ## slope for E+ ~1.75
