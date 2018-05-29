@@ -48,7 +48,23 @@ for i in range(istart,iend+1):
     print 'time=',time[i],' of ',time[iend]
     gt0=dd.read_time_step_g(i)
     gt0=np.reshape(gt0,(par['nkx0'],par['nky0'],par['nkz0'],par['nv0']),order='F')
-
+    dist=gt0[:,:,:,:]
+    shape = np.shape(dist)
+    g_t = np.empty(shape)
+    for v in range(len(kx)):
+        for w in range(len(ky)):
+            for b in range(len(kzgrid)):
+                for j in range(len(herm_grid)):
+                    g_t[v,w,b,j] = (1j*np.sign(kzgrid[b]))**herm_grid[j] * dist[v,w,b,j]
+    g_tp = np.empty(shape)
+    g_tm = np.empty(shape)
+    for v in range(len(kx)):
+        for w in range(len(ky)):
+            for b in range(len(kzgrid)):
+                for j in range(len(herm_grid)+1):
+                    if j < (len(herm_grid)-1):
+                        g_tp[v,w,b,j]= (g_t[v,w,b,j]+g_t[v,w,b,j+1])/2
+                        g_tm[v,w,b,j]= (g_t[v,w,b,j]-g_t[v,w,b,j+1])/2
 
 for i in range(15):
     k_bin[i]= .15*i
@@ -108,16 +124,18 @@ for i in range(xmax):
 
 
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j,kzind)
+        entnp_sum[:,kzind,t] = entn_sump[:,kzind,t] + dd.get_entropy_hermite2(g_tp,i,j,kzind)
+        entnm_sum[:,kzind,t] = entn_summ[:,kzind,t] + dd.get_entropy_hermite2(g_tm,i,j,kzind)
 
 print 'counter: ',counter
-print np.shape(entn_sum)
-print 'entn sum:' , entn_sum
 
 prefactor=np.empty(par['nv0'])
 prefactor[:]=1.0
 plabel='Entropy'
 
 entn_sum=entn_sum/float(ntime)
+entnp_sum=entnp_sum/float(ntime)
+entnm_sum=entnm_sum/float(ntime)
 
 plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
@@ -141,4 +159,50 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.legend(loc='lower left')
 plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
+plt.show()
+
+#plus and minus terms
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~
+for k in range(10):
+    #print prefactor
+    #print prefactor*entn_sum[:,k]
+    kz0=kzgrid[k*par['nkz0']/20]
+    #plots.append(prefactor*entn_sum[:,k])
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,k],basex=10,basey=10,label=\
+              plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+    plt.xlabel('Hermite n')
+    plt.ylabel(plabel)
+    plt.title('Entropy+')
+    plt.legend(loc='lower left')
+temp=prefactor*entn_sum[20,10]
+temp=temp/(herm_grid**(-1))[20]
+#plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
+temp=prefactor*entn_sum[20,10]
+temp=temp/(herm_grid**(-1.5))[20]
+#plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
+plt.loglog(herm_grid, (10)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-2)')
+plt.loglog(herm_grid, (10**-2.5)*herm_grid**(-.5),'--',basex=10,basey=10,label='n^(-.5)')
+plt.legend(loc='lower left')
+plt.show()
+
+for k in range(10):
+    #print prefactor
+    #print prefactor*entn_sum[:,k]
+    kz0=kzgrid[k*par['nkz0']/20]
+    #plots.append(prefactor*entn_sum[:,k])
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,k],basex=10,basey=10,label=\
+              plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+    plt.xlabel('Hermite n')
+    plt.ylabel(plabel)
+    plt.title('Entropy-')
+    plt.legend(loc='lower left')
+temp=prefactor*entn_sum[20,10]
+temp=temp/(herm_grid**(-1))[20]
+#plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
+temp=prefactor*entn_sum[20,10]
+temp=temp/(herm_grid**(-1.5))[20]
+#plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
+plt.loglog(herm_grid, 10*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, 10**(-2.7)*herm_grid**(-3/2),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.legend(loc='lower left')
 plt.show()
