@@ -299,7 +299,21 @@ hermy = []
 enm = []
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+fracs = [15, 30, 45, 10]
 
+explode = (0, 0.05, 0, 0)
+
+# Make square figures and axes
+
+the_grid = GridSpec(2, 2)
+
+plt.subplot(the_grid[0, 0], aspect=1)
+
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.title('Total + and - Entropy')
+plt.show()
+"""
 entp_sm = 0
 entm_sm = 0
 dummyx = [0,1]
