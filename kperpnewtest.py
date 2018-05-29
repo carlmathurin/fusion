@@ -14,25 +14,24 @@ import os
 from sys import argv
 import kz3_herm as d2
 
+
 dd.read_parameters()
+
 diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
-
 time = dd.get_time_from_gout()
 kx,ky,kzgrid,herm_grid = dd.get_grids()
-
 start_time=time[100]
-
 k_bin=np.empty(16)
 counter = np.zeros(16)
-
+end_time=time[len(time)-1]
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 xmax = par['nkx0']
 kzind = 2#(*par['nkz0']/20)
 print 'kzgrid', np.shape(kzgrid), kzgrid
 print 'kx' , np.shape(kx), kx
 print 'ky',np.shape(ky), ky
 
-end_time=time[len(time)-1]
 if start_time >= end_time:
     stop
 
@@ -45,6 +44,7 @@ ntime=iend-istart+1
 entn_sum=np.zeros((par['nv0'],96,16),dtype='float')
 entnp_sum=np.zeros((par['nv0'],96,16),dtype='float')
 entnm_sum=np.zeros((par['nv0'],96,16),dtype='float')
+
 print "herm_grid",np.shape(herm_grid)
 
 for i in range(istart,iend+1):
@@ -71,9 +71,6 @@ for i in range(istart,iend+1):
 
 for i in range(16):
     k_bin[i]= .15*i
-
-
-
 
 for i in range(xmax):
     for j in range(xmax):
@@ -140,16 +137,12 @@ print 'counter: ',counter,'kperp',np.shape(k_bin), k_bin
 prefactor=np.empty(par['nv0'])
 prefactor[:]=1.0
 plabel='Entropy'
-
-
 entn_sum=entn_sum/float(ntime)
-# new
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
+
 plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
 plt.xlabel('Hermite n')
@@ -160,8 +153,6 @@ plt.show()
 
 
 for j in range(15):
-#print prefactor
-#print prefactor*entn_sum[:,kzind,]
 #kz0=kzgrid[k*par['nkz0']/20]
     plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,j],basex=10,basey=10,label=\
         plabel+' (k_perp=' + str(k_bin[j])+')')
@@ -173,13 +164,12 @@ plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n
 plt.legend(loc='lower left')
 plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
 plt.show()
-"""
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#plus and minus terms
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~polyfit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+#polyfit
 
 hermy = []
 enm = []
@@ -214,10 +204,7 @@ b2 = b[4]
 print 'm1 =', m1, 'm2 =', m2
 
 for j in range(15):
-    #print prefactor
-    #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
-    #plots.append(prefactor*entn_sum[:,k])
     plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10)#,label=\
               #plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
     plt.xlabel('Hermite n')
@@ -235,9 +222,10 @@ plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^
 plt.legend(loc='lower left')
 plt.show()
 ## slope for E+ ~1.75
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~poly fit~~~~~~~~~~~~~~~~~~~~~~~
+#poly fit~~~~~~~~~~~~~~~~~~~~~~~
 print np.shape(entnm_sum)
 print "entnm_sum:" ,entnm_sum[:,kzind,10]
 print "herm", herm_grid
