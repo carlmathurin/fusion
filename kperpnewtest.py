@@ -230,8 +230,8 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-b1)*herm_grid**(m1),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, (10**-2.25*herm_grid**(m2)),'--',basex=10,basey=10,label=('n^(%.4f)'% m))
+plt.loglog(herm_grid, (10**-b1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-b2)*herm_grid**(m2)),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 plt.legend(loc='lower left')
 plt.show()
 ## slope for E+ ~1.75
