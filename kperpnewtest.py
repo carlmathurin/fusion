@@ -142,6 +142,31 @@ entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#polyfit
+hermy = []
+enm = []
+m = np.zeros(15)
+b = np.zeros(15)
+counter = 0
+
+for j in range(15):
+    for i in range(60):
+        if herm_grid[i] > 0:
+            if entn_sum[i,kzind,j] > 0:
+                lomein = np.log(entn_sum[i,kzind,j])
+                friedrice = np.log(herm_grid[i])
+                hermy.append(friedrice)
+                enm.append(lomein)
+            if entn_sum[i,kzind,j] == 0:
+                counter = counter + 1
+
+    m[j],b[j] = polyfit(hermy,enm,1)
+
+m1 = 0
+for j in range(15):
+    m1 = m1 + m[j]
+
+m1 = m1/ (15 - counter)
 
 plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
@@ -161,6 +186,7 @@ for j in range(15):
     plt.legend(loc='lower left')
 plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='lower left')
 plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
 plt.show()
