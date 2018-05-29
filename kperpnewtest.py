@@ -126,7 +126,6 @@ for i in range(xmax):
              entn_sum[:,b,t] = entn_sum[:,b,t] + dd.get_entropy_hermite2(gt0,i,j,b)
              entnp_sum[:,b,t] = entnp_sum[:,b,t] + dd.get_entropy_hermite2(g_tp,i,j,b)
              entnm_sum[:,b,t] = entnm_sum[:,b,t] + dd.get_entropy_hermite2(g_tm,i,j,b)
-
 """
         entn_sum[:,kzind,t] = entn_sum[:,kzind,t] + dd.get_entropy_hermite2(gt0,i,j,kzind)
         entnp_sum[:,kzind,t] = entnp_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tp,i,j,kzind)
@@ -167,7 +166,7 @@ for j in range(15):
     m1 = m1 + m[j]
 
 m1 = m1/ (15 - counter)
-
+"""
 plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,13],basex=10,basey=10)
 
 plt.xlabel('Hermite n')
@@ -175,16 +174,16 @@ plt.ylabel(plabel)
 plt.title(plabel+ '(k_perp sum (kz =' + str(kzgrid[kzind]) + '))')
 plt.legend(loc='lower left')
 plt.show()
-
+"""
 fig1 = plt.figure()
 ax1 = plt.subplot(111)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
-for j in range(15):
+for j in range(len(kzgrid)):
 #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entn_sum[:,kzind,j],basex=10,basey=10,label=\
-        plabel+' (k_perp=' + str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entn_sum[:,j,6],basex=10,basey=10,label=\
+        ' (kz=' + str(kzgrid[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
@@ -192,7 +191,7 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
-plt.title(plabel+'(k_perp sum [kz = ' + str(kzgrid[kzind])+'])')
+plt.title(plabel+'(kz sum [k_perp = ' + str(k_bin[6])+'])')
 plt.show()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
