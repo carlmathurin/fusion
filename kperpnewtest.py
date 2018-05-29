@@ -179,7 +179,7 @@ plt.show()
 fig1 = plt.figure()
 ax1 = plt.subplot(111)
 box = ax1.get_position()
-ax.set_position([box.x0, box.y0 + box.height * .01, box.width, box.height * .9])
+ax1.set_position([box.x0, box.y0 + box.height * .01, box.width, box.height * .9])
 
 for j in range(15):
 #kz0=kzgrid[k*par['nkz0']/20]
