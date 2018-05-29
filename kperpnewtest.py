@@ -343,3 +343,4 @@ ax.set_position([box.x0, box.y0 + box.height*.1, box.width, box.height*.9])
 ax.legend(loc='upper center', bbox_to_anchor=(.5,-.05))
 plt.title('Total + and - Entropy')
 plt.show()
+"""
