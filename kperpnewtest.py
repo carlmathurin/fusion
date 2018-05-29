@@ -211,6 +211,8 @@ b1 = b1/(15 - counter)
 m2 = m[4]
 b2 = b[4]
 
+print 'm1 =', m1, 'm2 =', m2
+
 for j in range(15):
     #print prefactor
     #print prefactor*entn_sum[:,k]
