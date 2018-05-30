@@ -324,12 +324,12 @@ fracs = [pper, mper]
 the_grid = GridSpec(1, 1)
 plt.subplot(the_grid[0, 0], aspect=1)
 
-textstr = 'Ent + = %.5f\n Ent - = %.5f' %(entp_sm,entm_sm)
+textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
 plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
         verticalalignment='top')
-plt.title('Ent Total='+str(ent_tot)+' k_perp ='+str(k_bin[13]))
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+'kz ='+str(kzgrid[kzind]))
 plt.show()
 
 """
