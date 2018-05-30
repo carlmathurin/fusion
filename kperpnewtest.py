@@ -320,7 +320,7 @@ plt.subplot(the_grid[0, 0], aspect=1)
 textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
-plt.text(0.5, 0.95, textstr, fontsize=14,verticalalignment='top')
+plt.text(0.75, 0.95, textstr, fontsize=14,verticalalignment='top')
 plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
 ######plt.show()
 
@@ -345,7 +345,7 @@ plt.subplot(the_grid[1, 0], aspect=1)
 textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
-plt.text(0.5, 0.95, textstr, fontsize=14,verticalalignment='top')
+plt.text(0.75, 0.95, textstr, fontsize=14,verticalalignment='top')
 plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 entp_sm = 0
@@ -368,7 +368,7 @@ plt.subplot(the_grid[2, 0], aspect=1)
 textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
-plt.text(0.5, 0.95, textstr, fontsize=14,verticalalignment='top')
+plt.text(0.75, 0.95, textstr, fontsize=14,verticalalignment='top')
 plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 4~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
