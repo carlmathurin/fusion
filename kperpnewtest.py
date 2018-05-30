@@ -299,7 +299,7 @@ hermy = []
 enm = []
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-the_grid = GridSpec(3, 2)
+the_grid = GridSpec(3, 1)
 entp_sm = 0
 entm_sm = 0
 dummyx = [0,1]
@@ -370,6 +370,7 @@ textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_to
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
 plt.text(0.05, 0.95, textstr, transform=plt.transAxes, fontsize=14,verticalalignment='top')
 plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 4~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 entp_sm = 0
 entm_sm = 0
@@ -439,6 +440,7 @@ textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_to
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
 plt.text(0.05, 0.95, textstr, transform=plt.transAxes, fontsize=14,verticalalignment='top')
 plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 plt.show()
 """
