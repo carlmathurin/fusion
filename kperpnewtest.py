@@ -322,12 +322,12 @@ fracs = [pper, mper]
 
 # Make square figures and axes
 the_grid = GridSpec(1, 1)
-fig2, ax2 = plt.subplots(the_grid[0, 0])
+plt.subplot(the_grid[0, 0], aspect=1)
 
 textstr = 'Ent + = %.5f, Ent - = %.5f' %(entp_sm,entm_sm)
 
-ax2.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
-ax2.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
         verticalalignment='top', bbox=props)
 plt.title('Ent Total='+str(ent_tot)+' k_perp ='+str(k_bin[13]))
 plt.show()
