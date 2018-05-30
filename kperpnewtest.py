@@ -299,39 +299,146 @@ hermy = []
 enm = []
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+the_grid = GridSpec(3, 2)
 entp_sm = 0
 entm_sm = 0
 dummyx = [0,1]
-
 nmax=len(herm_grid)
 
 for i in range(nmax):
-     entp_sm = entp_sm + entnp_sum[i,kzind,13]
-     entm_sm = entm_sm + entnm_sum[i,kzind,13]
+     entp_sm = entp_sm + entnp_sum[i,11,13]
+     entm_sm = entm_sm + entnm_sum[i,11,13]
 
 ent_tot = entp_sm + entm_sm
-
-fig, ax = plt.subplots()
-
 pper = (entp_sm/ent_tot) * 100
 mper = (entm_sm/ent_tot) * 100
-
 labels = 'Ent +', 'Ent -'
 fracs = [pper, mper]
-
-
 # Make square figures and axes
-the_grid = GridSpec(1, 1)
 plt.subplot(the_grid[0, 0], aspect=1)
 
 textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
-plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
-        verticalalignment='top')
-plt.title('Ent Total, k_perp ='+str(k_bin[13])+'kz ='+str(kzgrid[kzind]))
-plt.show()
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,verticalalignment='top')
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+######plt.show()
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entp_sm = 0
+entm_sm = 0
+dummyx = [0,1]
+nmax=len(herm_grid)
+
+for i in range(nmax):
+     entp_sm = entp_sm + entnp_sum[i,32,13]
+     entm_sm = entm_sm + entnm_sum[i,32,13]
+
+ent_tot = entp_sm + entm_sm
+pper = (entp_sm/ent_tot) * 100
+mper = (entm_sm/ent_tot) * 100
+labels = 'Ent +', 'Ent -'
+fracs = [pper, mper]
+# Make square figures and axes
+plt.subplot(the_grid[1, 0], aspect=1)
+
+textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
+
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,verticalalignment='top')
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entp_sm = 0
+entm_sm = 0
+dummyx = [0,1]
+nmax=len(herm_grid)
+
+for i in range(nmax):
+     entp_sm = entp_sm + entnp_sum[i,80,13]
+     entm_sm = entm_sm + entnm_sum[i,80,13]
+
+ent_tot = entp_sm + entm_sm
+pper = (entp_sm/ent_tot) * 100
+mper = (entm_sm/ent_tot) * 100
+labels = 'Ent +', 'Ent -'
+fracs = [pper, mper]
+# Make square figures and axes
+plt.subplot(the_grid[2, 0], aspect=1)
+
+textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
+
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,verticalalignment='top')
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 4~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entp_sm = 0
+entm_sm = 0
+dummyx = [0,1]
+nmax=len(herm_grid)
+
+for i in range(nmax):
+     entp_sm = entp_sm + entnp_sum[i,41,11]
+     entm_sm = entm_sm + entnm_sum[i,41,11]
+
+ent_tot = entp_sm + entm_sm
+pper = (entp_sm/ent_tot) * 100
+mper = (entm_sm/ent_tot) * 100
+labels = 'Ent +', 'Ent -'
+fracs = [pper, mper]
+# Make square figures and axes
+plt.subplot(the_grid[0, 1], aspect=1)
+
+textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
+
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,verticalalignment='top')
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 5~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entp_sm = 0
+entm_sm = 0
+dummyx = [0,1]
+nmax=len(herm_grid)
+
+for i in range(nmax):
+     entp_sm = entp_sm + entnp_sum[i,41,7]
+     entm_sm = entm_sm + entnm_sum[i,41,7]
+
+ent_tot = entp_sm + entm_sm
+pper = (entp_sm/ent_tot) * 100
+mper = (entm_sm/ent_tot) * 100
+labels = 'Ent +', 'Ent -'
+fracs = [pper, mper]
+# Make square figures and axes
+plt.subplot(the_grid[1, 1], aspect=1)
+
+textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
+
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,verticalalignment='top')
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 6~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entp_sm = 0
+entm_sm = 0
+dummyx = [0,1]
+nmax=len(herm_grid)
+
+for i in range(nmax):
+     entp_sm = entp_sm + entnp_sum[i,41,3]
+     entm_sm = entm_sm + entnm_sum[i,41,3]
+
+ent_tot = entp_sm + entm_sm
+pper = (entp_sm/ent_tot) * 100
+mper = (entm_sm/ent_tot) * 100
+labels = 'Ent +', 'Ent -'
+fracs = [pper, mper]
+# Make square figures and axes
+plt.subplot(the_grid[2, 1], aspect=1)
+
+textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_tot)
+
+plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,verticalalignment='top')
+plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[kzind]))
 """
 entp_sm = 0
 entm_sm = 0
