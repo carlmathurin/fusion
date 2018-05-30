@@ -321,9 +321,9 @@ fracs = [pper, mper]
 
 
 # Make square figures and axes
+the_grid = GridSpec(1, 1)
 fig2, ax2 = plt.subplots(the_grid[0, 0], aspect=1)
 
-the_grid = GridSpec(1, 1)
 textstr = 'Ent + = %.5f, Ent - = %.5f' %(entp_sm,entm_sm)
 
 ax2.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
