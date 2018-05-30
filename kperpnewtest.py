@@ -299,19 +299,35 @@ hermy = []
 enm = []
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-fracs = [15, 30, 45, 10]
+entp_sm = 0
+entm_sm = 0
+dummyx = [0,1]
 
-explode = (0, 0.05, 0, 0)
+nmax=len(herm_grid)
+
+for i in range(nmax):
+     entp_sm = entp_sm + entnp_sum[i,kzind,13]
+     entm_sm = entm_sm + entnm_sum[i,kzind,13]
+
+ent_tot = entp_sm + entm_sm
+
+fig, ax = plt.subplots()
+
+pper = (entp_sm/ent_tot) * 100
+mper = (entm_sm/ent_tot) * 100
+
+labels = 'Ent +', 'Ent -'
+fracs = [pper, mper]
+
 
 # Make square figures and axes
 
-the_grid = GridSpec(2, 2)
+the_grid = GridSpec(1, 1)
 
 plt.subplot(the_grid[0, 0], aspect=1)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
-plt.title('Total + and - Entropy')
+plt.title('Ent Total='+str(ent_tot)+'k_perp ='+str(k_bin[13]))
 plt.show()
 """
 entp_sm = 0
