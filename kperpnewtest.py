@@ -328,7 +328,7 @@ textstr = 'Ent + = %.5f, Ent - = %.5f' %(entp_sm,entm_sm)
 
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
 plt.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
-        verticalalignment='top', bbox=props)
+        verticalalignment='top')
 plt.title('Ent Total='+str(ent_tot)+' k_perp ='+str(k_bin[13]))
 plt.show()
 
