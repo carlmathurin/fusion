@@ -154,7 +154,7 @@ b = np.zeros(20)
 counter = 0
 
 for j in range(20):
-    for i in range(59):
+    for i in range(127):
         if herm_grid[i+1] > 0:
             kzs = j*par['nkz0']/20
             print 'check 2:'
