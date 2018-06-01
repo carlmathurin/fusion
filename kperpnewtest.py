@@ -139,9 +139,7 @@ plabel='Entropy'
 entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
-
-print np.shape(entnp_sum),'ent+:', entnp_sum
-
+print 'ent: ', entn_sum
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #First k_perp
 plt.figure(1)
@@ -154,18 +152,15 @@ b = np.zeros(20)
 counter = 0
 
 for j in range(20):
-    for i in range(127):
-        if herm_grid[i+1] > 0:
+    for i in range(60):
+        if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            print 'check 2:'
-            if entnp_sum[i+1,kzs,11] != 0.0:
-                print 'check 3'
-                lomein = np.log(entnp_sum[i+1,kzs,11])
-                friedrice = np.log(herm_grid[i+1])
+            if entn_sum[i,kzs,11] > 0:
+                lomein = np.log(entn_sum[i,kzs,11])
+                friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
-    print "hermy", hermy
-    print "enm", enm
+
     m[j],b[j] = polyfit(hermy,enm,1)
 
 print np.size(m) ,'slopes:', m
@@ -176,6 +171,7 @@ for j in range(20):
 m1 = m1/ (20)
 print 'm1 =', m1
 
+fig1 = plt.figure()
 ax1 = plt.subplot(211)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
@@ -183,7 +179,7 @@ ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 for j in range(20):
 #kz0=kzgrid[k*par['nkz0']/20]
     k=j*par['nkz0']/20
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,k,11],basex=10,basey=10,label=\
+    plt.loglog(herm_grid,prefactor*entn_sum[:,k,11],basex=10,basey=10,label=\
         '(k_z='+str(kzgrid[j*par['nkz0']/20]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
@@ -192,10 +188,9 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
-plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
-plt.show()
-"""
-#~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp -
+plt.title(plabel+'(kz sum [k_perp = ' + str(k_bin[11])+'])')
+#plt.show()
+#~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp
 #polyfit
 hermy = []
 enm = []
@@ -207,8 +202,8 @@ for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entnm_sum[i,kzs,11] > 0:
-                lomein = np.log(entnm_sum[i,kzs,11])
+            if entn_sum[i,kzs,11] > 0:
+                lomein = np.log(entn_sum[i,kzs,11])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -216,22 +211,22 @@ for j in range(20):
     m[j],b[j] = polyfit(hermy,enm,1)
 
 print np.size(m) ,'slopes:', m
-m2 = 0
+m1 = 0
 for j in range(20):
-    m2 = m2 + m[j]
+    m1 = m1 + m[j]
 
-m2 = m2/ (20)
+m1 = m1/ (20)
 print 'm1 =', m1
 
 fig1 = plt.figure()
-ax1 = plt.subplot(121)
+ax1 = plt.subplot(212)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
 for j in range(20):
 #kz0=kzgrid[k*par['nkz0']/20]
     k=j*par['nkz0']/20
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,k,11],basex=10,basey=10,label=\
+    plt.loglog(herm_grid,prefactor*entn_sum[:,k,11],basex=10,basey=10,label=\
         '(k_z='+str(kzgrid[j*par['nkz0']/20]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
@@ -240,9 +235,9 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
-plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
+plt.title(plabel+'(kz sum [k_perp = ' + str(k_bin[11])+'])')
+plt.show()
 
-"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 #polyfit
