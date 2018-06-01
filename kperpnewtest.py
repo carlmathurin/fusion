@@ -154,15 +154,15 @@ counter = 0
 
 for j in range(20):
     for i in range(59):
-        print 'check 1'
         if herm_grid[i+1] > 0:
             kzs = j*par['nkz0']/20
             print 'check 2:'
-            print 'check 3'
-            lomein = np.log(entnp_sum[i+1,kzs,11])
-            friedrice = np.log(herm_grid[i+1])
-            hermy.append(friedrice)
-            enm.append(lomein)
+            if entnp_sum[i+1,kzs,11] > 0:
+                print 'check 3'
+                lomein = np.log(entnp_sum[i+1,kzs,11])
+                friedrice = np.log(herm_grid[i+1])
+                hermy.append(friedrice)
+                enm.append(lomein)
     print "hermy", hermy
     print "enm", enm
     m[j],b[j] = polyfit(hermy,enm,1)
