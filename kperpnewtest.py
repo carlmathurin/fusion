@@ -157,7 +157,7 @@ for j in range(20):
         if herm_grid[i+1] > 0:
             kzs = j*par['nkz0']/20
             print 'check 2:'
-            if entnp_sum[i+1,kzs,11] > 0:
+            if entnp_sum[i+1,kzs,11] != 0:
                 print 'check 3'
                 lomein = np.log(entnp_sum[i+1,kzs,11])
                 friedrice = np.log(herm_grid[i+1])
@@ -175,8 +175,7 @@ for j in range(20):
 m1 = m1/ (20)
 print 'm1 =', m1
 
-fig1 = plt.figure()
-ax1 = plt.subplot(121)
+ax1 = plt.subplot(211)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
