@@ -157,7 +157,7 @@ for j in range(20):
         print 'check 1'
         if herm_grid[i+1] > 0:
             kzs = j*par['nkz0']/20
-            print 'check 2:
+            print 'check 2:'
             print 'check 3'
             lomein = np.log(entnp_sum[i+1,kzs,11])
             friedrice = np.log(herm_grid[i+1])
@@ -193,7 +193,8 @@ plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n
 plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
-#plt.show()
+plt.show()
+"""
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp -
 #polyfit
 hermy = []
@@ -241,7 +242,7 @@ plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
 
-
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 #polyfit
