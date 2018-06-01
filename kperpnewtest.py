@@ -171,8 +171,7 @@ for j in range(20):
 m1 = m1/ (20)
 print 'm1 =', m1
 
-fig1 = plt.figure()
-ax1 = plt.subplot(211)
+ax1 = plt.subplot(121)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
@@ -218,8 +217,7 @@ for j in range(20):
 m1 = m1/ (20)
 print 'm1 =', m1
 
-fig1 = plt.figure()
-ax1 = plt.subplot(212)
+ax1 = plt.subplot(122)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
