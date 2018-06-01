@@ -140,6 +140,8 @@ entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
+print "ent+:", entnp_sum
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #First k_perp
 plt.figure(1)
