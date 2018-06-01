@@ -498,8 +498,8 @@ for j in range(15):
     kzs = j*par['nkz0']/15
     kzbin[j] = kzgrid[kzs]
 
-entp_sm = np.zeros(15,15)
-entm_sm = np.zeros(15,15)
+entp_sm = np.shape(15,15)
+entm_sm = np.shape(15,15)
 nmax=len(herm_grid)
 
 for j in range(15):
