@@ -140,7 +140,7 @@ entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
-print "herm", herm_grid
+print "ent+:", entnp_sum
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #First k_perp
@@ -162,7 +162,7 @@ for j in range(20):
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
-
+    print "hermy", hermy
     m[j],b[j] = polyfit(hermy,enm,1)
 
 print np.size(m) ,'slopes:', m
