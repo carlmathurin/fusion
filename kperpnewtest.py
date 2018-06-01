@@ -492,3 +492,27 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+kzbin = np.zeros(15)
+for j in range(15):
+    kzs = j*par['nkz0']/15
+    kzbin[j] = kzgrid[kzs]
+
+entp_sm = np.zeros(15,15)
+entm_sm = np.zeros(15,15)
+nmax=len(herm_grid)
+
+for j in range(15):
+    for i in range(15):
+        for k in range(nmax):
+             entp_sm[j,i] = entp_sm + entnp_sum[k,j,i]
+             entm_sm[j,i] = entm_sm + entnm_sum[k,j,i]
+
+        #ent_tot = entp_sm + entm_sm
+
+plt.figure(2)
+
+X1,Y1 = np.meshgrid(kzbin,k_bin)
+
+Z = entp_sm[X1,Y1]
+plt.contourf(Z)
