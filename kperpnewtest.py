@@ -140,7 +140,7 @@ entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
-print "ent+:", entnp_sum
+print "herm", herm_grid
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #First k_perp
@@ -157,10 +157,11 @@ for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            lomein = np.log(entnp_sum[i,kzs,11])
-            friedrice = np.log(herm_grid[i])
-            hermy.append(friedrice)
-            enm.append(lomein)
+            if entnp_sum[i,kzs,11] > 0:
+                lomein = np.log(entnp_sum[i,kzs,11])
+                friedrice = np.log(herm_grid[i])
+                hermy.append(friedrice)
+                enm.append(lomein)
 
     m[j],b[j] = polyfit(hermy,enm,1)
 
