@@ -140,6 +140,7 @@ entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
+print 'ent+:', entnp_sum
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #First k_perp
@@ -157,7 +158,7 @@ for j in range(20):
         if herm_grid[i+1] > 0:
             kzs = j*par['nkz0']/20
             print 'check 2:'
-            if entnp_sum[i+1,kzs,11] != 0:
+            if entnp_sum[i+1,kzs,11] != 0.0:
                 print 'check 3'
                 lomein = np.log(entnp_sum[i+1,kzs,11])
                 friedrice = np.log(herm_grid[i+1])
