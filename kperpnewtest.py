@@ -140,8 +140,10 @@ entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#First k_perp
+plt.figure(1)
+#~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp +
 #polyfit
 hermy = []
 enm = []
@@ -153,8 +155,8 @@ for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entn_sum[i,kzs,6] > 0:
-                lomein = np.log(entn_sum[i,kzs,6])
+            if entnp_sum[i,kzs,11] > 0:
+                lomein = np.log(entnp_sum[i,kzs,11])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -170,14 +172,14 @@ m1 = m1/ (20)
 print 'm1 =', m1
 
 fig1 = plt.figure()
-ax1 = plt.subplot(111)
+ax1 = plt.subplot(121)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
 for j in range(20):
 #kz0=kzgrid[k*par['nkz0']/20]
     k=j*par['nkz0']/20
-    plt.loglog(herm_grid,prefactor*entn_sum[:,k,6],basex=10,basey=10,label=\
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,k,11],basex=10,basey=10,label=\
         '(k_z='+str(kzgrid[j*par['nkz0']/20]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
@@ -186,12 +188,57 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
-plt.title(plabel+'(kz sum [k_perp = ' + str(k_bin[6])+'])')
-plt.show()
-"""
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
+#plt.show()
+#~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp -
+#polyfit
+hermy = []
+enm = []
+m = np.zeros(20)
+b = np.zeros(20)
+counter = 0
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+for j in range(20):
+    for i in range(60):
+        if herm_grid[i] > 0:
+            kzs = j*par['nkz0']/20
+            if entnm_sum[i,kzs,11] > 0:
+                lomein = np.log(entnm_sum[i,kzs,11])
+                friedrice = np.log(herm_grid[i])
+                hermy.append(friedrice)
+                enm.append(lomein)
+
+    m[j],b[j] = polyfit(hermy,enm,1)
+
+print np.size(m) ,'slopes:', m
+m2 = 0
+for j in range(20):
+    m2 = m2 + m[j]
+
+m2 = m2/ (20)
+print 'm1 =', m1
+
+fig1 = plt.figure()
+ax1 = plt.subplot(121)
+box = ax1.get_position()
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
+
+for j in range(20):
+#kz0=kzgrid[k*par['nkz0']/20]
+    k=j*par['nkz0']/20
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,k,11],basex=10,basey=10,label=\
+        '(k_z='+str(kzgrid[j*par['nkz0']/20]))
+    plt.xlabel('Hermite n')
+    plt.ylabel(plabel)
+    plt.legend(loc='lower left')
+plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
+plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
+plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 #polyfit
 
@@ -247,7 +294,7 @@ plt.legend(loc='lower left')
 plt.show()
 ## slope for E+ ~1.75
 """
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_z [-])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 #poly fit~~~~~~~~~~~~~~~~~~~~~~~
 print np.shape(entnm_sum)
@@ -298,9 +345,10 @@ print "herm", herm_grid
 hermy = []
 enm = []
 """
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-the_grid = GridSpec(3, 1)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (pie graphs)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
+the_grid = GridSpec(3, 1)
+
 entp_sm = 0
 entm_sm = 0
 dummyx = [0,1]
@@ -371,7 +419,7 @@ textstr = 'Ent + = %.5f\n Ent - = %.5f\n Ent tot =%.5f' %(entp_sm,entm_sm,ent_to
 plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
 plt.text(0.9, 0.95, textstr, fontsize=14,verticalalignment='top')
 plt.title('Ent Total, k_perp ='+str(k_bin[13])+', kz ='+str(kzgrid[80]))
-"""
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~pie 4~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 entp_sm = 0
 entm_sm = 0
@@ -445,33 +493,4 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 plt.show()
 """
-entp_sm = 0
-entm_sm = 0
-dummyx = [0,1]
-
-nmax=len(herm_grid)
-
-for i in range(nmax):
-     entp_sm = entp_sm + entnp_sum[i,kzind,13]
-     entm_sm = entm_sm + entnm_sum[i,kzind,13]
-
-ent_tot = entp_sm + entm_sm
-
-fig, ax = plt.subplots()
-
-pper = (entp_sm/ent_tot) * 100
-mper = (entm_sm/ent_tot) * 100
-
-ax.fill_between(dummyx,0,entp_sm, facecolor='blue',label=('ent_p=%.4f' % entp_sm, ', %.2f %% of total ' % pper))
-ax.fill_between(dummyx,entp_sm,ent_tot, facecolor='green',label=('ent_m= %.4f'  % entm_sm, ', %.2f %% of total '%mper))
-ax.plot(dummyx,[0,0],label=('ent_tot = %.4f' % ent_tot, ';kz = %.4f'% kzind, ';k_perp = %.4f' % k_bin[13]))
-ax.set_ylabel('Ent (units)')
-box = ax.get_position()
-#~~~~~~~~~~~~~~legend on the left
-#ax.set_position([box.x0, box.y0, box.width * .8, box.height])
-#plt.legend(loc='center left',bbox_to_anchor=(1,.5))
-ax.set_position([box.x0, box.y0 + box.height*.1, box.width, box.height*.9])
-ax.legend(loc='upper center', bbox_to_anchor=(.5,-.05))
-plt.title('Total + and - Entropy')
-plt.show()
-"""
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
