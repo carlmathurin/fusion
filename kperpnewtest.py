@@ -506,8 +506,8 @@ nmax=len(herm_grid)
 for j in range(15):
     for i in range(15):
         for k in range(nmax):
-             entp_sm[j,i] = entp_sm + entnp_sum[k,j,i]
-             entm_sm[j,i] = entm_sm + entnm_sum[k,j,i]
+             entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,j,i]
+             entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,j,i]
 
         #ent_tot = entp_sm + entm_sm
 
