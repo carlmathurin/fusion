@@ -523,5 +523,5 @@ X1,Y1 = np.meshgrid(kzbin,k_bin)
 
 
 
-plt.contour(X1[1:],Y1[1:],ent_tot)
+plt.contourf(X1[1:],Y1[1:],ent_tot)
 plt.show()
