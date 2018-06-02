@@ -502,7 +502,7 @@ for j in range(15):
 shape2 = (15,15)
 entp_sm = np.zeros(shape2)
 entm_sm = np.zeros(shape2)
-print "entp_sm:", entp_sm, "\nentm_sm", entm_sm
+ent_tot = np.zeros(shape2)
 nmax=len(herm_grid)
 
 for j in range(15):
@@ -515,15 +515,13 @@ for j in range(15):
             entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,kzs,i]
             entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,kzs,i]
 
-        #ent_tot = entp_sm + entm_sm
+            ent_tot[j,i] = entp_sm[j,i] + entm_sm[j,i]
 
 plt.figure(2)
 
 X1,Y1 = np.meshgrid(kzbin,k_bin)
 
-print "X1: ", X1, "Y1: ", Y1
 
 
-
-plt.contourf(X1[1:],Y1[1:],entp_sm)
+plt.contour(X1[1:],Y1[1:],ent_tot)
 plt.show()
