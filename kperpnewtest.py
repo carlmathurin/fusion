@@ -506,7 +506,7 @@ ent_tot = np.zeros(shape2)
 nmax=len(herm_grid)
 
 for j in range(20):
-    for i in range(20):
+    for i in range(15):
         for k in range(nmax):
             kzs = j*par['nkz0']/20
             kzbin[j] = kzgrid[kzs]
