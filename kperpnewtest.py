@@ -494,7 +494,7 @@ plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-kzbin = np.zeros(15)
+kzbin = np.zeros(20)
 for j in range(20):
     kzs = j*par['nkz0']/20
     kzbin[j] = kzgrid[kzs]
