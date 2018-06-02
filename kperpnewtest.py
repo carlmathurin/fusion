@@ -495,22 +495,21 @@ plt.show()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 kzbin = np.zeros(15)
-for j in range(15):
-    kzs = j*par['nkz0']/15
+for j in range(20):
+    kzs = j*par['nkz0']/20
     kzbin[j] = kzgrid[kzs]
 
-shape2 = (15,15)
+shape2 = (20,15)
 entp_sm = np.zeros(shape2)
 entm_sm = np.zeros(shape2)
 ent_tot = np.zeros(shape2)
 nmax=len(herm_grid)
 
-for j in range(15):
-    for i in range(15):
+for j in range(20):
+    for i in range(20):
         for k in range(nmax):
-            kzs = j*par['nkz0']/15
+            kzs = j*par['nkz0']/20
             kzbin[j] = kzgrid[kzs]
-            #i and j need to be the index for the kz and kperp in the X1 and Y1
 
             entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,kzs,i]
             entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,kzs,i]
@@ -524,4 +523,6 @@ X1,Y1 = np.meshgrid(kzbin,k_bin)
 
 
 plt.contourf(X1[1:],Y1[1:],ent_tot)
+plt.xlabel('K_z')
+plt.ylabel('K_perp')
 plt.show()
