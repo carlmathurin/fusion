@@ -522,7 +522,7 @@ X1,Y1 = np.meshgrid(k_bin,kzbin)
 
 
 
-plt.contourf(X1[1:],Y1[1:],ent_tot)
+plt.contourf(X1[:,1:],Y1[:,1:],ent_tot)
 plt.xlabel('K_z')
 plt.ylabel('K_perp')
 plt.show()
