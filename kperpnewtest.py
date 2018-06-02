@@ -505,12 +505,14 @@ print "entp_sm:", entp_sm, "\nentm_sm", entm_sm
 nmax=len(herm_grid)
 
 for j in range(15):
-    print j
     for i in range(15):
-        print i
         for k in range(nmax):
-            entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,j,i]
-            entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,j,i]
+            kzs = j*par['nkz0']/15
+            kzbin[j] = kzgrid[kzs]
+            #i and j need to be the index for the kz and kperp in the X1 and Y1
+
+            entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,kzs,i]
+            entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,kzs,i]
 
         #ent_tot = entp_sm + entm_sm
 
@@ -520,5 +522,5 @@ X1,Y1 = np.meshgrid(kzbin,k_bin)
 
 print "X1:", X1, "\nY1:",Y1
 
-Z = entp_sm[X1,Y1]
-plt.contourf(Z)
+
+plt.contourf(X1,Y1,entp_sm)
