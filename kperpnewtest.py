@@ -139,8 +139,9 @@ plabel='Entropy'
 entn_sum=entn_sum/float(ntime)
 entnp_sum=entnp_sum/float(ntime)
 entnm_sum=entnm_sum/float(ntime)
-print 'ent: ', entn_sum
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed k_perp)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
 #First k_perp
 plt.figure(1)
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp +
@@ -235,7 +236,7 @@ plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
 plt.show()
-
+"""
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 #polyfit
@@ -520,7 +521,7 @@ plt.figure(2)
 
 X1,Y1 = np.meshgrid(kzbin,k_bin)
 
-print "X1 ", np.shape(X1), "Y1 ", np.shape(Y1), "entp ", np.shape(entp_sm)
+print "X1: ", X1, "Y1: ", Y1
 
 
 
