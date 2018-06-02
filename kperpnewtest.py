@@ -525,4 +525,4 @@ print "X1: ", X1, "Y1: ", Y1
 
 
 
-plt.contourf(X1,Y1,entp_sm)
+plt.contourf(X1[1:],Y1[1:],entp_sm)
