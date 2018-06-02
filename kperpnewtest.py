@@ -499,8 +499,8 @@ for j in range(15):
     kzbin[j] = kzgrid[kzs]
 
 shape2 = (15,15)
-entp_sm = np.shape(shape2)
-entm_sm = np.shape(shape2)
+entp_sm = np.zeros(shape2)
+entm_sm = np.zeros(shape2)
 nmax=len(herm_grid)
 
 for j in range(15):
