@@ -509,7 +509,6 @@ for j in range(15):
     for i in range(15):
         print i
         for k in range(nmax):
-            print k
             entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,j,i]
             entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,j,i]
 
@@ -518,6 +517,8 @@ for j in range(15):
 plt.figure(2)
 
 X1,Y1 = np.meshgrid(kzbin,k_bin)
+
+print "X1:", X1, "\nY1:",Y1
 
 Z = entp_sm[X1,Y1]
 plt.contourf(Z)
