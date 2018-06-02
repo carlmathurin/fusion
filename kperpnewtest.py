@@ -501,11 +501,15 @@ for j in range(15):
 shape2 = (15,15)
 entp_sm = np.zeros(shape2)
 entm_sm = np.zeros(shape2)
+print "entp_sm:", entp_sm, "\nentm_sm", entm_sm
 nmax=len(herm_grid)
 
 for j in range(15):
+    print j
     for i in range(15):
+        print i
         for k in range(nmax):
+            print k
              entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,j,i]
              entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,j,i]
 
