@@ -520,7 +520,8 @@ plt.figure(2)
 
 X1,Y1 = np.meshgrid(kzbin,k_bin)
 
-print "X1:", X1, "\nY1:",Y1
+print "X1 ", np.shape(X1), "Y1 ", np.shape(Y1), "entp ", np.shape(entp_sm)
+
 
 
 plt.contourf(X1,Y1,entp_sm)
