@@ -510,8 +510,8 @@ for j in range(15):
         print i
         for k in range(nmax):
             print k
-             entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,j,i]
-             entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,j,i]
+            entp_sm[j,i] = entp_sm[j,i] + entnp_sum[k,j,i]
+            entm_sm[j,i] = entm_sm[j,i] + entnm_sum[k,j,i]
 
         #ent_tot = entp_sm + entm_sm
 
