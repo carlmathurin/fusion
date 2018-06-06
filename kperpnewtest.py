@@ -282,7 +282,7 @@ plt.subplot(221)
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
     plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10),label=\
-              plabel+' (k_perp ='+str(k_bin[k*par[j])+')')
+              plabel+' (k_perp ='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[67])+'])')
