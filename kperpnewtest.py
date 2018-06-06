@@ -238,6 +238,9 @@ plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+box = plt.get_position()
+plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 #### plot 1
 #polyfit
 
@@ -278,11 +281,11 @@ plt.subplot(221)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10)#,label=\
-              #plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10),label=\
+              plabel+' (k_perp ='+str(k_bin[k*par[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
-    plt.title('Entropy+')
+    plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[67])+'])')
     plt.legend(loc='lower left')
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1))[20]
@@ -293,6 +296,10 @@ for j in range(15):
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 plt.legend(loc='lower left')
+
+box = plt.get_position()
+plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 #plt.show()
 
 ########## plot 2
@@ -307,8 +314,8 @@ counter = 0
 for j in range(15):
     for i in range(60):
         if herm_grid[i] > 0:
-            if entnp_sum[i,67,j] > 0:
-                lomein = np.log(entnp_sum[i,67,j])
+            if entnp_sum[i,40,j] > 0:
+                lomein = np.log(entnp_sum[i,40,j])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -335,11 +342,11 @@ plt.subplot(222)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10)#,label=\
-              #plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,40,j],basex=10,basey=10),label=\
+              plabel+' (k_perp='+str(k_bin[j]+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
-    plt.title('Entropy+')
+    plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[40])+'])')
     plt.legend(loc='lower left')
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1))[20]
@@ -349,22 +356,25 @@ for j in range(15):
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
-plt.legend(loc='lower left')
+
+box = plt.get_position()
+plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ## slope for E+ ~1.75
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_z [-])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ###### plot 3
 #poly fit~~~~~~~~~~~~~~~~~~~~~~~
-print np.shape(entnm_sum)
-print "entnm_sum:" ,entnm_sum[:,kzind,10]
-print "herm", herm_grid
+#print np.shape(entnm_sum)
+#print "entnm_sum:" ,entnm_sum[:,67,10]
+#print "herm", herm_grid
 hermy = []
 enm = []
 
 for i in range(60):
      if herm_grid[i] > 0:
-          if entnm_sum[i,kzind,10] > 0:
-               lomein = np.log(entnm_sum[i,kzind,10])
+          if entnm_sum[i,67,10] > 0:
+               lomein = np.log(entnm_sum[i,67,10])
                friedrice = np.log(herm_grid[i])
                hermy.append(friedrice)
                enm.append(lomein)
@@ -382,11 +392,11 @@ for j in range(15):
     #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,kzind,j],basex=10,basey=10,)#label=\
-              #plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,67,j],basex=10,basey=10,)label=\
+              plabel+' (k_z='+str(k_bin[j)+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
-    plt.title('Entropy-')
+    plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[67])+'])')
     plt.legend(loc='lower left')
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1))[20]
@@ -397,20 +407,23 @@ for j in range(15):
 plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
 plt.loglog(herm_grid, 10**(-2.25)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
 plt.legend(loc='lower left')
+
+box = plt.get_position()
+plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ##plt.show()
 
 ###### plot 4
 #poly fit~~~~~~~~~~~~~~~~~~~~~~~
-print np.shape(entnm_sum)
-print "entnm_sum:" ,entnm_sum[:,kzind,10]
-print "herm", herm_grid
+#print np.shape(entnm_sum)
+#print "entnm_sum:" ,entnm_sum[:,kzind,10]
 hermy = []
 enm = []
 
 for i in range(60):
      if herm_grid[i] > 0:
           if entnm_sum[i,kzind,10] > 0:
-               lomein = np.log(entnm_sum[i,kzind,10])
+               lomein = np.log(entnm_sum[i,40,10])
                friedrice = np.log(herm_grid[i])
                hermy.append(friedrice)
                enm.append(lomein)
@@ -428,12 +441,11 @@ for j in range(15):
     #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,kzind,j],basex=10,basey=10,)#label=\
-              #plabel+' (k_z='+str(kzgrid[k*par['nkz0']/20])+')')
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,40,j],basex=10,basey=10,)label=\
+              plabel+' (k_perp='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
-    plt.title('Entropy-')
-    plt.legend(loc='lower left')
+    plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[40])+'])')    plt.legend(loc='lower left')
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
@@ -443,6 +455,11 @@ for j in range(15):
 plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
 plt.loglog(herm_grid, 10**(-2.25)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
 plt.legend(loc='lower left')
+
+box = plt.get_position()
+plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
+
 plt.show()
 
 print np.shape(entnm_sum)
