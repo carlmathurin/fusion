@@ -238,9 +238,6 @@ plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-box = plt.get_position()
-plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
-plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 #### plot 1
 #polyfit
 
