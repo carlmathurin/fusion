@@ -278,7 +278,7 @@ ax1 = plt.subplot(121)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10,label=(k_perp ='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10,label= '(k_perp ='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[67])+'])')
@@ -387,7 +387,7 @@ for j in range(15):
     #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,67,j],basex=10,basey=10,label= (k_z='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,67,j],basex=10,basey=10,label= '(k_perp='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[67])+'])')
