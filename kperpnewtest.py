@@ -277,7 +277,7 @@ b2 = b[4]
 print 'm1 =', m1, 'm2 =', m2
 
 plt.figure(1)
-plt.subplot(221)
+ax1 = plt.subplot(221)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
@@ -296,8 +296,8 @@ plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 plt.legend(loc='lower left')
 
-box = plt.get_position()
-plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+box = ax1.get_position()
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 #plt.show()
 
@@ -337,7 +337,7 @@ b2 = b[4]
 print 'm1 =', m1, 'm2 =', m2
 
 plt.figure(1)
-plt.subplot(222)
+ax1=plt.subplot(222)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
@@ -355,8 +355,8 @@ for j in range(15):
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 
-box = plt.get_position()
-plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+box = ax1.get_position()
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ## slope for E+ ~1.75
 
@@ -383,7 +383,7 @@ m,b = polyfit(hermy,enm,1)
 
 print 'm = ',m
 plt.figure(1)
-plt.subplot(223)
+ax1= plt.subplot(223)
 
 for j in range(15):
     #print prefactor
@@ -405,8 +405,8 @@ plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,labe
 plt.loglog(herm_grid, 10**(-2.25)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
 plt.legend(loc='lower left')
 
-box = plt.get_position()
-plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+box = ax1.get_position()
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ##plt.show()
 
@@ -431,7 +431,7 @@ m,b = polyfit(hermy,enm,1)
 
 print 'm = ',m
 plt.figure(1)
-plt.subplot(224)
+ax1 = plt.subplot(224)
 
 for j in range(15):
     #print prefactor
@@ -452,8 +452,8 @@ plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,labe
 plt.loglog(herm_grid, 10**(-2.25)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
 plt.legend(loc='lower left')
 
-box = plt.get_position()
-plt.set_position([box.x0, box.y0 , box.width* .8, box.height])
+box = ax1.get_position()
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 
 plt.show()
