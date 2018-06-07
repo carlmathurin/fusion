@@ -441,7 +441,7 @@ for j in range(15):
     plt.loglog(herm_grid,prefactor*entnm_sum[:,40,j],basex=10,basey=10,label= plabel+' (k_perp='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
-    plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[40])+'])')    plt.legend(loc='lower left')
+    plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[40])+'])')
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-1),'--',basex=10,basey=10,label=str(-1))
