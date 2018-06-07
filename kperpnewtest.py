@@ -289,7 +289,7 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('avg_n^(%.4f)'% m1))
 plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 plt.legend(loc='lower left')
 
@@ -349,11 +349,11 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-4.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
-plt.loglog(herm_grid, (10**-4.5)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
+plt.loglog(herm_grid, (10**-3.8)*herm_grid**(m1),'--',basex=10,basey=10,label=('avg_n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-3.8)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 
 box = ax1.get_position()
-ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height]
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ## slope for E+ ~1.75
 
@@ -399,7 +399,7 @@ for j in range(15):
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.loglog(herm_grid, (10**-3.5)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, 10**(-3.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
+plt.loglog(herm_grid, 10**(-3.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('ploy_n^(%.4f)'% m))
 plt.legend(loc='lower left')
 
 box = ax1.get_position()
@@ -446,7 +446,7 @@ for j in range(15):
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
 plt.loglog(herm_grid, (10**-4.5)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, 10**(-4.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
+plt.loglog(herm_grid, 10**(-4.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('poly_n^(%.4f)'% m))
 plt.legend(loc='lower left')
 
 box = ax1.get_position()
