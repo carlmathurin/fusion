@@ -354,7 +354,7 @@ box = ax1.get_position()
 
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height]
 
-plt.legend(loc='center left', bbox_to_anchor=(1 ,.5))
+#plt.legend(loc='center left', bbox_to_anchor=(1 ,.5))
 
 ## slope for E+ ~1.75
 
