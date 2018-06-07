@@ -278,7 +278,7 @@ ax1 = plt.subplot(121)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10,label= plabel+' (k_perp ='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,67,j],basex=10,basey=10,label=(k_perp ='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[67])+'])')
@@ -289,8 +289,8 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
-plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
+plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 plt.legend(loc='lower left')
 
 box = ax1.get_position()
@@ -338,7 +338,7 @@ ax1=plt.subplot(121)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,40,j],basex=10,basey=10,label=plabel+' (k_perp='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,40,j],basex=10,basey=10,label='(k_perp='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[40])+'])')
@@ -349,8 +349,8 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-3)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
-plt.loglog(herm_grid, (10**-3)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
+plt.loglog(herm_grid, (10**-4.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-4.5)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
@@ -387,7 +387,7 @@ for j in range(15):
     #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,67,j],basex=10,basey=10,label= plabel+' (k_z='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,67,j],basex=10,basey=10,label= (k_z='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[67])+'])')
@@ -398,8 +398,8 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, 10**(-2.25)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
+plt.loglog(herm_grid, (10**-3.5)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
+plt.loglog(herm_grid, 10**(-3.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
 plt.legend(loc='lower left')
 
 box = ax1.get_position()
@@ -435,7 +435,7 @@ for j in range(15):
     #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,40,j],basex=10,basey=10,label= plabel+' (k_perp='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,40,j],basex=10,basey=10,label= '(k_perp='+str(k_bin[j])+')')
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[40])+'])')
@@ -445,8 +445,8 @@ for j in range(15):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-1.25)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, 10**(-2.25)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
+plt.loglog(herm_grid, (10**-4.5)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
+plt.loglog(herm_grid, 10**(-4.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m))
 plt.legend(loc='lower left')
 
 box = ax1.get_position()
@@ -455,11 +455,6 @@ plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 
 plt.show()
 
-print np.shape(entnm_sum)
-print "entnm_sum:" ,entnm_sum[:,kzind,10]
-print "herm", herm_grid
-hermy = []
-enm = []
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (pie graphs)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
