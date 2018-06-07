@@ -352,9 +352,9 @@ plt.loglog(herm_grid, (10**-3.8)*herm_grid**(m2),'--',basex=10,basey=10,label=('
 
 box = ax1.get_position()
 
-ax1.set_position([box.x0, box.y0 , box.width* .8, box.height]
+ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
-#plt.legend(loc='center left', bbox_to_anchor=(1 ,.5))
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5))
 
 ## slope for E+ ~1.75
 
