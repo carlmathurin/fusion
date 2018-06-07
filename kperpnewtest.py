@@ -274,7 +274,7 @@ b2 = b[4]
 print 'm1 =', m1, 'm2 =', m2
 
 plt.figure(1)
-ax1 = plt.subplot(221)
+ax1 = plt.subplot(121)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
@@ -333,8 +333,8 @@ b2 = b[4]
 
 print 'm1 =', m1, 'm2 =', m2
 
-plt.figure(1)
-ax1=plt.subplot(222)
+plt.figure(2)
+ax1=plt.subplot(121)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
@@ -358,7 +358,7 @@ plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ## slope for E+ ~1.75
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_z [-])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-###### plot 3
+###### plot 1
 #poly fit~~~~~~~~~~~~~~~~~~~~~~~
 #print np.shape(entnm_sum)
 #print "entnm_sum:" ,entnm_sum[:,67,10]
@@ -380,7 +380,7 @@ m,b = polyfit(hermy,enm,1)
 
 print 'm = ',m
 plt.figure(1)
-ax1= plt.subplot(223)
+ax1= plt.subplot(122)
 
 for j in range(15):
     #print prefactor
@@ -407,7 +407,7 @@ ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 ##plt.show()
 
-###### plot 4
+###### plot 2
 #poly fit~~~~~~~~~~~~~~~~~~~~~~~
 #print np.shape(entnm_sum)
 #print "entnm_sum:" ,entnm_sum[:,kzind,10]
@@ -427,8 +427,8 @@ print "enm" , enm
 m,b = polyfit(hermy,enm,1)
 
 print 'm = ',m
-plt.figure(1)
-ax1 = plt.subplot(224)
+plt.figure(2)
+ax1 = plt.subplot(122)
 
 for j in range(15):
     #print prefactor
