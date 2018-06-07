@@ -333,7 +333,7 @@ b2 = b[4]
 print 'm1 =', m1, 'm2 =', m2
 
 plt.figure(2)
-ax1=plt.subplot(121)
+ax1 = plt.subplot(121)
 
 for j in range(15):
     #kz0=kzgrid[k*par['nkz0']/20]
@@ -351,8 +351,11 @@ plt.loglog(herm_grid, (10**-3.8)*herm_grid**(m1),'--',basex=10,basey=10,label=('
 plt.loglog(herm_grid, (10**-3.8)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 
 box = ax1.get_position()
+
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height]
-ax1.legend(loc='center left', bbox_to_anchor=(1 ,.5))
+
+plt.legend(loc='center left', bbox_to_anchor=(1 ,.5))
+
 ## slope for E+ ~1.75
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_z [-])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
