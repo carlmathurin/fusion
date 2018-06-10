@@ -131,7 +131,7 @@ for i in range(xmax):
         entnp_sum[:,kzind,t] = entnp_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tp,i,j,kzind)
         entnm_sum[:,kzind,t] = entnm_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tm,i,j,kzind)
 """
-print 'counter: ',counter,'kperp',np.shape(k_bin), k_bin
+print 'entnp_sum',np.shape(entnp_sum)
 
 prefactor=np.empty(par['nv0'])
 prefactor[:]=1.0
@@ -156,8 +156,8 @@ for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entn_sum[i,kzs,11] > 0:
-                lomein = np.log(entn_sum[i,kzs,11])
+            if entnp_sum[i,kzs,11] > 0:
+                lomein = np.log(entnp_sum[i,kzs,11])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -186,7 +186,7 @@ for j in range(20):
     plt.legend(loc='lower left')
 plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
-plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
 #plt.show()
@@ -232,7 +232,7 @@ for j in range(20):
     plt.legend(loc='lower left')
 plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
-plt.loglog(herm_grid, (10**-1)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
 plt.show()
