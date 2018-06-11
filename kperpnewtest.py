@@ -131,7 +131,7 @@ for i in range(xmax):
         entnp_sum[:,kzind,t] = entnp_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tp,i,j,kzind)
         entnm_sum[:,kzind,t] = entnm_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tm,i,j,kzind)
 """
-print 'entnp_sum',np.shape(entnp_sum)
+print 'entnp_sum',np.shape(entnp_sum),', ', entnp_sum
 
 prefactor=np.empty(par['nv0'])
 prefactor[:]=1.0
