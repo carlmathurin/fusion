@@ -155,8 +155,10 @@ counter = 0
 for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
+            print'2'
             kzs = j*par['nkz0']/20
             if entnp_sum[i,kzs,11] > 0:
+                print '3'
                 lomein = np.log(entnp_sum[i,kzs,11])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
