@@ -165,7 +165,7 @@ for j in range(20):
                 hermy.append(friedrice)
                 enm.append(lomein)
 
-    print 'enm', np.shape(enm),' ,hermy', np.shape(hermy)
+    print 'enm', np.shape(enm),enm(500),' ,hermy', np.shape(hermy),hermy(500)
     m[j],b[j] = np.polyfit(hermy,enm,1)
 
 print np.size(m) ,'slopes:', m
