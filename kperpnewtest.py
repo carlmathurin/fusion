@@ -172,10 +172,14 @@ for j in range(20):
 #print 'enm', np.shape(enm),enm[500],' ,hermy', np.shape(hermy),hermy[500]
 print np.size(m) ,'slopes:', m
 m1 = 0
+con = 0
 for j in range(19):
-    m1 = m1 + m[j+1]
+    if j ==10:
+        con = con + 1
+    else:
+        m1 = m1 + m[j+1]
 
-m1 = m1/ (19)
+m1 = m1/ (19 - con)
 print 'm1 =', m1
 
 ax1 = plt.subplot(121)
