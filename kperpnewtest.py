@@ -174,7 +174,7 @@ print np.size(m) ,'slopes:', m
 m1 = 0
 con = 0
 for j in range(19):
-    if j ==10:
+    if j ==9:
         con = con + 1
     else:
         m1 = m1 + m[j+1]
