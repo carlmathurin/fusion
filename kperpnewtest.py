@@ -208,10 +208,11 @@ con = 0
 
 for j in range(19):
     for i in range(60):
+    con = con + 1
         if herm_grid[i] > 0:
             kzs = (j+1)*par['nkz0']/20
             if entnm_sum[i,kzs,11] > -1:
-                con = con + 1
+
                 lomein = np.log(entnm_sum[i,kzs,11])
                 print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
