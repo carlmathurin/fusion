@@ -157,12 +157,9 @@ for j in range(20):
         hermy = []
         enm = []
         if herm_grid[i] > 0:
-            print'2'
             kzs = j*par['nkz0']/20
             if entnp_sum[i,kzs,11] > -1:
-                print '3'
                 lomein = np.log(entnp_sum[i,kzs,11])
-                print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -215,12 +212,13 @@ for j in range(20):
             kzs = j*par['nkz0']/20
             if entnm_sum[i,kzs,11] > -1:
                 lomein = np.log(entnm_sum[i,kzs,11])
+                print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
 
     m[j],b[j] = np.polyfit(hermy,enm,1)
-
+print 'hermy: ',hermy,' enm: ',enm
 print np.size(m) ,'slopes:', m
 
 m1 = 0
