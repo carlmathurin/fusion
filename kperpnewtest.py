@@ -204,19 +204,20 @@ hermy = []
 enm = []
 m = np.zeros(20)
 b = np.zeros(20)
-counter = 0
+con = 0
 
 for j in range(20):
-    for i in range(60):
+    for i in range(59):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entnm_sum[i,kzs,11] > -1:
-                    lomein = np.log(entnm_sum[i,kzs,11])
-                    print 'lomein', lomein
-                    friedrice = np.log(herm_grid[i])
-                    hermy.append(friedrice)
-                    enm.append(lomein)
-    print 'enm: ', enm
+            if entnm_sum[i+1,kzs,11] > -1:
+                con = con + 1
+                lomein = np.log(entnm_sum[i,kzs,11])
+                print 'lomein', lomein
+                friedrice = np.log(herm_grid[i])
+                hermy.append(friedrice)
+                enm.append(lomein)
+    print 'pass#', con
     m[j],b[j] = np.polyfit(hermy,enm,1)
 print 'hermy: ',hermy,' enm: ',enm
 print np.size(m) ,'slopes:', m
