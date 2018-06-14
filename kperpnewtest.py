@@ -212,7 +212,7 @@ for j in range(19):
         if herm_grid[i] > 0:
             kzs = (j+1)*par['nkz0']/20
             if entnm_sum[i,kzs,11] > -1:
-                if j == 10:
+                if j == 9:
                     continue
                 else:
                     lomein = np.log(entnm_sum[i,kzs,11])
@@ -227,10 +227,10 @@ print np.size(m) ,'slopes:', m
 
 m1 = 0
 
-for j in range(20):
-        m1 = m1 + m[j+1]
+for j in range(8):
+        m1 = m1 + m[j]
 
-m1 = m1/ (20)
+m1 = m1/ (8)
 print 'm1 =', m1
 
 
