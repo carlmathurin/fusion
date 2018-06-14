@@ -206,11 +206,11 @@ m = np.zeros(20)
 b = np.zeros(20)
 con = 0
 
-for j in range(20):
-    for i in range(59):
+for j in range(19):
+    for i in range(60):
         if herm_grid[i] > 0:
-            kzs = j*par['nkz0']/20
-            if entnm_sum[i+1,kzs,11] > -1:
+            kzs = (j+1)*par['nkz0']/20
+            if entnm_sum[i,kzs,11] > -1:
                 con = con + 1
                 lomein = np.log(entnm_sum[i,kzs,11])
                 print 'lomein', lomein
