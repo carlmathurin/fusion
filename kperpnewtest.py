@@ -200,8 +200,7 @@ plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
 plt.show()
-#########
-"""
+
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp
 #polyfit
 hermy = []
@@ -214,8 +213,8 @@ for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entn_sum[i,kzs,11] > 0:
-                lomein = np.log(entn_sum[i,kzs,11])
+            if entnm_sum[i,kzs,11] > 0:
+                lomein = np.log(entnm_sum[i,kzs,11])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -223,12 +222,18 @@ for j in range(20):
     m[j],b[j] = np.polyfit(hermy,enm,1)
 
 print np.size(m) ,'slopes:', m
-m1 = 0
-for j in range(20):
-    m1 = m1 + m[j]
 
-m1 = m1/ (20)
+m1 = 0
+con = 0
+for j in range(19):
+    if j ==9:
+        con = con + 1
+    else:
+        m1 = m1 + m[j+1]
+
+m1 = m1/ (19 - con)
 print 'm1 =', m1
+
 
 ax1 = plt.subplot(122)
 box = ax1.get_position()
@@ -248,8 +253,7 @@ plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
 plt.show()
-"""
-############
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 #### plot 1
