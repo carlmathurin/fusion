@@ -158,8 +158,8 @@ for j in range(20):
         enm = []
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entnp_sum[i,kzs,11] > -1:
-                lomein = np.log(entnp_sum[i,kzs,11])
+            if entnp_sum[i,kzs,5] > -1:
+                lomein = np.log(entnp_sum[i,kzs,5])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -186,7 +186,7 @@ ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 for j in range(20):
 #kz0=kzgrid[k*par['nkz0']/20]
     k=j*par['nkz0']/20
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,k,11],basex=10,basey=10,label=\
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,k,5],basex=10,basey=10,label=\
         '(k_z='+str(kzgrid[j*par['nkz0']/20]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
@@ -195,7 +195,7 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
-plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
+plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[5])+'])')
 #plt.show()
 
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp
@@ -211,11 +211,11 @@ for j in range(19):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = (j+1)*par['nkz0']/20
-            if entnm_sum[i,kzs,11] > -1:
+            if entnm_sum[i,kzs,5] > -1:
                 if j == 9:
                     continue
                 else:
-                    lomein = np.log(entnm_sum[i,kzs,11])
+                    lomein = np.log(entnm_sum[i,kzs,5])
                     print 'lomein', lomein
                     friedrice = np.log(herm_grid[i])
                     hermy.append(friedrice)
@@ -241,7 +241,7 @@ ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 for j in range(20):
 #kz0=kzgrid[k*par['nkz0']/20]
     k=j*par['nkz0']/20
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,k,11],basex=10,basey=10,label=\
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,k,5],basex=10,basey=10,label=\
         '(k_z='+str(kzgrid[j*par['nkz0']/20]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
@@ -250,7 +250,7 @@ plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
-plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[11])+'])')
+plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[5])+'])')
 plt.show()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TESTING BLOCK (fixed K_perp [+])~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
