@@ -212,12 +212,14 @@ for j in range(19):
         if herm_grid[i] > 0:
             kzs = (j+1)*par['nkz0']/20
             if entnm_sum[i,kzs,11] > -1:
-
-                lomein = np.log(entnm_sum[i,kzs,11])
-                print 'lomein', lomein
-                friedrice = np.log(herm_grid[i])
-                hermy.append(friedrice)
-                enm.append(lomein)
+                if j == 10:
+                    continue
+                else:
+                    lomein = np.log(entnm_sum[i,kzs,11])
+                    print 'lomein', lomein
+                    friedrice = np.log(herm_grid[i])
+                    hermy.append(friedrice)
+                    enm.append(lomein)
     print 'pass#', con
     m[j],b[j] = np.polyfit(hermy,enm,1)
 print 'hermy: ',hermy,' enm: ',enm
