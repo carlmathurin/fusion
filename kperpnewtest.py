@@ -211,7 +211,6 @@ for j in range(20):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
             if entnm_sum[i,kzs,11] > -1:
-                if np.log(entnm_sum[i,kzs,11]) > -50:
                     lomein = np.log(entnm_sum[i,kzs,11])
                     print 'lomein', lomein
                     friedrice = np.log(herm_grid[i])
