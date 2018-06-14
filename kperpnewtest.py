@@ -213,7 +213,7 @@ for j in range(20):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = j*par['nkz0']/20
-            if entnm_sum[i,kzs,11] > 0:
+            if entnm_sum[i,kzs,11] > -1:
                 lomein = np.log(entnm_sum[i,kzs,11])
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
