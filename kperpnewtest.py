@@ -227,10 +227,10 @@ print np.size(m) ,'slopes:', m
 
 m1 = 0
 
-for j in range(8):
+for j in range(19):
         m1 = m1 + m[j]
 
-m1 = m1/ (8)
+m1 = m1/ (19)
 print 'm1 =', m1
 
 
