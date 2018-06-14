@@ -196,7 +196,7 @@ plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n
 plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[11])+'])')
-plt.show()
+#plt.show()
 
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp
 #polyfit
@@ -217,7 +217,7 @@ for j in range(20):
                     friedrice = np.log(herm_grid[i])
                     hermy.append(friedrice)
                     enm.append(lomein)
-
+    print 'enm: ', enm
     m[j],b[j] = np.polyfit(hermy,enm,1)
 print 'hermy: ',hermy,' enm: ',enm
 print np.size(m) ,'slopes:', m
