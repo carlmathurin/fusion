@@ -189,11 +189,11 @@ m = np.zeros(20)
 b = np.zeros(20)
 con = 0
 
-for j in range(7):
+for j in range(8):
     con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            kzs = (j)*par['nkz0']/14
+            kzs = (j+1)*par['nkz0']/14
             print 'kzs: ', kzs
             if entnm_sum[i,kzs,5] > -1:
                 if j == 9:
