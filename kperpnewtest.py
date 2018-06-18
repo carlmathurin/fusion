@@ -153,7 +153,9 @@ m1 = 0
 con = 0
 
 for j in range(7):
-    if j == 0 or j == 4:
+    if j == 0:
+        continue
+    else:
         m1 = m1 + m[j]
 
 m1 = m1/ (6)
@@ -179,7 +181,7 @@ plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[5])+'])')
 #plt.show()
 
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp
-"""
+
 #polyfit
 hermy = []
 enm = []
@@ -187,11 +189,11 @@ m = np.zeros(20)
 b = np.zeros(20)
 con = 0
 
-for j in range(8):
+for j in range(7):
     con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            kzs = (j+1)*par['nkz0']/20
+            kzs = (j)*par['nkz0']/14
             print 'kzs: ', kzs
             if entnm_sum[i,kzs,5] > -1:
                 if j == 9:
@@ -209,12 +211,12 @@ print np.size(m) ,'slopes:', m
 
 m1 = 0
 
-for j in range(8):
+for j in range(7):
         m1 = m1 + m[j]
 
-m1 = m1/ (8)
+m1 = m1/ (7)
 print 'm1 =', m1
-"""
+
 
 ax1 = plt.subplot(122)
 box = ax1.get_position()
