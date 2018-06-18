@@ -153,8 +153,8 @@ m1 = 0
 con = 0
 
 for j in range(7):
-    if j == 0 or j == 4
-    m1 = m1 + m[j]
+    if j == 0 or j == 4:
+        m1 = m1 + m[j]
 
 m1 = m1/ (6)
 print 'm1 =', m1
