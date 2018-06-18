@@ -69,8 +69,8 @@ for i in range(istart,iend+1):
                         g_tp[v,w,b,j]= (g_t[v,w,b,j]+g_t[v,w,b,j+1])/2
                         g_tm[v,w,b,j]= (g_t[v,w,b,j]-g_t[v,w,b,j+1])/2
 
-for i in range(16):
-    k_bin[i]= .15*i
+for i in range(8):
+    k_bin[i]= .30*i
 
 for i in range(xmax):
     for j in range(xmax):
@@ -97,30 +97,10 @@ for i in range(xmax):
         elif k_bin[6] <= k_perp < k_bin[7]:
             t= 6
             counter[t] = counter[t] + 1
-        elif k_bin[7] <= k_perp < k_bin[8]:
+        elif k_bin[7] <= k_perp :
             t= 7
             counter[t] = counter[t] + 1
-        elif k_bin[8] <= k_perp < k_bin[9]:
-            t= 8
-            counter[t] = counter[t] + 1
-        elif k_bin[9] <= k_perp  < k_bin[10]:
-            t= 9
-            counter[t] = counter[t] + 1
-        elif k_bin[10] <= k_perp  < k_bin[11]:
-            t= 10
-            counter[t] = counter[t] + 1
-        elif k_bin[11] <= k_perp  < k_bin[12]:
-            t= 11
-            counter[t] = counter[t] + 1
-        elif k_bin[12] <= k_perp  < k_bin[13]:
-            t= 12
-            counter[t] = counter[t] + 1
-        elif k_bin[13] <= k_perp  < k_bin[14]:
-            t= 13
-            counter[t] = counter[t] + 1
-        elif k_bin[14] <= k_perp  :
-            t= 14
-            counter[t] = counter[t] + 1
+
 # add new loop for k_z here and sum over every k_z for each x-y combination.
         for b in range(len(kzgrid)):
              entn_sum[:,b,t] = entn_sum[:,b,t] + dd.get_entropy_hermite2(gt0,i,j,b)
@@ -152,12 +132,12 @@ m = np.zeros(20)
 b = np.zeros(20)
 counter = 0
 
-for j in range(20):
+for j in range(8):
     for i in range(60):
         hermy = []
         enm = []
         if herm_grid[i] > 0:
-            kzs = j*par['nkz0']/20
+            kzs = j*par['nkz0']/8
             if entnp_sum[i,kzs,5] > -1:
                 lomein = np.log(entnp_sum[i,kzs,5])
                 friedrice = np.log(herm_grid[i])
@@ -168,26 +148,25 @@ for j in range(20):
     m[j],b[j] = np.polyfit(hermy,enm,1)
 #print 'enm', np.shape(enm),enm[500],' ,hermy', np.shape(hermy),hermy[500]
 print np.size(m) ,'slopes:', m
+
 m1 = 0
 con = 0
-for j in range(19):
-    if j ==9:
-        con = con + 1
-    else:
-        m1 = m1 + m[j+1]
 
-m1 = m1/ (19 - con)
+for j in range(8):
+    m1 = m1 + m[j+1]
+
+m1 = m1/ (8)
 print 'm1 =', m1
 
 ax1 = plt.subplot(121)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
-for j in range(20):
+for j in range(8):
 #kz0=kzgrid[k*par['nkz0']/20]
-    k=j*par['nkz0']/20
+    k=j*par['nkz0']/8
     plt.loglog(herm_grid,prefactor*entnp_sum[:,k,5],basex=10,basey=10,label=\
-        '(k_z='+str(kzgrid[j*par['nkz0']/20]))
+        '(k_z='+str(kzgrid[j*par['nkz0']/8]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
@@ -206,11 +185,11 @@ m = np.zeros(20)
 b = np.zeros(20)
 con = 0
 
-for j in range(19):
+for j in range(8):
     con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            kzs = (j+1)*par['nkz0']/20
+            kzs = (j+1)*par['nkz0']/8
             if entnm_sum[i,kzs,5] > -1:
                 if j == 9:
                     continue
@@ -227,10 +206,10 @@ print np.size(m) ,'slopes:', m
 
 m1 = 0
 
-for j in range(19):
+for j in range(8):
         m1 = m1 + m[j]
 
-m1 = m1/ (19)
+m1 = m1/ (8)
 print 'm1 =', m1
 
 
