@@ -132,12 +132,12 @@ m = np.zeros(20)
 b = np.zeros(20)
 counter = 0
 
-for j in range(8):
+for j in range(7):
     for i in range(60):
         hermy = []
         enm = []
         if herm_grid[i] > 0:
-            kzs = j*par['nkz0']/8
+            kzs = j*par['nkz0']/14
             if entnp_sum[i,kzs,5] > -1:
                 lomein = np.log(entnp_sum[i,kzs,5])
                 friedrice = np.log(herm_grid[i])
@@ -152,21 +152,22 @@ print np.size(m) ,'slopes:', m
 m1 = 0
 con = 0
 
-for j in range(8):
-    m1 = m1 + m[j+1]
+for j in range(7):
+    if j == 0 or j == 4
+    m1 = m1 + m[j]
 
-m1 = m1/ (8)
+m1 = m1/ (6)
 print 'm1 =', m1
 
 ax1 = plt.subplot(121)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
-for j in range(8):
+for j in range(7):
 #kz0=kzgrid[k*par['nkz0']/20]
-    k=j*par['nkz0']/8
+    k=j*par['nkz0']/14
     plt.loglog(herm_grid,prefactor*entnp_sum[:,k,5],basex=10,basey=10,label=\
-        '(k_z='+str(kzgrid[j*par['nkz0']/8]))
+        '(k_z='+str(kzgrid[j*par['nkz0']/14]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
@@ -219,11 +220,11 @@ ax1 = plt.subplot(122)
 box = ax1.get_position()
 ax1.set_position([box.x0, box.y0 , box.width* .8, box.height])
 
-for j in range(20):
+for j in range(7):
 #kz0=kzgrid[k*par['nkz0']/20]
-    k=j*par['nkz0']/20
+    k=j*par['nkz0']/14
     plt.loglog(herm_grid,prefactor*entnm_sum[:,k,5],basex=10,basey=10,label=\
-        '(k_z='+str(kzgrid[j*par['nkz0']/20]))
+        '(k_z='+str(kzgrid[j*par['nkz0']/14]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.legend(loc='lower left')
