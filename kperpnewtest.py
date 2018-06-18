@@ -178,6 +178,7 @@ plt.title(plabel+'(kz(+) sum [k_perp = ' + str(k_bin[5])+'])')
 #plt.show()
 
 #~~~~~~~~~~~~~~~~~~~~~~ 1) k_perp
+"""
 #polyfit
 hermy = []
 enm = []
@@ -190,6 +191,7 @@ for j in range(8):
     for i in range(60):
         if herm_grid[i] > 0:
             kzs = (j+1)*par['nkz0']/20
+            print 'kzs: ', kzs
             if entnm_sum[i,kzs,5] > -1:
                 if j == 9:
                     continue
@@ -211,7 +213,7 @@ for j in range(8):
 
 m1 = m1/ (8)
 print 'm1 =', m1
-
+"""
 
 ax1 = plt.subplot(122)
 box = ax1.get_position()
@@ -227,7 +229,7 @@ for j in range(20):
     plt.legend(loc='lower left')
 plt.loglog(herm_grid, 10*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
 plt.loglog(herm_grid, 10**(-4)*herm_grid**(-1.5),'--',basex=10,basey=10,label='n^(-1.5)')
-plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
+#plt.loglog(herm_grid, (10**-2.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 plt.legend(loc='center left', bbox_to_anchor=(1 ,.5) )
 plt.title(plabel+'(kz(-) sum [k_perp = ' + str(k_bin[5])+'])')
 plt.show()
