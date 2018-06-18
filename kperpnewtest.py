@@ -189,7 +189,7 @@ for j in range(8):
     con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            kzs = (j+1)*par['nkz0']/8
+            kzs = (j+1)*par['nkz0']/20
             if entnm_sum[i,kzs,5] > -1:
                 if j == 9:
                     continue
