@@ -646,12 +646,12 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-print 'k_bin', k_bin
+print 'k-perp_bin', k_bin
 kzbin = np.zeros(7)
 for j in range(7):
     kzs = j*par['nkz0']/14
     kzbin[j] = kzgrid[kzs]
-
+print 'kz_bin', kzbin
 shape2 = (7,7)
 entp_sm = np.zeros(shape2)
 entm_sm = np.zeros(shape2)
@@ -684,5 +684,5 @@ cb = plt.colorbar(CS)
 cb.ax.set_ylabel('ent')
 cb.add_lines(CS2)
 plt.ylim([0,2.4])
-plt.xlim([0,4.4])
+plt.xlim([0,2.4])
 plt.show()
