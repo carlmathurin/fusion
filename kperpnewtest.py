@@ -646,6 +646,7 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour +) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
 print 'k-perp_bin', k_bin
 kzbin = np.zeros(7)
 for j in range(7):
@@ -703,3 +704,4 @@ cb.add_lines(CS2)
 plt.ylim([0,4.1])
 plt.xlim([0,2.1])
 plt.show()
+"""
