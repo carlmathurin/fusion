@@ -646,7 +646,7 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
+
 kzbin = np.zeros(20)
 for j in range(20):
     kzs = j*par['nkz0']/20
@@ -675,8 +675,12 @@ X1,Y1 = np.meshgrid(k_bin,kzbin)
 
 
 
-plt.contour(X1[:,1:],Y1[:,1:],ent_tot)
+CS = plt.contourf(X1[:,1:],Y1[:,1:],entp_sm)
+CS2 = plt.contour(CS)
 plt.xlabel('K_z')
 plt.ylabel('K_perp')
+plt.title(ent+_sum)
+cb = plt.colorbar(CS)
+cb.ax.set_ylabel('ent')
+cb.add_lines(CS2)
 plt.show()
-"""
