@@ -671,7 +671,7 @@ for j in range(7):
 
 plt.figure(2)
 
-X1,Y1 = np.meshgrid(k_bin[0:6],kzbin)
+X1,Y1 = np.meshgrid(k_bin[0:7],kzbin)
 
 
 
