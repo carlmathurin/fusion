@@ -283,7 +283,6 @@ for j in range(7):
     con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            print 'kzs: ', kzs
             if entnm_sum[i,22,j] > -1:
                 lomein = np.log(entnm_sum[i,kzs,5])
                 print 'lomein', lomein
