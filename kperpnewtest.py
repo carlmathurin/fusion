@@ -645,7 +645,7 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 plt.show()
 """
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour +) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print 'k-perp_bin', k_bin
 kzbin = np.zeros(7)
 for j in range(7):
@@ -676,7 +676,27 @@ X1,Y1 = np.meshgrid(k_bin[0:7],kzbin)
 print 'X1: ', X1
 print 'Y1: ', Y1
 
-CS = plt.contourf(X1,Y1,entp_sm)
+CS = plt.contourf(Y1,X1,entp_sm)
+CS2 = plt.contour(CS)
+plt.xlabel('K_z')
+plt.ylabel('K_perp')
+plt.title('ent+_sum')
+cb = plt.colorbar(CS)
+cb.ax.set_ylabel('ent')
+cb.add_lines(CS2)
+plt.ylim([0,4.1])
+plt.xlim([0,2.1])
+plt.show()
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~Contour - ~~~~~~~~~~~~~~~~~~~~~~~~~~
+plt.figure(3)
+
+X1,Y1 = np.meshgrid(k_bin[0:7],kzbin)
+
+print 'X1: ', X1
+print 'Y1: ', Y1
+
+CS = plt.contourf(Y1,X1,entm_sm)
 CS2 = plt.contour(CS)
 plt.xlabel('K_z')
 plt.ylabel('K_perp')
