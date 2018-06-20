@@ -284,7 +284,7 @@ for j in range(7):
     for i in range(60):
         if herm_grid[i] > 0:
             if entnm_sum[i,22,j] > -1:
-                lomein = np.log(entnm_sum[i,kzs,5])
+                lomein = np.log(entnm_sum[i,22,j])
                 print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
