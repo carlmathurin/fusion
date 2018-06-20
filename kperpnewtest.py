@@ -276,33 +276,29 @@ b2 = b[4]
 #polyfit
 hermy = []
 enm = []
-m = np.zeros(20)
-b = np.zeros(20)
+m = np.zeros(7)
+b = np.zeros(7)
 con = 0
 for j in range(7):
     con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            if entnm_sum[i,22,j] > -1:
-                lomein = np.log(entnm_sum[i,22,j])
+            if entnp_sum[i,22,j] > -1:
+                lomein = np.log(entnp_sum[i,22,j])
                 print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
     print 'pass#', con
     m[j],b[j] = np.polyfit(hermy,enm,1)
-print 'hermy: ',hermy,' enm: ',enm
 print np.size(m) ,'slopes:', m
 
 m1 = 0
 
 for j in range(7):
-    if j == 6 or j == 5:
-        continue
-    else:
         m1 = m1 + m[j]
 
-m1 = m1/ (5)
+m1 = m1/ (7)
 print 'm1 =', m1
 
 
@@ -311,7 +307,7 @@ ax1 = plt.subplot(121)
 
 for j in range(7):
     #kz0=kzgrid[k*par['nkz0']/20]
-    plt.loglog(herm_grid,prefactor*entnp_sum[:,22,j],basex=10,basey=10,label= '(k_perp ='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnp_sum[:,22,j],basex=10,basey=10,label= 'k_p ='+str(k_bin[j]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'+ (k_perp(+) sum [kz = ' + str(kzgrid[22])+'])')
@@ -321,7 +317,7 @@ for j in range(7):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('avg_n^(%.4f)'% m1))
+plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m1),'--',basex=10,basey=10,label=('n^(%.4f)'% m1))
 #plt.loglog(herm_grid, (10**-3.5)*herm_grid**(m2),'--',basex=10,basey=10,label=('n^(%.4f)'% m2))
 #plt.legend(loc='lower left')
 
@@ -399,21 +395,31 @@ plt.legend(loc='center left', bbox_to_anchor=(1 ,.5))
 #print "herm", herm_grid
 hermy = []
 enm = []
-
+m = np.zeros(7)
+b = np.zeros(7)
+con = 0
 for j in range(7):
+    con = con + 1
     for i in range(60):
         if herm_grid[i] > 0:
-            if entnm_sum[i,22,j] > 0:
+            if entnm_sum[i,22,j] > -1:
                 lomein = np.log(entnm_sum[i,22,j])
+                print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
-print "hermy" , hermy
-print "enm" , enm
+    print 'pass#', con
+    m[j],b[j] = np.polyfit(hermy,enm,1)
+print np.size(m) ,'slopes:', m
 
-m,b = polyfit(hermy,enm,1)
+m1 = 0
 
-print 'm = ',m
+for j in range(7):
+        m1 = m1 + m[j]
+
+m1 = m1/ (7)
+print 'm1 =', m1
+
 plt.figure(1)
 ax1= plt.subplot(122)
 
@@ -422,7 +428,7 @@ for j in range(7):
     #print prefactor*entn_sum[:,k]
     #kz0=kzgrid[k*par['nkz0']/20]
     #plots.append(prefactor*entn_sum[:,k])
-    plt.loglog(herm_grid,prefactor*entnm_sum[:,22,j],basex=10,basey=10,label= '(k_perp='+str(k_bin[j])+')')
+    plt.loglog(herm_grid,prefactor*entnm_sum[:,22,j],basex=10,basey=10,label= 'k_p='+str(k_bin[j]))
     plt.xlabel('Hermite n')
     plt.ylabel(plabel)
     plt.title(plabel+'- (k_perp(-) sum [kz = ' + str(kzgrid[22])+'])')
@@ -433,8 +439,8 @@ for j in range(7):
 #temp=prefactor*entn_sum[20,10]
 #temp=temp/(herm_grid**(-1.5))[20]
 #plt.loglog(herm_grid,2.0*temp*herm_grid**(-3.5),'--',basex=10,basey=10,label=str(-3.5))
-plt.loglog(herm_grid, (10**-3.5)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
-plt.loglog(herm_grid, 10**(-3.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('ploy_n^(%.4f)'% m))
+#plt.loglog(herm_grid, (10**-3.5)*herm_grid**(-1.75),'--',basex=10,basey=10,label='n^(-1.75)')
+plt.loglog(herm_grid, 10**(-3.5)*herm_grid**(m),'--',basex=10,basey=10,label= ('n^(%.4f)'% m1))
 #plt.legend(loc='lower left')
 
 box = ax1.get_position()
