@@ -108,7 +108,7 @@ for i in range(xmax):
         entnp_sum[:,kzind,t] = entnp_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tp,i,j,kzind)
         entnm_sum[:,kzind,t] = entnm_sum[:,kzind,t] + dd.get_entropy_hermite2(g_tm,i,j,kzind)
 """
-print 'entnp_sum',np.shape(entnp_sum),', ', entnp_sum
+#print 'entnp_sum',np.shape(entnp_sum),', ', entnp_sum
 
 prefactor=np.empty(par['nv0'])
 prefactor[:]=1.0
@@ -285,7 +285,7 @@ for j in range(7):
         if herm_grid[i] > 0:
             if entnp_sum[i,22,j] > -1:
                 lomein = np.log(entnp_sum[i,22,j])
-                print 'lomein', lomein
+                #print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -404,7 +404,7 @@ for j in range(7):
         if herm_grid[i] > 0:
             if entnm_sum[i,22,j] > -1:
                 lomein = np.log(entnm_sum[i,22,j])
-                print 'lomein', lomein
+                #print 'lomein', lomein
                 friedrice = np.log(herm_grid[i])
                 hermy.append(friedrice)
                 enm.append(lomein)
@@ -646,7 +646,7 @@ plt.title('Ent Total, k_perp ='+str(k_bin[3])+', kz ='+str(kzgrid[41]))
 plt.show()
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing Block (Countour) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+print 'k_bin', k_bin
 kzbin = np.zeros(7)
 for j in range(7):
     kzs = j*par['nkz0']/14
@@ -671,11 +671,11 @@ for j in range(7):
 
 plt.figure(2)
 
-X1,Y1 = np.meshgrid(k_bin,kzbin)
+X1,Y1 = np.meshgrid(k_bin[0:6],kzbin)
 
 
 
-CS = plt.contourf(X1[:,:],Y1[:,:],entp_sm)
+CS = plt.contourf(X1,Y1,entp_sm)
 CS2 = plt.contour(CS)
 plt.xlabel('K_z')
 plt.ylabel('K_perp')
