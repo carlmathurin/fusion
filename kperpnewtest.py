@@ -676,10 +676,10 @@ X1,Y1 = np.meshgrid(k_bin[0:7],kzbin)
 print 'X1: ', X1
 print 'Y1: ', Y1
 
-CS = plt.contourf(Y1,X1,entp_sm)
+CS = plt.contourf(X1,Y1,entp_sm)
 CS2 = plt.contour(CS)
-plt.xlabel('K_z')
-plt.ylabel('K_perp')
+plt.xlabel('K_perp')
+plt.ylabel('K_z')
 plt.title('ent+_sum')
 cb = plt.colorbar(CS)
 cb.ax.set_ylabel('ent')
@@ -691,16 +691,12 @@ plt.show()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~Contour - ~~~~~~~~~~~~~~~~~~~~~~~~~~
 plt.figure(3)
 
-X1,Y1 = np.meshgrid(k_bin[0:7],kzbin)
 
-print 'X1: ', X1
-print 'Y1: ', Y1
-
-CS = plt.contourf(Y1,X1,entm_sm)
+CS = plt.contourf(X1,Y1,entm_sm)
 CS2 = plt.contour(CS)
-plt.xlabel('K_z')
-plt.ylabel('K_perp')
-plt.title('ent+_sum')
+plt.xlabel('K_perp')
+plt.ylabel('K_z')
+plt.title('ent-_sum')
 cb = plt.colorbar(CS)
 cb.ax.set_ylabel('ent')
 cb.add_lines(CS2)
