@@ -673,7 +673,8 @@ plt.figure(2)
 
 X1,Y1 = np.meshgrid(k_bin[0:7],kzbin)
 
-
+print 'X1: ', X1
+print 'Y1: ', Y1
 
 CS = plt.contourf(X1,Y1,entp_sm)
 CS2 = plt.contour(CS)
@@ -683,6 +684,6 @@ plt.title('ent+_sum')
 cb = plt.colorbar(CS)
 cb.ax.set_ylabel('ent')
 cb.add_lines(CS2)
-plt.ylim([0,2.4])
-plt.xlim([0,2.4])
+plt.ylim([0,4.1])
+plt.xlim([0,2.1])
 plt.show()
