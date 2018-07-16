@@ -40,7 +40,7 @@ if start_time >= end_time:
     stop
 
 istart=np.argmin(abs(time-start_time))
-iend=np.argmin(abs(time-end_time))/27
+iend=np.argmin(abs(time-end_time))/18
 ntime=iend-istart+1
 #iend => 1/16
 #final time=>1/18
