@@ -33,6 +33,7 @@ xmax = par['nkx0']
 print 'kzgrid', np.shape(kzgrid), kzgrid
 print 'kx' , np.shape(kx), kx
 print 'ky',np.shape(ky), ky
+print 'kperp-bin', np.shape(k_bin) , k_bin
 print "herm_grid",np.shape(herm_grid)
 
 if start_time >= end_time:
@@ -51,6 +52,7 @@ entnm_sum=np.zeros((par['nv0'],96,16),dtype='float')
 
 
 t_range = time[iend] - time[istart]
+print 'time range: ', t_range
 for i in range(istart,iend+1):
     print 'time=',time[i],' of ',time[iend]
     gt0=dd.read_time_step_g(i)
