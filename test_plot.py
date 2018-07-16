@@ -566,3 +566,7 @@ cb.add_lines(CS2)
 plt.ylim([0,2.7])
 plt.xlim([0,1.05])
 plt.show()
+
+np.save(entm,entnm_sum)
+np.save(emtp,entnp_sum)
+np.save(entt,entn_sum)
