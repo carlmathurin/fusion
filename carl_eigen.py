@@ -11,7 +11,7 @@ from spectra import *
 from nlt_diags import *
 #from landau_tests import *
 import os
-import eigenvalues.py
+
 
 dd.read_parameters()
 
