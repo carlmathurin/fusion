@@ -17,3 +17,4 @@ dd.read_parameters()
 
 diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
+print par
