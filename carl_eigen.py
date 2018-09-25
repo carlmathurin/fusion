@@ -11,10 +11,6 @@ from spectra import *
 from nlt_diags import *
 #from landau_tests import *
 import os
+import matrix_maker as mat
 
-
-dd.read_parameters()
-
-diagdir = '/scratch/01658/drhatch/dna_out'
-par['diagdir']="\'"+diagdir+"\'"
-print par
+print all good
