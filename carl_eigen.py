@@ -21,6 +21,7 @@ time = dd.get_time_from_gout()
 kx,ky,kz,herm_grid = dd.get_grids()
 
 Gamma_0 = mat.get_gamma0()
+nu = .002222
 us_matrix = mat.matrix(kx,ky,kz,Gamma_0,nu)
 
 print us_matrix
