@@ -13,4 +13,14 @@ from nlt_diags import *
 import os
 import matrix_maker as mat
 
-print all good
+dd.read_parameters()
+
+diagdir = '/scratch/01658/drhatch/dna_out'
+par['diagdir']="\'"+diagdir+"\'"
+time = dd.get_time_from_gout()
+kx,ky,kz,herm_grid = dd.get_grids()
+
+Gamma_0 = mat.get_gamma0()
+us_matrix = mat.matrix(kx,ky,kz,Gamma_0)
+
+print us_matrix
