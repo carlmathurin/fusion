@@ -113,20 +113,20 @@ def matrix(kx,ky,kz,Gam0,nu):
 def get_spectrum(kx,ky,kz,Gam0,nu):
     """My function to compute the eigenvalues."""
 
-    mat = matrix_VB(kx,ky,kz,Gam0,nu)
+    mat = matrix(kx,ky,kz,Gam0,nu)
 
     omega,evec = lin.eigval(mat)
     freq = np.imag(omega)
     growth = np.real(omega)
 
-    return freq, growth
+    return freq, growth, evec
 
 
 
 def plot_spectrum(kx,ky,kz,Gam0,nu):
     """Plots the spectrum obtained by the function get_spectrum_VB()"""
 
-    freq, gam = get_spectrum_VB(kx,ky,kz,Gam0,nu)
+    freq, gam = get_spectrum(kx,ky,kz,Gam0,nu)
 
     plt.plot(freq, gam, 'b*')
     plt.grid()
