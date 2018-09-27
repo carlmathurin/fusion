@@ -31,4 +31,7 @@ print 'freq: ', freq ,', growth: ', growth,', evec: ',np.shape(evec), evec
 g0 = evec[:,0]
 print 'g0 = ', g0
 
+print par
+#0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1))*g(n+1) + sqrt(n)*g(n-1)
+
 print 'Matrix: ', np.shape(us_matrix)
