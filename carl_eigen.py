@@ -29,5 +29,6 @@ freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 print 'freq: ', freq ,', growth: ', growth,', evec: ',np.shape(evec), evec
 
 g0 = evec[:,0]
+print 'g0 = ', g0
 
 print 'Matrix: ', np.shape(us_matrix)
