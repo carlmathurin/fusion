@@ -115,7 +115,8 @@ def get_spectrum(kx,ky,kz,Gam0,nu):
 
     mat = matrix(kx,ky,kz,Gam0,nu)
 
-    omega,evec = lin.eigval(mat)
+    omega,evec = lin.eig(mat)
+    #lin.eig gets eigen vectors, but for general arrays, might need different value for symmetric or hermitain matrices
     freq = np.imag(omega)
     growth = np.real(omega)
 
