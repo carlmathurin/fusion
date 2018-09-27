@@ -22,6 +22,7 @@ kx,ky,kz,herm_grid = dd.get_grids()
 
 Gamma_0 = mat.get_gamma0()
 nu = .002222
+print par
 us_matrix = mat.matrix(kx,ky,kz,Gamma_0,nu)
 
 print us_matrix
