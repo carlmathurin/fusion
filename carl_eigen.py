@@ -26,6 +26,6 @@ print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
-print 'freq: ', freq ,', growth: ', growth,', evec: ', evec
+print 'freq: ', freq ,', growth: ', growth,', evec: ',np.shape(evec), evec
 
 print 'Matrix: ', np.shape(us_matrix)
