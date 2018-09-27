@@ -32,12 +32,12 @@ freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 print 'freq: ',np.shape(freq), freq ,', growth: ', growth,', evec: ',np.shape(evec), evec
 
 g0 = evec[:,0]
-print 'g2 = ', g[2]
+print 'g2 = ', g0[2]
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
 n = 2
 nu_bar = par['nu']/kz[5]
 g3 = ( (1j*freq[0]/kz[5] - nu_bar*n)*g0[n] - 1j*n**(.5)*g0[n-1])/ (1j*( n+1)**(.5))
-print 'g3 matrix vs calc: ', g[3], ' vs.', g3
+print 'g3 matrix vs calc: ', g0[3], ' vs.', g3
 # w is freq/eigenvalues
 print 'Matrix: ', np.shape(us_matrix)
