@@ -53,7 +53,7 @@ for i in range(48):
 f = open('g_data.txt','w+')
 f.write('n      G0      G_calc')
 for i in range(48):
-    f.write('%d     %f      %f\n' % i, g0[i],g_calc[i])
+    f.write('%d     %f      %f\n' % i  g0[i] g_calc[i] )
 f.close()
 # w is freq/eigenvalues
 print 'Matrix: ', np.shape(us_matrix)
