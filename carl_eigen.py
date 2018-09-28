@@ -52,9 +52,9 @@ for i in range(48):
 
 f = open('g_data.txt','w+')
 print g_calc[2].real, g_calc[2].imag
-f.write('n      |G0      |G_calc')
+f.write('n      |G0             |G_calc\n')
 for i in range(48):
-    f.write('%d     |%f + i(%f)      |%f + i(%f) \n' %( i,  g0[i].real, g0[i].imag, g_calc[i].real, g_calc[i].imag ))
+    f.write('%d     |%e + i(%e)      |%e + i(%e) \n' %( i,  g0[i].real, g0[i].imag, g_calc[i].real, g_calc[i].imag ))
 f.close()
 # w is freq/eigenvalues
 print 'Matrix: ', np.shape(us_matrix)
