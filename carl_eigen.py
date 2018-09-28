@@ -46,6 +46,8 @@ for n in range(48):
     else:
         g_calc[n] = ( (1j*freq[0]/kz[5] - nu_bar*(n-1))*g0[n-1] - 1j*n**(.5)*g0[n-2])/ (1j*( n)**(.5))
 
-print 'g2 matrix vs calc: ', g0, ' vs.', g_calc
+print 'g2 matrix vs calc: '
+for i in range(48):
+    print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
 # w is freq/eigenvalues
 print 'Matrix: ', np.shape(us_matrix)
