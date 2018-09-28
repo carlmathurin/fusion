@@ -35,9 +35,17 @@ g0 = evec[:,0]
 print 'g1 = ', g0[1]
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
-n = 1
+nmax = 48
 nu_bar = par['nu']/kz[5]
-g2 = ( (1j*freq[0]/kz[5] - nu_bar*n)*g0[n] - 1j*n**(.5)*g0[n-1])/ (1j*( n+1)**(.5))
-print 'g2 matrix vs calc: ', g0[2], ' vs.', g2
+g_calc = np.empty(48)
+
+for n in range(48):
+    if n == 0 or n == 1 :
+        g_calc[0] = g0[0]
+        g_calc[1] = g0[1]
+    else:
+        g_calc[i] = ( (1j*freq[0]/kz[5] - nu_bar*(n-1))*g0[n-1] - 1j*n**(.5)*g0[n-2])/ (1j*( n)**(.5))
+
+print 'g2 matrix vs calc: ', g0, ' vs.', g_calc
 # w is freq/eigenvalues
 print 'Matrix: ', np.shape(us_matrix)
