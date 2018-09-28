@@ -37,7 +37,7 @@ print 'g1 = ', g0[1]
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
 nmax = 48
 nu_bar = par['nu']/kz[5]
-g_calc = np.empty(48)
+g_calc = np.empty(48,dtype=complex)
 
 for n in range(48):
     if n == 0 or n == 1 :
@@ -49,5 +49,11 @@ for n in range(48):
 print 'g2 matrix vs calc: '
 for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
+
+f = open('g_data.txt','w+')
+f.write('n      G0      G_calc')
+for i in range(48):
+    f.write('%d     %f      %f\n' % i, g0[i],g_calc[i])
+f.close()
 # w is freq/eigenvalues
 print 'Matrix: ', np.shape(us_matrix)
