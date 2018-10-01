@@ -51,6 +51,7 @@ for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
+print 'herm :', herm_grid[0:48]
 plt.loglog(herm_grid[0:48],np.real(g_calc),basex=10,basey=10)#label= 'k_p ='+str(k_bin[j])
 plt.show()
 # plt.xlabel('Hermite n')
