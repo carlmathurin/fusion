@@ -52,7 +52,10 @@ for i in range(48):
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
-plt.plot(herm_grid[0:48],np.real(g_calc))#label= 'k_p ='+str(k_bin[j])
+plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
+plt.plot(herm_grid[0:48],g0,'r',label= 'matrix')
+
+#label= 'k_p ='+str(k_bin[j])
 plt.show()
 # plt.xlabel('Hermite n')
 # plt.ylabel('g')
