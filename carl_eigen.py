@@ -51,7 +51,7 @@ for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
 
 print 'herm ',np.shape(herm_grid), 'g_calc ', np.shape(g_calc)
- plt.loglog(herm_grid[0:47],g_calc,basex=10,basey=10)#label= 'k_p ='+str(k_bin[j])
+plt.loglog(herm_grid[0:47],g_calc,basex=10,basey=10)#label= 'k_p ='+str(k_bin[j])
 # plt.xlabel('Hermite n')
 # plt.ylabel('g')
 # plt.title('spectra')
