@@ -50,8 +50,8 @@ print 'g2 matrix vs calc: '
 for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
 
-print 'herm ',np.shape(herm_grid[0:47]), 'g_calc ', np.shape(g_calc)
-plt.loglog(herm_grid[0:47],g_calc,basex=10,basey=10)#label= 'k_p ='+str(k_bin[j])
+print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
+plt.loglog(herm_grid[0:48],g_calc,basex=10,basey=10)#label= 'k_p ='+str(k_bin[j])
 plt.show()
 # plt.xlabel('Hermite n')
 # plt.ylabel('g')
