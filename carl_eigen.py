@@ -50,6 +50,13 @@ print 'g2 matrix vs calc: '
 for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
 
+print 'herm ',np.shape(herm_grid), 'g_calc ', np.shape(g_calc)
+# plt.loglog(herm_grid,g_calc,basex=10,basey=10,label= 'k_p ='+str(k_bin[j]))
+# plt.xlabel('Hermite n')
+# plt.ylabel('g')
+# plt.title('spectra')
+
+"""
 f = open('g_data.txt','w+')
 print g_calc[2].real, g_calc[2].imag
 f.write('n      |G0             |G_calc\n')
@@ -57,4 +64,5 @@ for i in range(48):
     f.write('%d     |%e + i(%e)      |%e + i(%e) \n' %( i,  g0[i].real, g0[i].imag, g_calc[i].real, g_calc[i].imag ))
 f.close()
 # w is freq/eigenvalues
+"""
 print 'Matrix: ', np.shape(us_matrix)
