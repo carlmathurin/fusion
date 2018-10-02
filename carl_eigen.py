@@ -48,8 +48,10 @@ for n in range(48):
 
 print 'g2 matrix vs calc: vs error '
 error = np.empty(48,dtype=complex)
+error2 = np.empty(48,dtype=complex)
 for i in range(48):
     error[i] = abs(g0[i] - g_calc[i])/ (abs(g0[n]*g_calc[i])**.5)
+    error2[i] = abs(g0[i] - g_calc[i])/ (abs(g0[n]))
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i] , '  error =', error[i]
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
@@ -61,7 +63,11 @@ plt.legend()
 plt.show()
 
 print 'error ', error
-plt.plot(herm_grid[0:48],error)
+plt.plot(herm_grid[0:48],error,label= 'err1')
+plt.plot(herm_grid[0:48],error2,label= 'err2')
+plt.legend()
+plt.xlabel('herm #')
+plt.ylabel('error')
 plt.show()
 # plt.xlabel('Hermite n')
 # plt.ylabel('g')
