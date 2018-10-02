@@ -60,7 +60,8 @@ plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
 
-
+plt.plot(herm_grid[0:48],error)
+plt.show()
 # plt.xlabel('Hermite n')
 # plt.ylabel('g')
 # plt.title('spectra')
