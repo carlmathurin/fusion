@@ -56,8 +56,8 @@ for i in range(48):
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
-plt.loglog(herm_grid[0:48],g_calc,basex=10,basey=10,'b',label = 'calc')
-plt.loglog(herm_grid[0:48],g0,basex=10,basey=10,'r',label= 'matrix')
+plt.loglog(herm_grid[0:48],g_calc, basex=10, basey=10 ,label = 'calc')
+plt.loglog(herm_grid[0:48],g0, basex=10, basey=10, label= 'matrix')
 plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
