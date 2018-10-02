@@ -47,7 +47,7 @@ for n in range(48):
         g_calc[n] = ( (1j*freq[0]/kz[5] - nu_bar*(n-1))*g0[n-1] - 1j*n**(.5)*g0[n-2])/ (1j*( n)**(.5))
 
 print 'g2 matrix vs calc: '
-error = np.empty(48)
+error = np.empty(48,dtype=complex)
 for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
     error[n] = abs(g0[n] - g_calc[n])/ (g0[n]*g_calc[n])**.5
