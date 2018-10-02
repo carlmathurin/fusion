@@ -60,6 +60,7 @@ plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
 
+print 'error ', error
 plt.plot(herm_grid[0:48],error)
 plt.show()
 # plt.xlabel('Hermite n')
