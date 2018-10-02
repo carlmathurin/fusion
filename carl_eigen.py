@@ -50,7 +50,7 @@ print 'g2 matrix vs calc: '
 error = np.empty(48,dtype=complex)
 for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
-    error[n] = abs(g0[n] - g_calc[n])/ (g0[n]*g_calc[n])**.5
+    error[n] = abs(g0[n] - g_calc[n])/ (abs(g0[n]*g_calc[n])**.5)
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
