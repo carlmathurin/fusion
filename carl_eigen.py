@@ -28,8 +28,9 @@ print 'gamma: ', np.shape(Gamma_0)
 print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
-freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
+omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 print 'freq: ',np.shape(freq), freq, ', growth: ', np.shape(growth),', evec: ',np.shape(evec), evec[:,0]
+print 'eval: ', omega
 
 g0 = evec[:,0]
 print 'g1 = ', g0[1]
@@ -57,7 +58,7 @@ for i in range(48):
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 plt.loglog(herm_grid[0:48],g_calc, basex=10, basey=10 ,label = 'calc')
-plt.loglog(herm_grid[0:48],g0, basex=10, basey=10, label= 'matrix')
+plt.loglog(herm_grid[0:48],g0, basex=10, basey=10,label= 'matrix')
 plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()

@@ -120,7 +120,7 @@ def get_spectrum(kx,ky,kz,Gam0,nu):
     freq = np.imag(omega)
     growth = np.real(omega)
 
-    return omega, growth, evec
+    return omega,freq, growth, evec
 
 
 
