@@ -47,16 +47,20 @@ for n in range(48):
         g_calc[n] = ( (1j*freq[0]/kz[5] - nu_bar*(n-1))*g0[n-1] - 1j*n**(.5)*g0[n-2])/ (1j*( n)**(.5))
 
 print 'g2 matrix vs calc: '
+error = np.empty(48)
 for i in range(48):
     print 'n =', i,'  ', g0[i], 'vs', g_calc[i]
+    error[n] = abs(g0[n] - g_calc[n])/ (g0[n]*g_calc[n])**.5
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
 plt.plot(herm_grid[0:48],g0,'r',label= 'matrix')
-
+plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
+
+
 # plt.xlabel('Hermite n')
 # plt.ylabel('g')
 # plt.title('spectra')
