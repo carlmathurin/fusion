@@ -59,9 +59,17 @@ print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
 plt.plot(herm_grid[0:48],g_0,'r',label= 'matrix')
+plt.xlabel('herm #')
+plt.ylabel('g')
+plt.title('first g eigen vector')
 plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
+
+
+
+# maybe look for most unstable eigenvalue
+
 
 print 'error ', error
 plt.plot(herm_grid[0:48],error,label= 'err1')
