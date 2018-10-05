@@ -58,8 +58,9 @@ for i in range(48):
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
-plt.loglog(herm_grid[0:48],g_calc,'b',label = 'calc')
-plt.loglog(herm_grid[0:48],g_0,'r',label= 'matrix')
+plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
+# try plotting absolute value
+plt.plot(herm_grid[0:48],g_0,'r',label= 'matrix')
 plt.xlabel('herm #')
 plt.ylabel('g')
 plt.title('first g eigen vector')
