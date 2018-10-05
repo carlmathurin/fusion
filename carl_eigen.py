@@ -22,7 +22,7 @@ kx,ky,kz,herm_grid = dd.get_grids()
 
 par['omn'] = 0
 par['omt'] = 0
-par['hyp_x']
+par['hyp_x'] = 0
 
 Gamma_0 = mat.get_gamma0()
 print 'gamma: ', np.shape(Gamma_0)
