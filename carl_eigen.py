@@ -85,8 +85,8 @@ plt.show()
 
 
 print 'error ', error
-plt.plot(herm_grid[0:48],error,label= 'err1')
-plt.plot(herm_grid[0:48],error2,label= 'err2')
+plt.plot(herm_grid[0:48],error,label= 'err1 [|g_r - g_m| / |g_r*g_m|^.5 ]')
+plt.plot(herm_grid[0:48],error2,label= 'err2 [|g_r - g_m| / |g_m|]')
 plt.legend()
 plt.xlabel('herm #')
 plt.ylabel('error')
