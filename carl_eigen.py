@@ -98,12 +98,7 @@ plt.show()
 # plt.title('spectra')
 
 """
-f = open('g_data.txt','w+')
-print g_calc[2].real, g_calc[2].imag
-f.write('n      |g_0             |G_calc\n')
-for i in range(48):
-    f.write('%d     |%e + i(%e)      |%e + i(%e) \n' %( i,  g_0[i].real, g_0[i].imag, g_calc[i].real, g_calc[i].imag ))
-f.close()
+
 # w is freq/eigenvalues
 """
 print 'Matrix: ', np.shape(us_matrix)
