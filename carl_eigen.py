@@ -100,6 +100,3 @@ plt.show()
 """
 
 # w is freq/eigenvalues
-"""
-print 'Matrix: ', np.shape(us_matrix)
-print 'here ~~', par['hyp_x']
