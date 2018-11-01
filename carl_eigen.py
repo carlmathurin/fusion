@@ -59,7 +59,9 @@ for i in range(48):
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 
-plt.plot(growth,freq,'b*') # color='blue')
+plt.plot(growth,freq,color='blue')
+plt.xlabel('real [growth]')
+plt.ylabel('imagainary [freq]')
 plt.show()
 #mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 """
