@@ -25,7 +25,7 @@ par['omt'] = 0
 par['hyp_x'] = 0
 
 Gamma_0 = mat.get_gamma0()
-print 'gamma: ', np.shape(Gamma_0)
+print 'gamma: ', np.shape(Gamma_0), Gamma_0
 print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
