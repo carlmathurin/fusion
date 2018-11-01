@@ -61,7 +61,7 @@ print 'herm :', herm_grid[0:48]
 
 plt.scatter(growth,freq, color='blue')
 plt.show()
-mat.plot_spectrum(kx,ky[0:32],kz,Gamma_0,par['nu'])
+plt.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 """
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
 # try plotting absolute value
