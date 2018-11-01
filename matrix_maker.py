@@ -128,7 +128,7 @@ def get_spectrum(kx,ky,kz,Gam0,nu):
 def plot_spectrum(kx,ky,kz,Gam0,nu):
     """Plots the spectrum obtained by the function get_spectrum_VB()"""
 
-    freq, gam = get_spectrum(kx,ky,kz,Gam0,nu)
+    omega, evec,freq, gam = get_spectrum(kx,ky,kz,Gam0,nu)
 
     plt.plot(freq, gam, 'b*')
     plt.grid()
