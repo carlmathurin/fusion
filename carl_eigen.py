@@ -59,9 +59,9 @@ for i in range(48):
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 
-plt.scatter(growth,freq, color='blue')
+plt.plot(growth,freq,'b*') # color='blue')
 plt.show()
-mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
+#mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 """
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
 # try plotting absolute value
