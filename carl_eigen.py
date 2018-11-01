@@ -60,6 +60,7 @@ print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 
 plt.scatter(growth,freq, color='blue')
+plt.show()
 """
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
 # try plotting absolute value
