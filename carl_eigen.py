@@ -33,6 +33,16 @@ omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par
 print 'freq: ',np.shape(freq), freq, ', growth: ', np.shape(growth),', evec: ',np.shape(evec), evec[:,0]
 print 'eval: ', omega
 
+max_g = 0
+max_g_i = 0
+
+for i in range(len(growth)):
+    if growth[i] >= max_g:
+        max_g = growth[i]
+        max_g_i = i
+
+
+"""
 g_0 = evec[:,0]
 print 'g1 = ', g_0[1]
 
@@ -64,6 +74,10 @@ plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
 plt.show()
+"""
+
+
+
 #mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 """
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
