@@ -51,7 +51,6 @@ print 'max Growth =', max_g, '  with index:', max_g_i, 'and repeats at', g_repea
 
 g_0 = evec[:,max_g_i]
 print 'g = ', g_0
-"""
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
 nmax = 48
@@ -65,17 +64,17 @@ for n in range(48):
     else:
         g_calc[n] = ( (omega[0]/kz[5] + 1j*nu_bar*(n-1))*g_0[n-1] - (n-1)**(.5)*g_0[n-2])/ ((n)**(.5))
 
-print 'g2 matrix vs calc: vs error '
+#print 'g2 matrix vs calc: vs error '
 error = np.empty(48,dtype=complex)
 error2 = np.empty(48,dtype=complex)
 for i in range(48):
     error[i] = abs(g_0[i] - g_calc[i])/ (abs(g_0[n]*g_calc[i])**.5)
     error2[i] = abs(g_0[i] - g_calc[i])/ (abs(g_0[n]))
-    print 'n =', i,'  ', g_0[i], 'vs', g_calc[i] , '  error =', error[i]
+    #print 'n =', i,'  ', g_0[i], 'vs', g_calc[i] , '  error =', error[i]
 
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
-
+"""
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
 plt.xlabel('real [growth]')
@@ -87,7 +86,7 @@ plt.show()
 
 
 #mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
-"""
+
 plt.plot(herm_grid[0:48],g_calc,'b',label = 'calc')
 # try plotting absolute value
 plt.plot(herm_grid[0:48],g_0,'r',label= 'matrix')
@@ -124,6 +123,5 @@ plt.show()
 # plt.ylabel('g')
 # plt.title('spectra')
 
-"""
 
 # w is freq/eigenvalues
