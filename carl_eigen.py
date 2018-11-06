@@ -41,6 +41,8 @@ for i in range(len(growth)):
         max_g = growth[i]
         max_g_i = i
 
+print 'max Growth =', max_g, '  with index:', max_g_i
+
 
 """
 g_0 = evec[:,0]
