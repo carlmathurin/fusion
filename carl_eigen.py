@@ -49,8 +49,9 @@ print 'max Growth =', max_g, '  with index:', max_g_i, 'and repeats at', g_repea
 
 
 
-g_0 = evec[:,0]
-print 'g1 = ', g_0[1]
+g_0 = evec[:,max_g_i]
+print 'g = ', g_0
+"""
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
 nmax = 48
@@ -80,6 +81,7 @@ plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
 plt.show()
+"""
 
 
 
