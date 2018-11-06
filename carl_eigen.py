@@ -33,7 +33,7 @@ omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par
 print 'freq: ',np.shape(freq), freq, ', growth: ', growth,', evec: ',np.shape(evec), evec[:,0]
 print 'eval: ', omega
 
-max_g = 0
+max_g = -10
 max_g_i = 0
 
 for i in range(len(growth)):
