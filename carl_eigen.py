@@ -44,7 +44,7 @@ for i in range(len(growth)):
 print 'max Growth =', max_g, '  with index:', max_g_i
 
 
-"""
+
 g_0 = evec[:,0]
 print 'g1 = ', g_0[1]
 
@@ -71,12 +71,12 @@ for i in range(48):
 print 'herm ',np.shape(herm_grid[0:48]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:48]
 
-plt.plot(freq,growth,'b*')
+plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
 plt.show()
-"""
+
 
 
 
