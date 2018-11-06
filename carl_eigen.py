@@ -35,13 +35,17 @@ print 'eval: ', omega
 
 max_g = -10
 max_g_i = 0
+g_repeat = 0
 
 for i in range(len(growth)):
-    if growth[i] >= max_g:
+    if growth[i] > max_g:
         max_g = growth[i]
         max_g_i = i
+    elif growth[i] == max_g:
+        g_repeat = i
 
-print 'max Growth =', max_g, '  with index:', max_g_i
+
+print 'max Growth =', max_g, '  with index:', max_g_i, 'and repeats at', g_repeat
 
 
 
