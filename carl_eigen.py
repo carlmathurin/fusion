@@ -19,7 +19,9 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kz,herm_grid = dd.get_grids()
-par['nu'] = .0015
+nmax, par['nu'] = mat.get_nmax()
+
+print 'nmax = ', nmax
 print par['nu']
 
 par['omn'] = 0
@@ -55,8 +57,6 @@ g_0 = evec[:,max_g_i]
 print 'g = ', g_0
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
-nmax = mat.get_nmax()
-print 'nmax = ', nmax
 nu_bar = par['nu']/kz[5]
 g_calc = np.empty(nmax,dtype=complex)
 
