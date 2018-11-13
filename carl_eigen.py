@@ -101,9 +101,9 @@ plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
 
-plt.loglog(herm_grid[0:nmax],abs(g_calc),'b',label = 'calc')
+plt.loglog(herm_grid[0:nmax],g_calc,'b',label = 'calc')
 # try plotting absolute value
-plt.loglog(herm_grid[0:nmax],abs(g_0),'r',label= 'matrix')
+plt.loglog(herm_grid[0:nmax],g_0,'r',label= 'matrix')
 plt.xlabel('herm #')
 plt.ylabel('g')
 plt.title('first g eigen vector [logbase(10)]')
