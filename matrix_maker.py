@@ -14,7 +14,7 @@ from scipy import interpolate
 
 
 
-nu = 0.001212;
+nu = 0.001112;
 
 par = {'omt':0, 'omn':0, 'Ti0Te':1.0, 'kxmin':0.05, 'kxmax0':1.55, 'kymin':0.05, 'kymax0':1.55, 'kzmin':0.1, 'kzmax0':3.1, 'nkx0':32, 'nky0':64, 'nkz0':64,
        'nv0':48, 'nh0':1, 'nspec':1, 'hyp_x':0, 'hyp_y':0, 'hyp_z':0.0, 'hypx_order':0, 'hypy_order':0, 'hypz_order':0, 'hyp_v':0, 'hypv_order':0, 'hyp_conv':0,
