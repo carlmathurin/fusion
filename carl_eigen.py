@@ -55,7 +55,7 @@ g_0 = evec[:,max_g_i]
 print 'g = ', g_0
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
-nmax = get_nmax()
+nmax = mat.get_nmax()
 print 'nmax = ', nmax
 nu_bar = par['nu']/kz[5]
 g_calc = np.empty(nmax,dtype=complex)
