@@ -90,24 +90,24 @@ plt.show()
 
 
 #mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
-
-plt.plot(herm_grid[0:nmax],g_calc,'b',label = 'calc')
+(fig1,fig2) = plt.subplots(1,2)
+fig1.plot(herm_grid[0:nmax],g_calc,'b',label = 'calc')
 # try plotting absolute value
-plt.plot(herm_grid[0:nmax],g_0,'r',label= 'matrix')
-plt.xlabel('herm #')
-plt.ylabel('g')
-plt.title('first g eigen vector [linear]')
-plt.legend()
+fig1.plot(herm_grid[0:nmax],g_0,'r',label= 'matrix')
+fig1.xlabel('herm #')
+fig1.ylabel('g')
+fig1.title('first g eigen vector [linear]')
+fig1.legend()
 #label= 'k_p ='+str(k_bin[j])
-plt.show()
+#plt.show()
 
-plt.loglog(herm_grid[0:nmax],abs(g_calc),'b',label = 'calc')
+fig2.loglog(herm_grid[0:nmax],abs(g_calc),'b',label = 'calc')
 # try plotting absolute value
-plt.loglog(herm_grid[0:nmax],abs(g_0),'r',label= 'matrix')
-plt.xlabel('herm #')
-plt.ylabel('g')
-plt.title('first g eigen vector [logbase(10)]')
-plt.legend()
+fig2.loglog(herm_grid[0:nmax],abs(g_0),'r',label= 'matrix')
+fig2.xlabel('herm #')
+fig2.ylabel('g')
+fig2.title('first g eigen vector [logbase(10)]')
+fig2.legend()
 #label= 'k_p ='+str(k_bin[j])
 plt.show()
 
