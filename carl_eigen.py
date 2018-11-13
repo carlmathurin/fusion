@@ -77,14 +77,14 @@ for i in range(nmax):
 
 print 'herm ',np.shape(herm_grid[0:nmax]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:nmax]
-
+"""
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
 plt.title('complex eigenvalues')
 plt.show()
-
+"""
 
 
 
