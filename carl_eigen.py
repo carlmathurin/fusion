@@ -19,7 +19,7 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kz,herm_grid = dd.get_grids()
-print 'kx ',np.shape(kx),', ky ',np.shape(ky),', kz ',np.shape(ky),', herm ',np.shape(herm_grid)
+print par
 
 par['omn'] = 0
 par['omt'] = 0
