@@ -13,7 +13,7 @@ import scipy.linalg as lin
 from scipy import interpolate
 
 
- nu = 0.0122199
+nu = 0.0122199
 #nu = 0.001112
 #scan lower frequencies
 
