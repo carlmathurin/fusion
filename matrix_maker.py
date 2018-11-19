@@ -12,8 +12,8 @@ import scipy.optimize
 import scipy.linalg as lin
 from scipy import interpolate
 
-
-nu = 0.0122199
+#nu = .002222
+#nu = 0.0122199
 #nu = 0.001112
 #scan lower frequencies
 
@@ -22,10 +22,12 @@ par = {'omt':0, 'omn':0, 'Ti0Te':1.0, 'kxmin':0.05, 'kxmax0':1.55, 'kymin':0.05,
        'num_k_hyp_conv':0, 'hyp_conv_ky':False, 'np_herm':24, 'np_kz':1, 'np_hank':1, 'np_spec':1, 'hyp_nu':0, 'nuno_closure':True, 'em_conserve':True}
 
 #changed omn from 1.0 to 0 and omt from 10.0 to 0
-def get_nmax():
+
+def get_nmax(nu):
     n = par['nv0']
-    new_nu = nu
-    return n,nu
+    nup = nu
+    #new_nu = nu
+    return n,nup
 
 def get_grids():
     """Returns kx,ky,kz,Hermite grids in the same form as used in the code \n
