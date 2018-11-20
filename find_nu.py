@@ -19,10 +19,11 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kz,herm_grid = dd.get_grids()
-nmax = 20
+nmax = 36
 mat.set_nmax(nmax)
+Gamma_0 = mat.get_gamma0()
 
-par['nu'] = 0.0122199
+par['nu'] = 0.002222
 print 'nu = '  , par['nu']
 
 
