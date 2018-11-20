@@ -40,7 +40,8 @@ for i in range(len(growth)):
     if growth[i] > max_g:
         max_g = growth[i]
         max_g_i = i
-        
+
+print 'max Growth =', max_g, '  with index:', max_g_i, 
 """
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
