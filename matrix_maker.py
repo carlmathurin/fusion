@@ -110,7 +110,6 @@ def matrix(kx,ky,kz,Gam0,nu):
 #        diag[par['nv0']-1,par['nv0']-1] = -kz**2*par['nv0']/( (nu*par['nv0'] + par['hyp_v']*(float(par['nv0'])/float(par['nv0']-1)))**par['hypv_order'] )
 
     mat = mat - 1j*kz*phase_mix - diag
-    print 'HERE I AM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~', par['hyp_x']
 
     return mat
 
