@@ -73,8 +73,8 @@ for n in range(nmax):
 error = np.empty(nmax,dtype=complex)
 error2 = np.empty(nmax,dtype=complex)
 for i in range(nmax):
-    error[i] = abs(g_0[i] - g_calc[i])/ (abs(g_0[n]*g_calc[i])**.5)
-    error2[i] = abs(g_0[i] - g_calc[i])/ (abs(g_0[n]))
+    error[i] = abs(g_0[i] - g_calc[i])/ (abs(g_0[i]*g_calc[i])**.5)
+    error2[i] = abs(g_0[i] - g_calc[i])/ (abs(g_0[i]))
     #print 'n =', i,'  ', g_0[i], 'vs', g_calc[i] , '  error =', error[i]
 
 print 'herm ',np.shape(herm_grid[0:nmax]), 'g_calc ', np.shape(g_calc)
