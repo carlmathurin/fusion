@@ -33,17 +33,19 @@ par['hyp_x'] = 0
 
 omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gam0[5,5],par['nu'])
 
+max_g = -10
+max_g_i = 0
 
-"""
 for i in range(len(growth)):
     if growth[i] > max_g:
         max_g = growth[i]
         max_g_i = i
+        
 """
-
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
 plt.title('complex eigenvalues')
 plt.show()
+"""
