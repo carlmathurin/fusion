@@ -21,7 +21,7 @@ time = dd.get_time_from_gout()
 kx,ky,kz,herm_grid = dd.get_grids()
 nmax = 36
 mat.set_nmax(nmax)
-Gamma_0 = mat.get_gamma0()
+Gam0 = mat.get_gamma0()
 
 par['nu'] = 0.002222
 print 'nu = '  , par['nu']
@@ -31,12 +31,15 @@ par['omn'] = 0
 par['omt'] = 0
 par['hyp_x'] = 0
 
-omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
+omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gam0[5,5],par['nu'])
 
+
+"""
 for i in range(len(growth)):
     if growth[i] > max_g:
         max_g = growth[i]
         max_g_i = i
+"""
 
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
