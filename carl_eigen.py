@@ -67,7 +67,7 @@ for n in range(nmax):
         g_calc[0] = g_0[0]
         g_calc[1] = g_0[1]
     else:
-        g_calc[n] = ( (omega[0]/kz[5] + 1j*nu_bar*(n-1))*g_0[n-1] - (n-1)**(.5)*g_0[n-2])/ ((n)**(.5))
+        g_calc[n] = ( (omega[max_g_i]/kz[5] + 1j*nu_bar*(n-1))*g_0[n-1] - (n-1)**(.5)*g_0[n-2])/ ((n)**(.5))
 
 #print 'g2 matrix vs calc: vs error '
 error = np.empty(nmax,dtype=complex)
