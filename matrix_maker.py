@@ -23,11 +23,9 @@ par = {'omt':0, 'omn':0, 'Ti0Te':1.0, 'kxmin':0.05, 'kxmax0':1.55, 'kymin':0.05,
 
 #changed omn from 1.0 to 0 and omt from 10.0 to 0
 
-def get_nmax(nu):
-    n = par['nv0']
-    nup = nu
-    #new_nu = nu
-    return n,nup
+def set_nmax(nmax):
+    par['nv0'] = nmax
+    return
 
 def get_grids():
     """Returns kx,ky,kz,Hermite grids in the same form as used in the code \n

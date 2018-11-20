@@ -19,17 +19,19 @@ diagdir = '/scratch/01658/drhatch/dna_out'
 par['diagdir']="\'"+diagdir+"\'"
 time = dd.get_time_from_gout()
 kx,ky,kz,herm_grid = dd.get_grids()
-nmax, nop = mat.get_nmax(par['nu'])
+nmax = 20
+mat.set_nmax(nmax)
 
-print 'nmax = ', nmax
-print nop
+par['nu'] = 0.0122199
+print 'nu = '  , par['nu']
+
 
 par['omn'] = 0
 par['omt'] = 0
 par['hyp_x'] = 0
 
 Gamma_0 = mat.get_gamma0()
-print 'gamma: ', np.shape(Gamma_0), Gamma_0
+#print 'gamma: ', np.shape(Gamma_0), Gamma_0
 print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
