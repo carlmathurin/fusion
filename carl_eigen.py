@@ -22,20 +22,28 @@ kx,ky,kz,herm_grid = dd.get_grids()
 nmax = 20
 mat.set_nmax(nmax)
 
-par['nu'] = 0.0122199
+par['nu'] = 0.1
 print 'nu = '  , par['nu']
 
 
 par['omn'] = 0
 par['omt'] = 0
 par['hyp_x'] = 0
+par['hyp_y'] = 0
+par['hyp_v'] = 0
+par['nuno_closure'] = False
+
+
+
 
 Gamma_0 = mat.get_gamma0()
 #print 'gamma: ', np.shape(Gamma_0), Gamma_0
 print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
+
 omega, freq , growth, evec = mat.get_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
+
 print 'freq: ',np.shape(freq), freq, ', growth: ', growth,', evec: ',np.shape(evec), evec[:,0]
 print 'eval: ', omega
 
@@ -79,14 +87,14 @@ for i in range(nmax):
 
 print 'herm ',np.shape(herm_grid[0:nmax]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:nmax]
-"""
+
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
 plt.title('complex eigenvalues')
 plt.show()
-"""
+
 
 
 
