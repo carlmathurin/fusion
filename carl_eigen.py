@@ -43,7 +43,7 @@ print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 
-omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,0.0,Gamma_0[0,0],par['nu'])
+omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,0.5,Gamma_0[0,0],par['nu'])
 
 print 'freq: ',np.shape(freq), freq, ', growth: ', growth,', evec: ',np.shape(evec), evec[:,0]
 print 'eval: ', omega
@@ -102,9 +102,9 @@ plt.show()
 
 #mat.plot_spectrum(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 fig, (f1,f2) = plt.subplots(1,2)
-f1.plot(herm_grid[0:nmax],g_calc,'b',label = 'calc')
+f1.plot(herm_grid[0:nmax],abs(g_calc)**2,'b',label = 'calc')
 # try plotting absolute value
-f1.plot(herm_grid[0:nmax],g_0,'r',label= 'matrix')
+f1.plot(herm_grid[0:nmax],abs(g_0)**2,'r',label= 'matrix')
 plt.xlabel('herm #')
 plt.ylabel('g')
 plt.title('first g eigen vector [linear]')
@@ -112,9 +112,9 @@ plt.legend()
 #label= 'k_p ='+str(k_bin[j])
 #plt.show()
 
-f2.loglog(herm_grid[0:nmax],abs(g_calc),'b',label = 'calc')
+f2.loglog(herm_grid[0:nmax],abs(g_calc)**2,'b',label = 'calc')
 # try plotting absolute value
-f2.loglog(herm_grid[0:nmax],abs(g_0),'r',label= 'matrix')
+f2.loglog(herm_grid[0:nmax],abs(g_0)**2,'r',label= 'matrix')
 plt.xlabel('herm #')
 plt.ylabel('g')
 plt.title('first g eigen vector [logbase(10)]')
