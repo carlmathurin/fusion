@@ -43,7 +43,6 @@ def max_g(growth):
             max_g_i = i
     return max_g, max_g_i
 
-g_0 = evec[:,max_g_i]
 
 def find_error(g_eigen,g_calc,nmax):
     """"finds the error between g_calc and the eigenvector g"""
