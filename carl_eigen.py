@@ -24,6 +24,7 @@ mat.set_nmax(nmax)
 
 par['nu'] = 0.1
 print 'nu = '  , par['nu']
+print 'kz = ', kz
 
 
 par['omn'] = 0
