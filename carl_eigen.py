@@ -43,7 +43,7 @@ print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 
-omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,0.3,Gamma_0[0,0],par['nu'])
+omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,0.0,Gamma_0[0,0],par['nu'])
 
 print 'freq: ',np.shape(freq), freq, ', growth: ', growth,', evec: ',np.shape(evec), evec[:,0]
 print 'eval: ', omega
