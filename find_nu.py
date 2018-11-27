@@ -84,7 +84,27 @@ def plot_eig_vec(g_calc,g_eigen,herm_grid,nmax):
 
 def calculate_g(kx,ky,kz,nmax,nu,gam0):
     """calculates g using eigenvector g"""
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dd.read_parameters()
 
+diagdir = '/scratch/01658/drhatch/dna_out'
+par['diagdir']="\'"+diagdir+"\'"
+time = dd.get_time_from_gout()
+kx,ky,kz,herm_grid = dd.get_grids()
+nmax = 36
+mat.set_nmax(nmax)
+Gam0 = mat.get_gamma0()
+
+par['nu'] = 0.002222
+print 'nu = '  , par['nu']
+
+
+
+
+par['omn'] = 0
+par['omt'] = 0
+par['hyp_x'] = 0
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
     omega, freq , growth, evec = mat.get_spectrum(kx,ky,kz,Gam0,nu)
     g_max, gi_max = max_g(growth)
     g_0 = evec[:,gi_max]
