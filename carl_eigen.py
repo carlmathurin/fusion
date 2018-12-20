@@ -93,7 +93,7 @@ print 'herm :', herm_grid[0:nmax]
 print 'eigenvector check: ', np.linalg.norm(np.matmul(us_matrix, g_0) - omega[max_g_i]*g_0)
 
 print 'eigen vector check 2', np.divide(np.matmul(us_matrix, g_0) ,g_0)
-print 'eigen value: ', omgea[max_g_i]
+print 'eigen value: ', omega[max_g_i]
 
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
