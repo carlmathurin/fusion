@@ -34,7 +34,7 @@ par['hyp_y'] = 0
 par['hyp_v'] = 0
 par['nuno_closure'] = False
 
-
+kz_t = .3
 
 Gamma_0 = mat.get_gamma0()
 #print 'gamma: ', np.shape(Gamma_0), Gamma_0
@@ -42,7 +42,7 @@ print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
 us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
 
-omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,0.3,Gamma_0[0,0],par['nu'])
+omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,kz_t,Gamma_0[0,0],par['nu'])
 
 print 'freq: ',np.shape(freq), freq, ', growth: ', growth,', evec: ',np.shape(evec), evec[:,0]
 print 'eval: ', omega
@@ -67,15 +67,17 @@ g_0 = evec[:,max_g_i]
 print 'g = ', g_0
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
-nu_bar = par['nu']/kz[5]
+Chi = np.exp(0.0)/(par['tau'] + 1.0 - Gamma_0[0,0])
+nu_bar = par['nu']/kz_t
 g_calc = np.empty(nmax,dtype=complex)
 
 for n in range(nmax):
-    if n == 0 or n == 1 :
+    if n == 0 or n == 1 or n == 2 :
         g_calc[0] = g_0[0]
         g_calc[1] = omega[max_g_i]/kz[5]*g_calc[0]
+        g_calc[2] = -(Chi + 1.0)/np.sqrt(2.0)*g_calc[0] + (omega[max_g_i]/np.sqrt(2.0)/kz_t + 1j*nu_bar/np.sqrt(2.0))*g_calc[1]
     else:
-        g_calc[n] = ( (omega[max_g_i]/kz[5] + 1j*nu_bar*(n-1))*g_calc[n-1] - (n-1)**(.5)*g_calc[n-2])/ ((n)**(.5))
+        g_calc[n] = ( (omega[max_g_i]/kz_t + 1j*nu_bar*(n-1))*g_calc[n-1] - (n-1)**(.5)*g_calc[n-2])/ ((n)**(.5))
 
 #print 'g2 matrix vs calc: vs error '
 error = np.empty(nmax,dtype=complex)
