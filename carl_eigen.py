@@ -40,7 +40,7 @@ Gamma_0 = mat.get_gamma0()
 #print 'gamma: ', np.shape(Gamma_0), Gamma_0
 print 'nu: ', par['nu']
 print 'kx = ', kx[5],'ky = ', ky[5], 'kz = ', kz[5] , 'Gamma_0(index/value) [5,5]/',Gamma_0[5,5]
-us_matrix = mat.matrix(kx[5],ky[5],kz[5],Gamma_0[5,5],par['nu'])
+us_matrix = mat.matrix(0,0,kz_t,Gamma_0[0,0],par['nu'])
 
 omega, freq , growth, evec = mat.get_spectrum(0.0,0.0,kz_t,Gamma_0[0,0],par['nu'])
 
@@ -89,6 +89,8 @@ for i in range(nmax):
 
 print 'herm ',np.shape(herm_grid[0:nmax]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:nmax]
+
+print 'eigenvector check: ', np.linalg.norm(np.matmul(us_matrix, g_0) - omega[max_g_i]*g_0))
 
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
