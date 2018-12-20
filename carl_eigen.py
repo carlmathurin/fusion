@@ -36,7 +36,6 @@ par['nuno_closure'] = False
 
 
 
-
 Gamma_0 = mat.get_gamma0()
 #print 'gamma: ', np.shape(Gamma_0), Gamma_0
 print 'nu: ', par['nu']
@@ -74,7 +73,7 @@ g_calc = np.empty(nmax,dtype=complex)
 for n in range(nmax):
     if n == 0 or n == 1 :
         g_calc[0] = g_0[0]
-        g_calc[1] = g_0[1]
+        g_calc[1] = omega[max_g_i]/kz[5]*g_calc[0]
     else:
         g_calc[n] = ( (omega[max_g_i]/kz[5] + 1j*nu_bar*(n-1))*g_calc[n-1] - (n-1)**(.5)*g_calc[n-2])/ ((n)**(.5))
 
