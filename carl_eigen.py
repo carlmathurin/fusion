@@ -67,7 +67,7 @@ g_0 = evec[:,max_g_i]
 print 'g = ', g_0
 
 #0 = (nu_bar*n - 1j*w/kz)*g(n) + 1j*(sqrt(n+1)*g(n+1) + sqrt(n)*g(n-1))
-Chi = np.exp(0.0)/(par['tau'] + 1.0 - Gamma_0[0,0])
+Chi = np.exp(0.0)/(par['Ti0Te'] + 1.0 - Gamma_0[0,0])
 nu_bar = par['nu']/kz_t
 g_calc = np.empty(nmax,dtype=complex)
 
