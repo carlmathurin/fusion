@@ -90,7 +90,7 @@ for i in range(nmax):
 print 'herm ',np.shape(herm_grid[0:nmax]), 'g_calc ', np.shape(g_calc)
 print 'herm :', herm_grid[0:nmax]
 
-print 'eigenvector check: ', np.linalg.norm(np.matmul(us_matrix, g_0) - omega[max_g_i]*g_0))
+print 'eigenvector check: ', np.linalg.norm(np.matmul(us_matrix, g_0) - omega[max_g_i]*g_0)
 
 plt.plot(growth,freq,'b*')
 plt.grid() # color='blue')
