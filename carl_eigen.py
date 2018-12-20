@@ -75,7 +75,7 @@ for n in range(nmax):
         g_calc[0] = g_0[0]
         g_calc[1] = omega[max_g_i]/kz[5]*g_calc[0]
     else:
-        g_calc[n] = ( (omega[max_g_i]/kz[5] + 1j*nu_bar*(n-1)/kz[5])*g_calc[n-1] - (n-1)**(.5)*g_calc[n-2])/ ((n)**(.5))
+        g_calc[n] = ( (omega[max_g_i]/kz[5] + 1j*nu_bar*(n-1))*g_calc[n-1] - (n-1)**(.5)*g_calc[n-2])/ ((n)**(.5))
 
 #print 'g2 matrix vs calc: vs error '
 error = np.empty(nmax,dtype=complex)
@@ -124,6 +124,9 @@ plt.show()
 plt.semilogy(herm_grid[0:nmax],abs(g_calc)**2,'bo-',label = 'calc')
 plt.semilogy(herm_grid[0:nmax],abs(g_0)**2,'rx-',label = 'matrix')
 plt.show()
+
+print 'g_calc from 0-3: ', g_calc[0:3]
+print 'g_matrix from 0-3: ', g_0[0:3]
 
 
 # maybe look for most unstable eigenvalue
