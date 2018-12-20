@@ -96,6 +96,7 @@ print 'eigen vector check 2', np.divide(np.matmul(us_matrix, g_0) ,g_0)
 print 'eigen value: ', omega[max_g_i]
 
 plt.plot(growth,freq,'b*')
+plt.plot(np.real(omega), np.imag(omega), 'rx')
 plt.grid() # color='blue')
 plt.xlabel('real [growth]')
 plt.ylabel('imagainary [freq]')
