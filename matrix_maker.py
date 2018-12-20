@@ -19,7 +19,7 @@ from scipy import interpolate
 
 par = {'omt':0, 'omn':0, 'Ti0Te':1.0, 'kxmin':0.0, 'kxmax0':1.55, 'kymin':0.0, 'kymax0':1.55, 'kzmin':0.3, 'kzmax0':3.1, 'nkx0':32, 'nky0':64, 'nkz0':64,
        'nv0':20, 'nh0':1, 'nspec':1, 'hyp_x':0, 'hyp_y':0, 'hyp_z':0.0, 'hypx_order':0, 'hypy_order':0, 'hypz_order':0, 'hyp_v':0, 'hypv_order':0, 'hyp_conv':0,
-       'num_k_hyp_conv':0, 'hyp_conv_ky':False, 'np_herm':24, 'np_kz':1, 'np_hank':1, 'np_spec':1, 'hyp_nu':0, 'nuno_closure':False, 'em_conserve':True}
+       'num_k_hyp_conv':0, 'hyp_conv_ky':False, 'np_herm':24, 'np_kz':1, 'np_hank':1, 'np_spec':1, 'hyp_nu':0, 'nuno_closure':False, 'em_conserve':False}
 
 #changed omn from 1.0 to 0 and omt from 10.0 to 0
 
@@ -110,6 +110,8 @@ def matrix(kx,ky,kz,Gam0,nu):
 #        diag[par['nv0']-1,par['nv0']-1] = -kz**2*par['nv0']/( (nu*par['nv0'] + par['hyp_v']*(float(par['nv0'])/float(par['nv0']-1)))**par['hypv_order'] )
 
     mat = mat - 1j*kz*phase_mix - diag
+
+    mat = 1j*mat
 
     return mat
 

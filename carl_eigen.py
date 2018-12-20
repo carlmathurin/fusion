@@ -71,7 +71,7 @@ Chi = np.exp(0.0)/(par['Ti0Te'] + 1.0 - Gamma_0[0,0])
 nu_bar = par['nu']/kz_t
 g_calc = np.empty(nmax,dtype=complex)
 
-omega = 1j*omega
+#omega = 1j*omega
 for n in range(nmax):
     if n == 0 or n == 1 or n == 2 :
         g_calc[0] = g_0[0]
